@@ -48,18 +48,34 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
             
             <div class="lg:col-span-7 space-y-8">
-                <div class="img-main-container aspect-[1.2/1] rounded-[3.5rem] flex items-center justify-center p-16 border border-slate-50 relative overflow-hidden group">
-                    <img src="img/products/i93-large.png" alt="CHCNAV i93" class="w-4/5 h-4/5 object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute bottom-8 right-8 flex gap-3">
-                         <button class="w-12 h-12 rounded-2xl bg-white/80 backdrop-blur shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 hover:text-blue-600"><i class="fa-solid fa-expand"></i></button>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-4 gap-6">
-                    <div class="aspect-square rounded-3xl border-2 border-blue-600 p-3 bg-white shadow-sm cursor-pointer overflow-hidden"><img src="img/products/i93-1.png" class="w-full h-full object-contain"></div>
-                    <div class="aspect-square rounded-3xl border border-slate-100 p-3 bg-slate-50 hover:bg-white transition cursor-pointer overflow-hidden opacity-60 hover:opacity-100"><img src="img/products/i93-2.png" class="w-full h-full object-contain"></div>
+    <div class="img-main-container aspect-[1.2/1] rounded-[3.5rem] flex items-center justify-center p-16 border border-slate-50 relative overflow-hidden group">
+        
+        <!-- Badge Harga Mengambang (Kiri Bawah) -->
+        <div class="absolute bottom-8 left-8 z-10 flex flex-col group-hover:-translate-y-1 transition-transform duration-500">
+            <span class="bg-blue-600 text-white text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-t-xl w-fit ml-4 shadow-lg">
+                Investment Price
+            </span>
+            <div class="bg-white/90 backdrop-blur-md border border-slate-100 px-6 py-3 rounded-2xl rounded-tl-none shadow-xl">
+                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest block leading-none mb-1">Mulai Dari</span>
+                <div class="flex items-baseline gap-1">
+                    <span class="text-xs font-bold text-slate-900">Rp</span>
+                    <span class="text-2xl font-black text-slate-950 tracking-tighter">100.000.000</span>
                 </div>
             </div>
+        </div>
+
+        <img src="img/products/i93-large.png" alt="CHCNAV i93" class="w-4/5 h-4/5 object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700">
+        
+        <div class="absolute bottom-8 right-8 flex gap-3">
+             <button class="w-12 h-12 rounded-2xl bg-white/80 backdrop-blur shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 hover:text-blue-600"><i class="fa-solid fa-expand"></i></button>
+        </div>
+    </div>
+    
+    <div class="grid grid-cols-4 gap-6">
+        <div class="aspect-square rounded-3xl border-2 border-blue-600 p-3 bg-white shadow-sm cursor-pointer overflow-hidden"><img src="img/products/i93-1.png" class="w-full h-full object-contain"></div>
+        <div class="aspect-square rounded-3xl border border-slate-100 p-3 bg-slate-50 hover:bg-white transition cursor-pointer overflow-hidden opacity-60 hover:opacity-100"><img src="img/products/i93-2.png" class="w-full h-full object-contain"></div>
+    </div>
+</div>
 
             <div class="lg:col-span-5 space-y-12">
                 <div class="tech-card-dark p-10 rounded-[3rem] text-white relative overflow-hidden">
@@ -90,6 +106,8 @@
                     </div>
                 </div>
 
+
+                
                 <div class="flex flex-col gap-4 pt-6">
     <!-- Tombol WhatsApp / Quote -->
     <a href="https://wa.me/..." class="group flex items-center justify-center gap-4 bg-slate-950 text-white py-5 rounded-[2rem] font-black uppercase tracking-widest hover:bg-blue-600 transition-all shadow-2xl shadow-slate-950/20">

@@ -13,6 +13,12 @@
         .tech-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
         .blue-glow { box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.5); }
         .bento-card:hover { transform: translateY(-5px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* Efek agar bintang di sebelah kiri ikut menyala saat hover atau checked */
+.flex-row-reverse label:hover ~ label,
+.flex-row-reverse input:checked ~ label {
+    color: #E7D532;
+}
     </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-900 overflow-x-hidden">
@@ -180,68 +186,246 @@
         </div>
     </section>
 
-    <section class="py-24 bg-[#f8fafc] px-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <div>
-                    <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Produk Unggulan </h2>
-                    <p class="text-slate-500">Jelajahi teknologi pemetaan terbaru dari brand kelas dunia</p>
+    <section class="py-24 bg-slate-50 px-6 overflow-hidden border-t border-slate-100">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div class="space-y-1">
+                <div class="w-12 h-1 bg-primary rounded-full"></div>
+                <h2 class="text-4xl font-black text-slate-900 tracking-tighter uppercase">Produk <span class="text-primary italic">Unggulan</span></h2>
+                <p class="text-slate-500 font-medium">Teknologi pemetaan presisi dari brand kelas dunia</p>
+            </div>
+            <a href="{{ url('produk') }}" class="text-primary font-black flex items-center gap-2 uppercase tracking-widest text-[11px] border-b-2 border-primary pb-1">
+                Lihat Semua Produk <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="group bg-white rounded-[2.5rem] p-6 border border-slate-200 hover:shadow-2xl transition duration-500 flex flex-col h-full shadow-sm">
+                <div class="aspect-square bg-slate-50 rounded-[2rem] mb-6 overflow-hidden flex items-center justify-center relative border border-slate-100">
+                    <div class="absolute top-4 left-4 bg-slate-900 text-highlight text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest z-10">Premium Tech</div>
+                    <img src="img/products/i93.png" alt="i93" class="w-48 grayscale group-hover:grayscale-0 transition duration-700">
                 </div>
-                <a href="#" class="text-blue-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">
-                    Lihat Semua Produk <i class="fa-solid fa-chevron-right text-xs"></i>
-                </a>
+                <div class="px-2 flex flex-col flex-grow">
+                    <p class="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-2">CHCNAV GNSS</p>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">i93 Visual IMU RTK</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-8 flex-grow">Visual stakeout & IMU canggih untuk efisiensi survei profesional maksimal di medan sulit.</p>
+                    
+                    <a href="{{ url('detailProduk') }}" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+                        Detail Alat
+                    </a>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="group bg-white rounded-[2rem] p-4 border border-slate-100 hover:shadow-2xl transition duration-500">
-                    <div class="aspect-square bg-slate-50 rounded-[1.5rem] mb-6 overflow-hidden flex items-center justify-center relative">
-                        <div class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Premium </div>
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400" alt="CHCNAV i93" class="w-48 group-hover:scale-110 transition duration-500 grayscale group-hover:grayscale-0">
-                    </div>
-                    <div class="px-4 pb-4">
-                        <p class="text-blue-600 text-[10px] font-extrabold uppercase tracking-widest mb-2">CHCNAV GNSS </p>
-                        <h3 class="text-xl font-extrabold text-slate-800 mb-2">i93 Visual IMU RTK </h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-6">Visual stakeout & IMU canggih untuk survei profesional</p>
-                        <a href="https://wa.me/..." class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-blue-600 transition">
-                            <i class="fa-brands fa-whatsapp"></i> Tanya Spesifikasi 
-                        </a>
-                    </div>
+            <div class="group bg-white rounded-[2.5rem] p-6 border border-slate-200 hover:shadow-2xl transition duration-500 flex flex-col h-full shadow-sm">
+                <div class="aspect-square bg-slate-50 rounded-[2rem] mb-6 overflow-hidden flex items-center justify-center relative border border-slate-100">
+                    <div class="absolute top-4 left-4 bg-slate-900 text-highlight text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest z-10">LiDAR System</div>
+                    <img src="img/products/mvps1.png" alt="MVP S1" class="w-48 grayscale group-hover:grayscale-0 transition duration-700">
                 </div>
-
-                <div class="group bg-white rounded-[2rem] p-4 border border-slate-100 hover:shadow-2xl transition duration-500">
-                    <div class="aspect-square bg-slate-50 rounded-[1.5rem] mb-6 overflow-hidden flex items-center justify-center relative">
-                        <div class="absolute top-4 left-4 bg-indigo-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Mobile Mapping </div>
-                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400" alt="LiDAR SLAM" class="w-48 group-hover:scale-110 transition duration-500 grayscale group-hover:grayscale-0">
-                    </div>
-                    <div class="px-4 pb-4">
-                        <p class="text-blue-600 text-[10px] font-extrabold uppercase tracking-widest mb-2">LiDAR SLAM SYSTEM </p>
-                        <h3 class="text-xl font-extrabold text-slate-800 mb-2">Tersus MVP S1 </h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-6">Akuisisi data 3D real-time dengan colorized point cloud</p>
-                        <a href="https://wa.me/..." class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-blue-600 transition">
-                            <i class="fa-brands fa-whatsapp"></i> Tanya Spesifikasi 
-                        </a>
-                    </div>
+                <div class="px-2 flex flex-col flex-grow">
+                    <p class="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-2">Tersus LiDAR</p>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">Tersus MVP S1</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-8 flex-grow">Akuisisi data 3D real-time dengan colorized point cloud presisi tinggi secara instan.</p>
+                    
+                    <a href="#" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+                        Detail Alat
+                    </a>
                 </div>
+            </div>
 
-                <div class="group bg-white rounded-[2rem] p-4 border border-slate-100 hover:shadow-2xl transition duration-500">
-                    <div class="aspect-square bg-slate-50 rounded-[1.5rem] mb-6 overflow-hidden flex items-center justify-center relative">
-                        <div class="absolute top-4 left-4 bg-cyan-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Bathymetric</div>
-                        <img src="https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?auto=format&fit=crop&q=80&w=400" alt="TheDuck USV" class="w-48 group-hover:scale-110 transition duration-500 grayscale group-hover:grayscale-0">
-                    </div>
-                    <div class="px-4 pb-4">
-                        <p class="text-blue-600 text-[10px] font-extrabold uppercase tracking-widest mb-2">USV SYSTEM</p>
-                        <h3 class="text-xl font-extrabold text-slate-800 mb-2">Tersus TheDuck</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-6">Kapal tanpa awak untuk survei hidrografi presisi tinggi</p>
-                        <a href="https://wa.me/..." class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-blue-600 transition">
-                            <i class="fa-brands fa-whatsapp"></i> Tanya Spesifikasi 
-                        </a>
-                    </div>
+            <div class="group bg-white rounded-[2.5rem] p-6 border border-slate-200 hover:shadow-2xl transition duration-500 flex flex-col h-full shadow-sm">
+                <div class="aspect-square bg-slate-50 rounded-[2rem] mb-6 overflow-hidden flex items-center justify-center relative border border-slate-100">
+                    <div class="absolute top-4 left-4 bg-slate-900 text-highlight text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest z-10">Hydrography</div>
+                    <img src="img/products/theduck.png" alt="TheDuck" class="w-48 grayscale group-hover:grayscale-0 transition duration-700">
+                </div>
+                <div class="px-2 flex flex-col flex-grow">
+                    <p class="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-2">USV SYSTEM</p>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">Tersus TheDuck</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-8 flex-grow">Kapal tanpa awak untuk survei hidrografi presisi tinggi secara otomatis dan aman.</p>
+                    
+                    <a href="#" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+                        Detail Alat
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section class="py-32 bg-primary relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-px bg-white/20"></div>
+    <div class="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px]"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-20 space-y-4">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-highlight text-[10px] font-black uppercase tracking-[0.3em]">
+                Verified Technical Feedback
+            </div>
+            <div class="space-y-4">
+    <!-- Judul: Menggunakan Biru Tua NGS untuk kesan Teknologi & Kepercayaan -->
+    <h2 class="text-5xl md:text-6xl font-black text-[#043978] uppercase tracking-tighter leading-none">
+        Suara <span class="italic text-slate-500">Pelanggan</span>
+    </h2>
+    
+    <!-- Deskripsi: Menggunakan Abu Gelap (Slate-600) untuk kesan Presisi & Profesional -->
+    <p class="text-slate-600 max-w-2xl mx-auto font-semibold text-lg leading-relaxed">
+        Transparansi kualitas adalah komitmen kami. Pengalaman nyata dari para profesional geodesi.
+    </p>
+</div>
+        </div>
+
+        <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide">
+            
+            <div class="flex-none w-[350px] md:w-[450px] snap-center bg-white p-10 rounded-[3.5rem] shadow-2xl space-y-8 border border-white/10">
+                <div class="flex justify-between items-start">
+                    <div class="flex gap-1 text-primary text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">April 2026</span>
+                </div>
+                <p class="text-slate-700 font-medium leading-relaxed italic text-lg">"Proses kalibrasi di NGS sangat transparan. Kami dikirimkan data pengujian sebelum sertifikat fisik diterbitkan. Benar-benar standar teknis yang profesional!"</p>
+                <div class="flex items-center gap-5 border-t border-slate-100 pt-8">
+                    <div class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center font-black text-xl">RN</div>
+                    <div>
+                        <h4 class="text-sm font-black text-slate-900 uppercase tracking-tight">Rahmat Nugraha</h4>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Surveyor - PT. Alam Hijau</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-none w-[350px] md:w-[450px] snap-center bg-slate-900 p-10 rounded-[3.5rem] shadow-2xl space-y-8 border border-white/5">
+                <div class="flex justify-between items-start">
+                    <div class="flex gap-1 text-highlight text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Maret 2026</span>
+                </div>
+                <p class="text-blue-50/90 font-medium leading-relaxed italic text-lg">"Alat GNSS i93-nya juara! Visual stakeout sangat membantu tim saya yang baru belajar AR untuk navigasi titik dengan presisi."</p>
+                <div class="flex items-center gap-5 border-t border-white/5 pt-8">
+                    <div class="w-14 h-14 rounded-2xl bg-white/10 text-highlight flex items-center justify-center font-black text-xl border border-white/10">A</div>
+                    <div>
+                        <h4 class="text-sm font-black text-white uppercase tracking-tight">Anonym</h4>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Instansi Pemerintah</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-none w-[350px] md:w-[450px] snap-center bg-white p-10 rounded-[3.5rem] shadow-2xl space-y-8 border border-white/10">
+                <div class="flex justify-between items-start">
+                    <div class="flex gap-1 text-primary text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">Februari 2026</span>
+                </div>
+                <p class="text-slate-700 font-medium leading-relaxed italic text-lg">"Technical Support-nya luar biasa. Saat kami kesulitan mengolah data LiDAR, tim teknis NGS membantu via remote session sampai tuntas malam itu juga."</p>
+                <div class="flex items-center gap-5 border-t border-slate-100 pt-8">
+                    <div class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center font-black text-xl">HB</div>
+                    <div>
+                        <h4 class="text-sm font-black text-slate-900 uppercase tracking-tight">Hendra Bakti</h4>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Direktur Teknis PT. GeoData</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-16 text-center">
+    <button onclick="toggleModal('feedbackModal')" class="inline-flex items-center gap-4 px-12 py-5 rounded-full bg-[#E7D532] text-[#043978] font-black uppercase text-[11px] tracking-[0.3em] hover:scale-105 transition-all shadow-2xl border-2 border-white/10">
+        Submit Engineering Feedback <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+</div>
+
+    </div>
+</section>
 
     @include('footer')
+<!-- Modal Background -->
+<div id="feedbackModal" class="fixed inset-0 z-[150] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <!-- Overlay -->
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity bg-slate-900/80 backdrop-blur-sm" onclick="toggleModal('feedbackModal')"></div>
 
+        <!-- Modal Content -->
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        <div class="inline-block align-bottom bg-white rounded-[2rem] text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-slate-200">
+            <div class="bg-[#043978] px-8 py-6">
+                <h3 class="text-xl font-bold text-white uppercase tracking-widest" id="modal-title">Engineering Feedback</h3>
+                <p class="text-blue-200/70 text-xs mt-1">Berikan masukan teknis untuk presisi yang lebih baik.</p>
+            </div>
+<!-- Rating Bintang -->
+<div>
+    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-center">Tingkat Presisi / Kepuasan</label>
+    <div class="flex flex-row-reverse justify-center gap-2">
+        <!-- Input diatur reverse agar teknik CSS hover-sibling bekerja -->
+        <input type="radio" id="star5" name="rating" value="5" class="hidden peer" />
+        <label for="star5" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
+            <i class="fa-solid fa-star"></i>
+        </label>
+
+        <input type="radio" id="star4" name="rating" value="4" class="hidden peer" />
+        <label for="star4" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
+            <i class="fa-solid fa-star"></i>
+        </label>
+
+        <input type="radio" id="star3" name="rating" value="3" class="hidden peer" />
+        <label for="star3" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
+            <i class="fa-solid fa-star"></i>
+        </label>
+
+        <input type="radio" id="star2" name="rating" value="2" class="hidden peer" />
+        <label for="star2" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
+            <i class="fa-solid fa-star"></i>
+        </label>
+
+        <input type="radio" id="star1" name="rating" value="1" class="hidden peer" />
+        <label for="star1" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
+            <i class="fa-solid fa-star"></i>
+        </label>
+    </div>
+</div>
+            <form action="#" method="POST" class="px-8 py-8 space-y-5">
+                <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Nama Lengkap</label>
+                    <input type="text" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#043978] focus:ring-1 focus:ring-[#043978] outline-none transition-all text-sm font-medium" placeholder="Contoh: Rahmat Nugraha">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Instansi / Perusahaan</label>
+                    <input type="text" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#043978] focus:ring-1 focus:ring-[#043978] outline-none transition-all text-sm font-medium" placeholder="PT. Alam Hijau">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Masukan Teknis</label>
+                    <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#043978] focus:ring-1 focus:ring-[#043978] outline-none transition-all text-sm font-medium" placeholder="Tuliskan pengalaman teknis Anda menggunakan produk kami..."></textarea>
+                </div>
+
+                <div class="pt-4 flex gap-3">
+                    <button type="button" onclick="toggleModal('feedbackModal')" class="flex-1 px-6 py-4 rounded-xl border border-slate-200 text-slate-500 font-bold uppercase text-[10px] tracking-widest hover:bg-slate-50 transition-all">Batal</button>
+                    <button type="submit" class="flex-1 px-6 py-4 rounded-xl bg-[#5AAC41] text-white font-bold uppercase text-[10px] tracking-widest hover:bg-[#4d9437] shadow-lg shadow-green-900/20 transition-all">Kirim Feedback</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Mencegah scrolling di background
+    } else {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Menutup modal dengan tombol ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+        const modal = document.getElementById('feedbackModal');
+        if (!modal.classList.contains('hidden')) toggleModal('feedbackModal');
+    }
+});
+</script>
 </body>
 </html>

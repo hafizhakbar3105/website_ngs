@@ -31,6 +31,10 @@ Route::get('/detailProduk', function () {
 });
 
 //Admin
+Route::get('/loginadmin', function () {
+    return view('Admin/loginadmin');
+});
+
 Route::get('/homeadmin', function () {
     return view('Admin/homeadmin');
 });
