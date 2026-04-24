@@ -103,11 +103,12 @@
         <div class="tech-card group flex flex-col md:flex-row bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-700 h-full">
             
             <div class="md:w-2/5 relative aspect-square md:aspect-auto bg-[#f8fafc] rounded-[2rem] overflow-hidden flex items-center justify-center p-6 flex-shrink-0">
-                <div class="absolute top-4 left-4 z-20">
-                    <span class="px-2.5 py-1 bg-white/90 backdrop-blur text-slate-900 text-[7px] font-black uppercase tracking-widest rounded-lg shadow-sm">Premium</span>
-                </div>
-                <img src="img/products/i93.png" alt="i93" class="w-full h-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
-            </div>
+    <div class="absolute top-4 left-4 z-20">
+        <span class="px-2.5 py-1 bg-white/90 backdrop-blur text-slate-900 text-[7px] font-black uppercase tracking-widest rounded-lg shadow-sm">Premium</span>
+    </div>
+    <!-- Animasi grayscale-0, scale-110, dan transition telah dihapus -->
+    <img src="img/product/chcnav-i93.png" alt="i93" class="w-full h-full object-contain">
+</div>
             
             <div class="p-6 flex flex-col flex-grow justify-between">
                 <div class="space-y-2">
@@ -125,53 +126,17 @@
                 </div>
                 
                 <div class="mt-6 pt-6 border-t border-slate-50">
-                    <div class="flex gap-3">
-                        <a href="https://wa.me/..." class="flex-[2] bg-slate-900 text-white text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 shadow-lg shadow-slate-900/10 transition-all">
-                            WA Konsultasi
-                        </a>
-                        <a href="{{ url('detailProduk') }}" class="flex-1 bg-white border border-slate-200 text-slate-900 text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all">
-                            Detail
-                        </a>
-                    </div>
-                </div>
+    <div class="flex gap-3">
+        <a href="https://wa.me/6282123852658?text=Halo%20Tim%20Nusa%20Geospatial,%20saya%20ingin%20mengajukan%20permohonan%20kalibrasi%20untuk%20alat%20survei%20saya.%20Boleh%20diinformasikan%20mengenai%20prosedur,%20estimasi%20waktu,%20dan%20biayanya?" target="_blank" class="flex-[2] bg-slate-900 text-white text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 shadow-lg shadow-slate-900/10 transition-all">
+            Ajukan Kalibrasi
+        </a>
+        <a href="{{ url('detailProduk') }}" class="flex-1 bg-white border border-slate-200 text-slate-900 text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all">
+            Detail
+        </a>
+    </div>
+</div>
             </div>
         </div>
-
-        <div class="tech-card group flex flex-col md:flex-row bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-700 h-full">
-            <div class="md:w-2/5 relative aspect-square md:aspect-auto bg-[#f8fafc] rounded-[2rem] overflow-hidden flex items-center justify-center p-6 flex-shrink-0">
-                <div class="absolute top-4 left-4 z-20">
-                    <span class="px-2.5 py-1 bg-white/90 backdrop-blur text-slate-900 text-[7px] font-black uppercase tracking-widest rounded-lg shadow-sm">SLAM</span>
-                </div>
-                <img src="img/products/mvps1.png" alt="MVP S1" class="w-full h-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
-            </div>
-            
-            <div class="p-6 flex flex-col flex-grow justify-between">
-                <div class="space-y-2">
-                    <p class="text-[8px] font-black text-indigo-600 uppercase tracking-[0.2em]">Tersus LiDAR</p>
-                    <h3 class="text-xl font-black text-slate-900 leading-tight">MVP S1 Scanner</h3>
-                    <p class="text-[11px] text-slate-500 leading-relaxed line-clamp-3">
-                        Sistem handheld mobile mapping untuk akuisisi data 3D real-time dengan point cloud berwarna secara instan.
-                    </p>
-                    <div class="flex gap-2 pt-2">
-                        <span class="px-2.5 py-1 bg-slate-50 rounded-lg text-[8px] font-bold text-slate-500 border border-slate-100 flex items-center gap-1.5">
-                            <i class="fa-solid fa-cube text-indigo-500"></i> Point Cloud
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="mt-6 pt-6 border-t border-slate-50">
-                    <div class="flex gap-3">
-                        <a href="https://wa.me/..." class="flex-[2] bg-slate-900 text-white text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-indigo-600 shadow-lg shadow-slate-900/10 transition-all">
-                            WA Konsultasi
-                        </a>
-                        <a href="#" class="flex-1 bg-white border border-slate-200 text-slate-900 text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all">
-                            Detail
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </section>
 

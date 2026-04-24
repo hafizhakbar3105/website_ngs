@@ -39,10 +39,10 @@
                         <span class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-600">Profil Perusahaan</span>
                     </div>
                     <h1 class="text-6xl md:text-8xl font-black text-slate-950 leading-[0.85] tracking-tighter uppercase">
-                        KEAHLIAN <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 italic">TERUKUR.</span>
+                        KEAHLIAN <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 italic">TERUKUR</span>
                     </h1>
                     <p class="text-slate-500 text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
-                        Nusa Geospatial Solution adalah mitra strategis penyedia teknologi survei yang berfokus pada akurasi data lapangan. Kami mengintegrasikan perangkat keras kelas dunia dengan pendampingan teknis ahli.
+                        Nusa Geospatial Solution adalah mitra strategis penyedia teknologi survei yang berfokus pada akurasi data lapangan. Kami mengintegrasikan perangkat keras kelas dunia dengan pendampingan teknis ahli
                     </p>
                     
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-12 pt-10 border-t border-slate-100">
@@ -68,7 +68,7 @@
     <!-- Badge Teks Statis -->
     <div class="absolute -bottom-4 -right-4 bg-slate-950 p-7 rounded-[2rem] text-white shadow-2xl max-w-[220px] border-4 border-white">
         <p class="text-[10px] font-black leading-relaxed uppercase tracking-[0.15em]">
-            Mendedikasikan presisi untuk setiap koordinat di Indonesia.
+            Mendedikasikan presisi untuk setiap koordinat di Indonesia
         </p>
     </div>
 </div>
@@ -86,7 +86,7 @@
                     <div class="space-y-4">
                         <h3 class="text-blue-400 font-black text-xs uppercase tracking-[0.4em]">Visi Kami</h3>
                         <p class="text-3xl font-bold text-white leading-tight tracking-tight">
-                            Menjadi tolok ukur utama dalam ekosistem geospasial nasional melalui inovasi teknologi dan integritas data.
+                            Menjadi tolok ukur utama dalam ekosistem geospasial nasional melalui inovasi teknologi dan integritas data
                         </p>
                     </div>
                 </div>
@@ -96,15 +96,15 @@
                     <div class="space-y-8">
                         <div class="flex gap-6 items-start">
                             <span class="text-2xl font-black text-blue-400/50 leading-none">01</span>
-                            <p class="text-lg font-bold text-white leading-tight">Menyediakan akses instrumen survei dengan teknologi sensor paling mutakhir.</p>
+                            <p class="text-lg font-bold text-white leading-tight">Menyediakan akses instrumen survei dengan teknologi sensor paling mutakhir</p>
                         </div>
                         <div class="flex gap-6 items-start">
                             <span class="text-2xl font-black text-blue-400/50 leading-none">02</span>
-                            <p class="text-lg font-bold text-white leading-tight">Menjamin keabsahan data melalui layanan kalibrasi perangkat yang tersertifikasi.</p>
+                            <p class="text-lg font-bold text-white leading-tight">Menjamin keabsahan data melalui layanan kalibrasi perangkat yang tersertifikasi</p>
                         </div>
                         <div class="flex gap-6 items-start">
                             <span class="text-2xl font-black text-blue-400/50 leading-none">03</span>
-                            <p class="text-lg font-bold text-white leading-tight">Membangun kompetensi teknisi lapangan melalui edukasi dan dukungan teknis berkelanjutan.</p>
+                            <p class="text-lg font-bold text-white leading-tight">Membangun kompetensi teknisi lapangan melalui edukasi dan dukungan teknis berkelanjutan</p>
                         </div>
                     </div>
                 </div>
@@ -117,8 +117,8 @@
             
             <div class="lg:col-span-5 space-y-16">
                 <div class="space-y-6">
-                    <h2 class="text-5xl font-black text-slate-950 tracking-tighter uppercase leading-none">Hubungi <br><span class="text-blue-600 italic">Kami.</span></h2>
-                    <p class="text-slate-500 font-medium text-lg leading-relaxed">Punya pertanyaan teknis atau butuh penawaran resmi? Tim ahli kami siap membantu Anda.</p>
+                    <h2 class="text-5xl font-black text-slate-950 tracking-tighter uppercase leading-none">Hubungi <br><span class="text-blue-600 italic">Kami</span></h2>
+                    <p class="text-slate-500 font-medium text-lg leading-relaxed">Punya pertanyaan teknis atau butuh penawaran resmi? Tim ahli kami siap membantu Anda</p>
                 </div>
 
                 <div class="space-y-10">

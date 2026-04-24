@@ -11,7 +11,16 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        
+        // Mendaftarkan Middleware Alias untuk Admin
+        $middleware->alias([
+            'admin' => \App\Http\Middleware\IsAdmin::class,
+        ]);
+
+        // Catatan: Baris $middleware->redirectUsersTo() sengaja DIHAPUS.
+        // Ini memastikan Anda (meskipun sudah login) tetap bisa melihat 
+        // halaman landing page publik dengan normal.
+
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
