@@ -229,7 +229,7 @@
             <p class="text-xs text-slate-500 leading-relaxed mb-8 flex-grow">{{ $item->description }}</p>
             
             <a href="{{ url('detailProduk', $item->id) }}" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2">
-                Detail Alat
+                Detail Produk
             </a>
         </div>
     </div>
@@ -318,37 +318,6 @@
                 <h3 class="text-xl font-bold text-white uppercase tracking-widest" id="modal-title">Engineering Feedback</h3>
                 <p class="text-blue-200/70 text-xs mt-1">Berikan masukan teknis untuk presisi yang lebih baik.</p>
             </div>
-<!-- Rating Bintang -->
-{{-- <div>
-    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-center">Tingkat Presisi / Kepuasan</label>
-    <div class="flex flex-row-reverse justify-center gap-2">
-        <!-- Input diatur reverse agar teknik CSS hover-sibling bekerja -->
-        <input type="radio" id="star5" name="rating" value="5" class="hidden peer" />
-        <label for="star5" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
-            <i class="fa-solid fa-star"></i>
-        </label>
-
-        <input type="radio" id="star4" name="rating" value="4" class="hidden peer" />
-        <label for="star4" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
-            <i class="fa-solid fa-star"></i>
-        </label>
-
-        <input type="radio" id="star3" name="rating" value="3" class="hidden peer" />
-        <label for="star3" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
-            <i class="fa-solid fa-star"></i>
-        </label>
-
-        <input type="radio" id="star2" name="rating" value="2" class="hidden peer" />
-        <label for="star2" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
-            <i class="fa-solid fa-star"></i>
-        </label>
-
-        <input type="radio" id="star1" name="rating" value="1" class="hidden peer" />
-        <label for="star1" class="cursor-pointer text-2xl text-slate-300 peer-checked:text-[#E7D532] hover:text-[#E7D532] transition-colors">
-            <i class="fa-solid fa-star"></i>
-        </label>
-    </div>
-</div> --}}
             <form action="{{ route('feedback.submit') }}" method="POST" class="px-8 py-8 space-y-5">
     @csrf
     

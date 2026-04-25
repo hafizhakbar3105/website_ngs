@@ -46,11 +46,11 @@
                     
                     <div class="flex gap-4">
                         <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center min-w-[120px]">
-                            <p class="text-3xl font-black text-[#E7D532]">12</p>
+                            <p class="text-3xl font-black text-[#E7D532]">{{ $products->count() }}</p>
                             <p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Total Produk</p>
                         </div>
                         <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center min-w-[120px]">
-                            <p class="text-3xl font-black text-[#E7D532]">5</p>
+                            <p class="text-3xl font-black text-[#E7D532]">{{ $feedbacks->where('is_featured', true)->count() }}</p>
                             <p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Ulasan Aktif</p>
                         </div>
                     </div>
@@ -101,7 +101,10 @@
         <div class="px-2 flex flex-col flex-grow">
             <p class="text-[#043978] text-[10px] font-black uppercase tracking-[0.3em] mb-2">{{ $item->brand }}</p>
             <h3 class="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">{{ $item->name }}</h3>
-            <p class="text-xs text-slate-500 leading-relaxed mb-8 flex-grow">{{ $item->description }}</p>
+            <p class="text-xs text-slate-500 leading-relaxed mb-6 flex-grow">{{ $item->description }}</p>
+            <a href="{{ route('admin.produk.detail', $item->id) }}" class="w-full bg-slate-100 text-slate-900 hover:bg-[#043978] hover:text-white py-3.5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-colors duration-300 mt-auto border border-slate-200 hover:border-[#043978]">
+    <i class="fa-solid fa-circle-info"></i> Detail Produk
+</a>
         </div>
     </div>
     @endforeach

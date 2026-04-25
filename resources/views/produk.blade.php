@@ -3,52 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Catalog | Nusa Geospatial Solution</title>
+    <title>Katalog | Nusa Geospatial Solution</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; }
-        
-        /* Slow & Elegant Transitions */
-        * { transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-
-        /* Tech-Card Ultra Stable & Balanced */
-        .tech-card { 
-            display: flex; flex-direction: column; height: 100%; 
-            background: white; border-radius: 2.5rem; padding: 1.25rem;
-            border: 1px solid rgba(15, 23, 42, 0.05);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-        }
-        .tech-card:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 40px 70px -15px rgba(15, 23, 42, 0.08); 
-            border-color: #3b82f6; 
-        }
-
-        /* Image Viewport Stability (Balanced Ratio) */
-        .img-viewport { 
-            position: relative; width: 100%; aspect-ratio: 1.1 / 1; 
-            background: radial-gradient(circle at center, #ffffff 0%, #f1f5f9 100%); 
-            border-radius: 2rem; overflow: hidden; 
-            display: flex; align-items: center; justify-content: center; 
-        }
-        .img-viewport img { width: 65%; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.05)); }
-        .tech-card:hover .img-viewport img { transform: scale(1.1) rotate(-1deg); }
-
-        /* Typography Control untuk Kerapihan Grid */
-        .description-clamp {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            min-height: 2.8rem;
-        }
-        
-        .active-pill { background: #0f172a !important; color: white !important; box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.2); }
-    </style>
 </head>
-<body class="text-slate-900">
+<body class="text-slate-900 bg-[#f8fafc] font-['Plus_Jakarta_Sans'] scroll-smooth transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
 
     @include('nav')
 
@@ -71,88 +31,83 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-6 py-20 flex flex-col lg:flex-row gap-16">
-        
         <aside class="lg:w-72 space-y-12">
             <div>
                 <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 mb-8 px-4">Kategori Utama</h3>
                 <nav class="space-y-2">
-                    <a href="#" class="active-pill group flex items-center justify-between p-5 rounded-[1.8rem] transition-all">
+                    <a href="{{ route('produk.index') }}" class="group flex items-center justify-between p-5 rounded-[1.8rem] {{ !request('category') ? 'bg-[#0f172a] text-white shadow-[0_15px_30px_-5px_rgba(15,23,42,0.2)]' : 'hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100' }} transition-all">
                         <span class="text-xs font-extrabold uppercase tracking-widest">Semua Alat</span>
                         <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-2"></i>
                     </a>
-                    <a href="#" class="group flex items-center justify-between p-5 rounded-[1.8rem] hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100 transition-all">
-                        <span class="text-xs font-extrabold uppercase tracking-widest">GNSS RTK</span>
-                        <div class="w-1.5 h-1.5 rounded-full bg-blue-600 opacity-0 group-hover:opacity-100 transition-all"></div>
+                    <a href="{{ route('produk.index', ['category' => 'ts']) }}" class="group flex items-center justify-between p-5 rounded-[1.8rem] {{ request('category') == 'ts' ? 'bg-[#0f172a] text-white shadow-[0_15px_30px_-5px_rgba(15,23,42,0.2)]' : 'hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100' }} transition-all">
+                        <span class="text-xs font-extrabold uppercase tracking-widest">TOTAL STATION</span>
                     </a>
-                    <a href="#" class="group flex items-center justify-between p-5 rounded-[1.8rem] hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100 transition-all">
-                        <span class="text-xs font-extrabold uppercase tracking-widest">Total Station</span>
+                    <a href="{{ route('produk.index', ['category' => 'gnss']) }}" class="group flex items-center justify-between p-5 rounded-[1.8rem] {{ request('category') == 'gnss' ? 'bg-[#0f172a] text-white shadow-[0_15px_30px_-5px_rgba(15,23,42,0.2)]' : 'hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100' }} transition-all">
+                        <span class="text-xs font-extrabold uppercase tracking-widest">GNSS RTK SYSTEM</span>
                     </a>
-                    <a href="#" class="group flex items-center justify-between p-5 rounded-[1.8rem] hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100 transition-all">
-                        <span class="text-xs font-extrabold uppercase tracking-widest">LiDAR SLAM</span>
+                    <a href="{{ route('produk.index', ['category' => 'drone']) }}" class="group flex items-center justify-between p-5 rounded-[1.8rem] {{ request('category') == 'drone' ? 'bg-[#0f172a] text-white shadow-[0_15px_30px_-5px_rgba(15,23,42,0.2)]' : 'hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100' }} transition-all">
+                        <span class="text-xs font-extrabold uppercase tracking-widest">DRONE LIDAR SYSTEM</span>
                     </a>
-                    <a href="#" class="group flex items-center justify-between p-5 rounded-[1.8rem] hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100 transition-all">
-                        <span class="text-xs font-extrabold uppercase tracking-widest">USV & Echosounder</span>
+                    <a href="{{ route('produk.index', ['category' => 'lidar']) }}" class="group flex items-center justify-between p-5 rounded-[1.8rem] {{ request('category') == 'lidar' ? 'bg-[#0f172a] text-white shadow-[0_15px_30px_-5px_rgba(15,23,42,0.2)]' : 'hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100' }} transition-all">
+                        <span class="text-xs font-extrabold uppercase tracking-widest">LiDAR SLAM SYSTEM</span>
+                    </a>
+                    <a href="{{ route('produk.index', ['category' => 'usv']) }}" class="group flex items-center justify-between p-5 rounded-[1.8rem] {{ request('category') == 'usv' ? 'bg-[#0f172a] text-white shadow-[0_15px_30px_-5px_rgba(15,23,42,0.2)]' : 'hover:bg-white text-slate-500 hover:text-blue-600 border border-transparent hover:border-slate-100' }} transition-all">
+                        <span class="text-xs font-extrabold uppercase tracking-widest">USV BATHYMETRIC</span>
                     </a>
                 </nav>
             </div>
         </aside>
 
         <section class="flex-1">
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
-        
-        <div class="tech-card group flex flex-col md:flex-row bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-700 h-full">
-            
-            <div class="md:w-2/5 relative aspect-square md:aspect-auto bg-[#f8fafc] rounded-[2rem] overflow-hidden flex items-center justify-center p-6 flex-shrink-0">
-    <div class="absolute top-4 left-4 z-20">
-        <span class="px-2.5 py-1 bg-white/90 backdrop-blur text-slate-900 text-[7px] font-black uppercase tracking-widest rounded-lg shadow-sm">Premium</span>
-    </div>
-    <!-- Animasi grayscale-0, scale-110, dan transition telah dihapus -->
-    <img src="img/product/chcnav-i93.png" alt="i93" class="w-full h-full object-contain">
-</div>
-            
-            <div class="p-6 flex flex-col flex-grow justify-between">
-                <div class="space-y-2">
-                    <p class="text-[8px] font-black text-blue-600 uppercase tracking-[0.2em]">CHCNAV Geospasial</p>
-                    <h3 class="text-xl font-black text-slate-900 leading-tight tracking-tight">i93 Visual IMU RTK</h3>
-                    <p class="text-[11px] text-slate-500 leading-relaxed line-clamp-3">
-                        Solusi GNSS premium dengan visual stakeout dan dual-camera untuk akurasi tanpa kompromi di setiap medan.
-                    </p>
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                
+                @forelse($products as $produk)
+                <div class="flex flex-col md:flex-row h-full min-h-[320px] bg-white rounded-[2.5rem] p-5 border border-slate-100 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.02)] hover:-translate-y-2 hover:shadow-[0_40px_70px_-15px_rgba(15,23,42,0.08)] hover:border-blue-500 transition-all duration-700 group">
                     
-                    <div class="flex gap-2 pt-2">
-                        <span class="px-2.5 py-1 bg-slate-50 rounded-lg text-[8px] font-bold text-slate-500 border border-slate-100 flex items-center gap-1.5">
-                            <i class="fa-solid fa-camera text-blue-500"></i> Visual AR
-                        </span>
+                    <div class="md:w-2/5 relative aspect-[1.1/1] md:aspect-auto bg-[radial-gradient(circle_at_center,#ffffff_0%,#f1f5f9_100%)] rounded-[2rem] overflow-hidden flex items-center justify-center p-6 flex-shrink-0">
+                        <div class="absolute top-4 left-4 z-20">
+                            <span class="px-2.5 py-1 bg-white/90 backdrop-blur text-slate-900 text-[7px] font-black uppercase tracking-widest rounded-lg shadow-sm">Premium</span>
+                        </div>
+                        <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-[65%] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.05)] group-hover:scale-110 group-hover:-rotate-1 transition-transform duration-700">
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div class="space-y-2">
+                            <p class="text-[8px] font-black text-blue-600 uppercase tracking-[0.2em]">{{ strtoupper($produk->category) }} / {{ $produk->brand }}</p>
+                            <h3 class="text-xl font-black text-slate-900 leading-tight tracking-tight">{{ $produk->name }}</h3>
+                            <p class="text-[11px] text-slate-500 leading-relaxed line-clamp-3">
+                                {{ $produk->description }}
+                            </p>
+                            
+                            @if($produk->badge)
+                            <div class="flex gap-2 pt-2">
+                                <span class="px-2.5 py-1 bg-slate-50 rounded-lg text-[8px] font-bold text-slate-500 border border-slate-100 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-star text-blue-500"></i> {{ $produk->badge }}
+                                </span>
+                            </div>
+                            @endif
+                        </div>
+                        
+                        <div class="mt-6 pt-6 border-t border-slate-50">
+                            <div class="flex gap-3">
+                                <a href="https://wa.me/6282123852658" target="_blank" class="flex-[2] bg-slate-900 text-white text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 shadow-lg shadow-slate-900/10 transition-all duration-300">
+                                    Ajukan Kalibrasi
+                                </a>
+                                <a href="{{ route('produk.detail', $produk->id) }}" class="flex-1 bg-white border border-slate-200 text-slate-900 text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all duration-300">
+                                    Detail
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="mt-6 pt-6 border-t border-slate-50">
-    <div class="flex gap-3">
-        <a href="https://wa.me/6282123852658?text=Halo%20Tim%20Nusa%20Geospatial,%20saya%20ingin%20mengajukan%20permohonan%20kalibrasi%20untuk%20alat%20survei%20saya.%20Boleh%20diinformasikan%20mengenai%20prosedur,%20estimasi%20waktu,%20dan%20biayanya?" target="_blank" class="flex-[2] bg-slate-900 text-white text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 shadow-lg shadow-slate-900/10 transition-all">
-            Ajukan Kalibrasi
-        </a>
-        <a href="{{ url('detailProduk') }}" class="flex-1 bg-white border border-slate-200 text-slate-900 text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all">
-            Detail
-        </a>
-    </div>
-</div>
-            </div>
-        </div>
-    </div>
-</section>
+                @empty
+                <div class="col-span-2 text-center py-20 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm">
+                    <p class="text-slate-400 font-medium">Katalog untuk kategori ini belum tersedia.</p>
+                </div>
+                @endforelse
 
-<style>
-    /* Menjaga stabilitas tinggi kartu agar sejajar di setiap baris */
-    .tech-card {
-        min-height: 320px;
-    }
-    
-    .description-clamp {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-</style>
+            </div>
+        </section>
     </main>
 
     @include('footer')

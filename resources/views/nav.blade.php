@@ -10,11 +10,11 @@
         <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500">
             
             @if(Auth::check() && Auth::user()->role === 'admin' && Str::contains(Request::path(), 'admin'))
-                <a href="{{ url('/homeadmin') }}" class="relative group py-1 transition-colors duration-300 {{ Request::is('homeadmin*') ? 'text-[#043978]' : 'hover:text-slate-900' }}">
+                <a href="{{ url('/admin/homeadmin') }}" class="relative group py-1 transition-colors duration-300 {{ Request::is('homeadmin*') ? 'text-[#043978]' : 'hover:text-slate-900' }}">
                     Dashboard Admin
                     <span class="absolute bottom-0 left-0 h-0.5 bg-[#043978] rounded-full transition-all duration-500 {{ Request::is('homeadmin*') ? 'w-full' : 'w-0 group-hover:w-full' }}"></span>
                 </a>
-                <a href="{{ url('/produkadmin') }}" class="relative group py-1 transition-colors duration-300 {{ Request::is('produkadmin*') ? 'text-[#043978]' : 'hover:text-slate-900' }}">
+                <a href="{{ url('/admin/produkadmin') }}" class="relative group py-1 transition-colors duration-300 {{ Request::is('produkadmin*') ? 'text-[#043978]' : 'hover:text-slate-900' }}">
                     Kelola Katalog
                     <span class="absolute bottom-0 left-0 h-0.5 bg-[#043978] rounded-full transition-all duration-500 {{ Request::is('produkadmin*') ? 'w-full' : 'w-0 group-hover:w-full' }}"></span>
                 </a>
@@ -64,8 +64,8 @@
         <div class="flex flex-col gap-6 text-center font-black text-sm uppercase tracking-widest">
             
             @if(Auth::check() && Auth::user()->role === 'admin' && Str::contains(Request::path(), 'admin'))
-                <a href="{{ url('/homeadmin') }}" class="text-[#043978]">Dashboard Admin</a>
-                <a href="{{ url('/produkadmin') }}" class="text-slate-600">Kelola Katalog</a>
+                <a href="{{ url('/admin/homeadmin') }}" class="text-[#043978]">Dashboard Admin</a>
+                <a href="{{ url('/admin/produkadmin') }}" class="text-slate-600">Kelola Katalog</a>
                 <hr class="border-slate-100">
                 <form method="POST" action="{{ url('/logout') }}">
                     @csrf

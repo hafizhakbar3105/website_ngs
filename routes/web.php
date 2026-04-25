@@ -10,10 +10,10 @@ use App\Http\Controllers\FeedbackController;
 Route::get('/', [ProductController::class, 'homePublic'])->name('home');
 // Publik mengirim feedback
 Route::post('/feedback/store', [FeedbackController::class, 'storePublic'])->name('feedback.submit');
-Route::get('/produk', function () { return view('produk'); });
+Route::get('/produk', [ProductController::class, 'produkPublic'])->name('produk.index');
 Route::get('/service', function () { return view('service'); });
 Route::get('/profil', function () { return view('profil'); });
-Route::get('/detailProduk', function () { return view('detailProduk'); });
+Route::get('/detailProduk/{id}', [ProductController::class, 'showPublic'])->name('produk.detail');
 
 // --- ROUTES AUTHENTICATION ---
 Route::get('/loginadmin', [AdminAuthController::class, 'showLoginForm'])->name('login.admin');
@@ -32,13 +32,15 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     // Hapus rute /dashboard jika tidak digunakan, atau biarkan jika memang ada halaman terpisah
     // Route::get('/dashboard', [ProductController::class, 'index'])->name('admin.dashboard'); 
     
-    Route::get('/produkadmin', function () { return view('Admin.produkadmin'); });
-    Route::get('/detailprodukadmin', function () { return view('Admin.detailprodukadmin'); });
+   Route::get('/produkadmin', [ProductController::class, 'produkAdmin'])->name('admin.produk.index');
+    Route::get('/detailprodukadmin/{id}', [ProductController::class, 'showAdmin'])->name('admin.produk.detail');
 
     // Operasi CRUD Produk (Logika Backend)
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');
     Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+    Route::post('/product/{id}/toggle-status', [ProductController::class, 'toggleStatus'])->name('product.toggleStatus');
 
     // Admin mengelola feedback
     Route::post('/feedback/toggle/{id}', [FeedbackController::class, 'toggleFeatured'])->name('feedback.toggle');
