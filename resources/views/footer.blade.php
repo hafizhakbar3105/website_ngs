@@ -3,7 +3,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="space-y-6">
                     <div class="flex items-center gap-2">
-    <img src="img/logo.jpeg" alt="NusaGeo Logo" class="h-20 w-auto">
+    <img src="{{ asset('img/logo.png') }}" alt="NusaGeo Logo" class="h-20 w-auto">
 </div>
                     <p class="text-sm leading-relaxed">
                         Penyedia solusi pengukuran modern dan peralatan geospasial presisi tinggi untuk berbagai sektor industri di Indonesia

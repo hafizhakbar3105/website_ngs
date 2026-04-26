@@ -8,71 +8,113 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
-        .tech-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-        .blue-glow { box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.5); }
-        .bento-card:hover { transform: translateY(-5px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    .tech-gradient { 
+        background: radial-gradient(circle at top right, #1e293b, #0f172a); 
+    }
 
-        /* Efek agar bintang di sebelah kiri ikut menyala saat hover atau checked */
-.flex-row-reverse label:hover ~ label,
-.flex-row-reverse input:checked ~ label {
-    color: #E7D532;
-}
-    </style>
+    /* Animasi Shine Baru */
+    @keyframes shine {
+        0% { left: -100%; }
+        100% { left: 150%; }
+    }
+    .animate-shine {
+        animation: shine 2s ease-in-out infinite;
+    }
+
+    /* Animasi Scanner Line */
+    @keyframes scan {
+        0% { top: 0%; opacity: 0; }
+        50% { opacity: 0.8; }
+        100% { top: 100%; opacity: 0; }
+    }
+
+    /* Kustomisasi Scrollbar agar tetap minimalis */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+    /* Blue Glow pada Button */
+    .blue-glow { 
+        box-shadow: 0 0 50px -10px rgba(59, 130, 246, 0.4); 
+    }
+</style>
 </head>
 <body class="bg-[#f8fafc] text-slate-900 overflow-x-hidden">
 
     @include('nav')
 
-    <section class="relative min-h-screen flex items-center pt-20 tech-gradient overflow-hidden">
-        <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px]"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-widest uppercase">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                    </span>
-                    Geospatial Excellence 
-                </div>
-                <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
-                    Precision Data,<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 italic">Trusted Solutions</span> 
-                </h1>
-                <p class="text-slate-400 text-lg leading-relaxed max-w-lg">
-                    Menghadirkan solusi pengukuran modern berbasis <span class="text-white">GNSS, LiDAR SLAM, dan Sistem Pemetaan Drone</span> untuk efisiensi lapangan maksimal
+   <section class="relative min-h-screen flex items-center pt-24 pb-12 tech-gradient overflow-hidden">
+    <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
+    <div class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[100px]"></div>
+    
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-10 order-2 lg:order-1">
+            <div class="space-y-6">
+                
+
+                <h1 class="text-6xl lg:text-8xl font-black text-white leading-tight lg:leading-[1.1] tracking-tighter">
+    Precision <span class="inline-block text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 py-1">Data</span><br>
+    <span class="relative inline-block py-2">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 italic px-2">Trusted</span>
+        <span class="absolute bottom-1 left-2 w-[90%] h-1 bg-gradient-to-r from-blue-500 to-transparent"></span>
+    </span> Solutions
+</h1>
+
+                <p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-xl font-medium">
+                    Menghadirkan ekosistem pengukuran modern berbasis <span class="text-blue-300 border-b border-blue-300/30">GNSS & LiDAR SLAM</span>. Solusi cerdas untuk efisiensi lapangan tanpa batas.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="https://wa.me/6282123852658?text=Halo%20Tim%20Nusa%20Geospatial%2C%20saya%20ingin%20berkonsultasi%20mengenai%20solusi%20pemetaan%20dan%20layanan%20geospasial%20yang%20sesuai%20dengan%20kebutuhan%20project%20saya.%20Boleh%20dibantu%3F" target="_blank" class="bg-blue-600 blue-glow text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3 hover:bg-blue-500 transition-all group w-fit">
-    Mulai Konsultasi <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
-</a>
-                    <a href="/produk" class="glass bg-white/5 text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/10 transition">Lihat Katalog</a>
-                </div>
             </div>
-            
-            <div class="relative hidden lg:block">
-    <!-- Efek Glow di Latar Belakang -->
-    <div class="absolute inset-0 bg-blue-500/20 blur-[100px]"></div>
-    
-    <!-- Gambar: Menghapus class 'grayscale' dan 'hover:grayscale-0' agar warna tetap natural -->
-    <img src="img/logo.jpeg" alt="Tech" class="relative rounded-[2rem] border border-white/10 shadow-2xl transition duration-700">
-    
-    <!-- Kartu Mengambang: Menambahkan shadow-2xl dan drop-shadow untuk mempertegas tulisan -->
-    <!-- Penambahan shadow abu-abu yang lebih tegas (shadow-2xl kustom) -->
-<div class="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] border border-slate-100">
-    <p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-1 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.1)]">
-        Akurasi Perangkat
-    </p>
-    <p class="text-2xl font-black text-[#043978] tracking-tighter drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]">
-        99.9% Precision
-    </p>
-</div>
-</div>
+
+            <div class="flex flex-col sm:flex-row gap-5">
+                <a href="https://wa.me/6282123852658" target="_blank" class="relative group overflow-hidden bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-blue-500/20 flex items-center justify-center gap-4">
+                    <span class="relative z-10">Mulai Konsultasi</span>
+                    <i class="fa-solid fa-arrow-right relative z-10 group-hover:translate-x-2 transition-transform"></i>
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </a>
+                
+                <a href="/produk" class="group bg-white/5 backdrop-blur-xl text-white border border-white/10 px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-3">
+                    Lihat Katalog <i class="fa-solid fa-boxes-stacked opacity-50 group-hover:opacity-100"></i>
+                </a>
+            </div>
         </div>
-    </section>
+
+        <div class="relative order-1 lg:order-2 flex justify-center items-center">
+            <div class="absolute w-[120%] h-[120%] border border-blue-500/10 rounded-full animate-[spin_20s_linear_infinite]"></div>
+            <div class="absolute w-[100%] h-[100%] border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+
+            <div class="relative group">
+                <div class="absolute -inset-16 bg-gradient-to-tr from-blue-600/30 via-cyan-400/10 to-indigo-600/20 rounded-full blur-[100px] opacity-60 group-hover:opacity-100 transition duration-1000"></div>
+
+                <div class="relative w-80 h-80 md:w-[450px] md:h-[450px] bg-gradient-to-br from-white/[0.08] to-transparent backdrop-blur-3xl rounded-[5rem] border border-white/20 shadow-2xl flex items-center justify-center overflow-hidden transition-all duration-700 group-hover:border-white/40">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-50 animate-[scan_4s_ease-in-out_infinite]"></div>
+
+                    <img src="img/logo.png" alt="Tech" class="relative z-10 w-[95%] h-[95%] object-contain filter drop-shadow-[0_0_60px_rgba(59,130,246,0.4)] transition duration-1000 group-hover:scale-105">
+                    
+                    <div class="absolute top-0 -inset-full h-full w-full z-20 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-30 group-hover:animate-shine"></div>
+                </div>
+
+                <div class="absolute -bottom-10 -right-10 bg-white/95 backdrop-blur-2xl p-8 rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border border-slate-100 transform hover:-translate-y-2 transition-transform duration-500">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
+                            <i class="fa-solid fa-bullseye text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Akurasi Perangkat</p>
+                            <p class="text-3xl font-black text-[#043978] tracking-tighter">99.9% <span class="text-sm font-bold text-slate-400">Precision</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="bg-white py-12 border-y border-slate-100 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 mb-6">
@@ -106,57 +148,131 @@
 }
 </style>
 
-    <section class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <div class="max-w-xl">
-                    <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Layanan Terintegrasi</h2>
-                    <p class="text-slate-500">Kami memberikan ekosistem lengkap mulai dari pengadaan alat hingga dukungan teknis pasca-jual</p>
-                </div>
-                <div class="h-px flex-1 bg-slate-200 mx-8 hidden md:block"></div>
-                <p class="text-blue-600 font-bold uppercase tracking-widest text-xs">Our Services </p>
-            </div>
+<section class="relative py-24 bg-white px-6 overflow-hidden border-t border-slate-100">
+    
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-blue-500/20 rounded-full animate-[ping_4s_linear_infinite] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-blue-400/10 rounded-full animate-[ping_6s_linear_infinite] pointer-events-none"></div>
 
-            <div class="grid grid-cols-1 gap-6">
-    <div class="relative overflow-hidden bento-card p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col justify-between min-h-[400px]">
-    <img src="img/penjualan.jpeg" class="absolute inset-0 w-full h-full object-cover scale-[1.15] origin-top-left z-0 pointer-events-none" alt="Background Penjualan">
-    <div class="absolute inset-0 bg-slate-900/70 z-0 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full animate-[spin_10s_linear_infinite] pointer-events-none"
+         style="background: conic-gradient(from 0deg, transparent 70%, rgba(4, 57, 120, 0.15) 100%);">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1/2 bg-gradient-to-b from-[#043978] to-transparent opacity-40"></div>
+    </div>
 
-    <div class="relative z-10 flex flex-col h-full justify-between">
-        <!-- Bagian Atas: Ikon dan Teks -->
-        <div>
-            <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-blue-200 mb-6">
-                <i class="fa-solid fa-satellite-dish"></i>
+    <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-indigo-400 rounded-full animate-pulse delay-700"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div class="space-y-1">
+                <div class="w-16 h-1.5 bg-[#043978] rounded-full"></div>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none">
+                    Produk <span class="text-[#043978] italic">Unggulan</span>
+                </h2>
+                <p class="text-slate-500 font-medium text-lg mt-2">Teknologi pemetaan presisi dari brand kelas dunia</p>
             </div>
-            <h3 class="text-3xl font-extrabold mb-4 text-white uppercase tracking-tighter">Solusi Instrumen Geospasial</h3>
-            <p class="text-slate-200 leading-relaxed max-w-xl font-medium">Mendukung efisiensi dan akurasi akuisisi data lapangan Anda dengan perangkat pemetaan berstandar industri untuk berbagai kondisi topografi</p>
+            <a href="{{ url('produk') }}" class="group text-[#043978] font-black flex items-center gap-2 uppercase tracking-widest text-[11px] border-b-2 border-[#043978] pb-1 transition-all">
+                Lihat Semua Produk <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </a>
         </div>
 
-        <!-- Bagian Bawah: Tombol di Kanan -->
-        <div class="flex justify-end mt-8">
-            <a href="/produk" class="inline-flex items-center gap-3 bg-white  px-10 py-4 rounded-2xl text-base font-black uppercase tracking-widest shadow-xl hover:shadow-white/10 hover:scale-105 transition-all">
-                Lihat Produk
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            @foreach($produkUnggulan as $item)
+            <div class="group bg-white/90 backdrop-blur-md rounded-[3rem] p-6 border border-slate-200 hover:border-[#043978] hover:shadow-[0_30px_60px_-15px_rgba(4,57,120,0.15)] transition-all duration-500 flex flex-col h-full shadow-sm relative overflow-hidden">
+                
+                <div class="aspect-square bg-slate-50 rounded-[2.5rem] mb-6 overflow-hidden flex items-center justify-center relative border border-slate-100 group-hover:bg-white transition-colors duration-500">
+                    @if($item->badge)
+                    <div class="absolute top-4 left-4 bg-slate-900 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest z-10 shadow-lg">{{ $item->badge }}</div>
+                    @endif
+                    
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="w-52 object-contain transition-transform duration-700 group-hover:scale-110">
+                </div>
+
+                <div class="px-2 flex flex-col flex-grow">
+                    <p class="text-[#043978] text-[11px] font-black uppercase tracking-[0.4em] mb-3">{{ $item->brand }}</p>
+                    <h3 class="text-2xl font-black text-slate-900 mb-3 uppercase tracking-tighter leading-tight">{{ $item->name }}</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-grow opacity-80">"{{ $item->description }}"</p>
+                    
+                    <a href="{{ url('detailProduk', $item->id) }}" class="group/btn relative w-full bg-slate-950 overflow-hidden text-white py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 hover:bg-[#043978] shadow-xl">
+                        <span class="relative z-10">Detail Produk</span>
+                        <i class="fa-solid fa-circle-chevron-right relative z-10 group-hover/btn:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+
+    <section class="relative py-32 px-6 overflow-hidden tech-gradient">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none" 
+         style="background-image: linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px); background-size: 100px 100px;">
+    </div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-white/5 pb-10">
+            <div class="max-w-2xl">
+                <h2 class="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase leading-tight">
+                    Layanan <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 italic px-2">Terintegrasi</span>
+                </h2>
+                <p class="text-slate-400 mt-6 font-medium leading-relaxed text-lg italic">
+                    “Memberikan ekosistem lengkap dari pengadaan hingga dukungan teknis pasca-jual.”
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-10">
+            
+            <div class="group relative overflow-hidden p-10 rounded-[3.5rem] border border-white/10 flex flex-col justify-between min-h-[450px] transition-all duration-700 hover:border-blue-500/40 hover:shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)]">
+                <img src="img/penjualan.jpeg" class="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s] z-0" alt="Penjualan">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/70 to-transparent z-0"></div>
+
+                <div class="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="w-20 h-20 bg-blue-600 rounded-[2rem] flex items-center justify-center text-white text-3xl shadow-[0_20px_40px_-10px_rgba(59,130,246,0.5)] mb-10 transition-all duration-500 group-hover:rotate-[10deg] group-hover:scale-110">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                        </div>
+                        <h3 class="text-4xl font-black text-white uppercase tracking-tighter mb-4 leading-tight">Solusi Instrumen<br><span class="text-blue-400">Geospasial</span></h3>
+                        <p class="text-slate-300 leading-relaxed max-w-xl font-medium text-lg opacity-80 group-hover:opacity-100 transition-all">Mendukung efisiensi dan akurasi akuisisi data lapangan Anda dengan perangkat pemetaan berstandar industri.</p>
+                    </div>
+
+                    <div class="flex justify-end mt-10">
+                        <a href="/produk" class="group/btn relative overflow-hidden bg-white px-12 py-5 rounded-2xl text-sm font-black uppercase tracking-widest text-slate-900 transition-all duration-500 hover:bg-[#E7D532] shadow-xl">
+                            <span class="relative z-10">Lihat Produk</span>
+                            <i class="fa-solid fa-arrow-right ml-2 group-hover/btn:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden p-8 rounded-[2.5rem] border border-white/10 flex flex-col justify-between min-h-[320px] transition-all duration-700 hover:border-indigo-500/40 hover:shadow-[0_0_50px_-12px_rgba(99,102,241,0.3)]">
+    <img src="img/kalibrasi.jpeg" class="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s] z-0" alt="Kalibrasi">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/70 to-transparent z-0"></div>
+
+    <div class="relative z-10 flex flex-col h-full justify-between">
+        <div>
+            <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-xl shadow-[0_15px_30px_-10px_rgba(99,102,241,0.5)] mb-6 transition-all duration-500 group-hover:rotate-[10deg] group-hover:scale-110">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3 class="text-3xl font-black text-white uppercase tracking-tighter mb-3 leading-tight">After Sales &<br><span class="text-indigo-400">Pelatihan</span></h3>
+            <p class="text-slate-300 leading-relaxed max-w-xl font-medium text-sm opacity-80 group-hover:opacity-100 transition-all">Pendampingan teknis dan pengolahan data untuk produktivitas tim Anda di lapangan.</p>
+        </div>
+
+        <div class="flex justify-end mt-6">
+            <a href="https://wa.me/6282123852658" target="_blank" class="group/btn relative overflow-hidden bg-white px-7 py-4 rounded-lg text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 transition-all duration-500 hover:bg-blue-600 hover:text-white shadow-md">
+                <span class="relative z-10">Jadwalkan Training</span>
+                <i class="fa-solid fa-calendar-check ml-2 text-[9px] transition-transform group-hover/btn:rotate-12"></i>
             </a>
         </div>
     </div>
 </div>
 
-    <div class="relative overflow-hidden bento-card p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col md:flex-row items-center gap-10 min-h-[200px]">
-    <img src="img/kalibrasi.jpeg" class="absolute inset-0 w-full h-full object-cover scale-[1.15] origin-top-left z-0 pointer-events-none" alt="Background Kalibrasi">
-    <div class="absolute inset-0 bg-slate-900/70 z-0 pointer-events-none"></div>
-
-    <div class="relative z-10 flex-1">
-        <h3 class="text-2xl font-extrabold mb-2 text-white">After Sales & Pelatihan</h3>
-        <p class="text-slate-200">Pendampingan teknis dan pengolahan data untuk produktivitas tim Anda di lapangan</p>
-    </div>
-    
-    <a href="https://wa.me/6282123852658?text=Halo%20Tim%20Expert%20Nusa%20Geospatial!%20Saya%20tertarik%20untuk%20menjadwalkan%20program%20pelatihan%20dan%20pendampingan%20teknis%20pengolahan%20data%20untuk%20tim%20kami.%20Boleh%20diskusi%20lebih%20lanjut%20mengenai%20pilihan%20silabus%20dan%20ketersediaan%20jadwalnya%3F" target="_blank" class="relative z-10 bg-white text-slate-900 px-8 py-4 rounded-2xl font-extrabold shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-        Jadwalkan Training
-    </a>
-</div>
-</div>  
         </div>
-    </section>
+    </div>
+</section>
 
     <a href="https://wa.me/..." class="fixed bottom-8 right-8 z-[100] group">
     <!-- Efek Blur/Glow Bulat -->
@@ -200,41 +316,80 @@
         </div>
     </section>
 
-    <section class="py-24 bg-slate-50 px-6 overflow-hidden border-t border-slate-100">
-    <div class="max-w-7xl mx-auto">
+    <section class="py-24 bg-[#f8fafc] px-6 relative overflow-hidden border-t border-slate-100">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto relative z-10">
         <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div class="space-y-1">
-                <div class="w-12 h-1 bg-primary rounded-full"></div>
-                <h2 class="text-4xl font-black text-slate-900 tracking-tighter uppercase">Produk <span class="text-primary italic">Unggulan</span></h2>
-                <p class="text-slate-500 font-medium">Teknologi pemetaan presisi dari brand kelas dunia</p>
+            <div class="space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#043978]/5 border border-[#043978]/10 text-[#043978] text-[9px] font-black uppercase tracking-widest">
+                    <span class="w-1.5 h-1.5 bg-[#043978] rounded-full animate-pulse"></span> Resources & Gallery
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none">
+                    Dokumentasi & <span class="text-[#043978] italic">Artikel</span>
+                </h2>
+                <p class="text-slate-500 font-medium max-w-lg">Koleksi aktivitas lapangan dan pembahasan teknis mendalam seputar teknologi geospasial.</p>
             </div>
-            <a href="{{ url('produk') }}" class="text-primary font-black flex items-center gap-2 uppercase tracking-widest text-[11px] border-b-2 border-primary pb-1">
-                Lihat Semua Produk <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <div class="hidden md:block">
+                
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    @foreach($produkUnggulan as $item)
-    <div class="group bg-white rounded-[2.5rem] p-6 border border-slate-200 hover:shadow-2xl transition duration-500 flex flex-col h-full shadow-sm relative overflow-hidden">
-        <div class="aspect-square bg-slate-50 rounded-[2rem] mb-6 overflow-hidden flex items-center justify-center relative border border-slate-100">
-            @if($item->badge)
-            <div class="absolute top-4 left-4 bg-slate-900 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest z-10">{{ $item->badge }}</div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            
+            @if($articleHighlight)
+            <div class="md:col-span-7 group relative h-[520px] rounded-[3.5rem] overflow-hidden shadow-2xl border border-white">
+                <img src="{{ asset('storage/' . $articleHighlight->thumbnail) }}" 
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                     alt="{{ $articleHighlight->title }}">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                
+                <div class="absolute bottom-0 left-0 p-10 w-full">
+                    <div class="flex items-center gap-3 text-[#E7D532] text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+                        <i class="fa-solid fa-camera-retro"></i> Dokumentasi Terkini
+                    </div>
+                    <h3 class="text-3xl font-black text-white uppercase tracking-tighter mb-4 leading-tight">
+                        {{ $articleHighlight->title }}
+                    </h3>
+                    <p class="text-slate-300 text-sm font-medium line-clamp-2 mb-8 opacity-80">
+                        {{ Str::limit(strip_tags($articleHighlight->content), 150) }}
+                    </p>
+                    
+                    <a href="{{ route('article.show', $articleHighlight->slug) }}" class="inline-flex items-center gap-4 text-white font-black text-[10px] uppercase tracking-widest group/link">
+                        Lihat Selengkapnya <i class="fa-solid fa-circle-arrow-right text-xl text-[#E7D532] group-hover/link:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
             @endif
-            
-            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="w-48 object-contain">
+
+            <div class="md:col-span-5 flex flex-col gap-5">
+                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-2 pl-2 italic">Artikel Pilihan</p>
+                
+                @forelse($articleList as $art)
+                <a href="{{ route('article.show', $art->slug) }}" class="group flex gap-5 bg-white p-5 rounded-[2.5rem] border border-slate-100 hover:border-[#043978] transition-all hover:shadow-xl shadow-sm">
+                    <div class="w-28 h-28 rounded-3xl overflow-hidden flex-shrink-0 bg-slate-50 border border-slate-100">
+                        <img src="{{ asset('storage/' . $art->thumbnail) }}" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                             alt="{{ $art->title }}">
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h4 class="text-base font-black text-slate-900 leading-tight mb-2 group-hover:text-[#043978] transition-colors uppercase tracking-tight">
+                            {{ $art->title }}
+                        </h4>
+                        <p class="text-[11px] text-slate-500 line-clamp-2 font-medium leading-relaxed">
+                            {{ Str::limit(strip_tags($art->content), 80) }}
+                        </p>
+                    </div>
+                </a>
+                @empty
+                <div class="p-10 text-center bg-white rounded-[2.5rem] border border-dashed border-slate-200">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Belum ada artikel tambahan</p>
+                </div>
+                @endforelse
+
+            </div>
         </div>
-        <div class="px-2 flex flex-col flex-grow">
-            <p class="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-2">{{ $item->brand }}</p>
-            <h3 class="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">{{ $item->name }}</h3>
-            <p class="text-xs text-slate-500 leading-relaxed mb-8 flex-grow">{{ $item->description }}</p>
-            
-            <a href="{{ url('detailProduk', $item->id) }}" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2">
-                Detail Produk
-            </a>
-        </div>
-    </div>
-    @endforeach
-</div>
     </div>
 </section>
 
@@ -289,7 +444,7 @@
     </div>
     @empty
     <div class="w-full text-center py-10">
-        <p class="text-slate-400 font-medium italic">Belum ada ulasan yang ditampilkan.</p>
+        <p class="text-slate-400 font-medium italic"></p>
     </div>
     @endforelse
 

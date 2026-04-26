@@ -60,7 +60,7 @@
                 <div class="lg:col-span-5 relative">
     <!-- Container Logo Utama -->
     <div class="flex items-center justify-center p-12 bg-white rounded-3xl border border-slate-100 shadow-xl min-h-[350px]">
-        <img src="img/logo.jpeg" 
+        <img src="img/logo.png" 
              alt="Logo NusaGeo" 
              class="w-full h-auto max-h-40 object-contain">
     </div>

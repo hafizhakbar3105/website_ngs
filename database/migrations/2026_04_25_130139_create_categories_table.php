@@ -9,10 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void {
-    Schema::table('products', function (Blueprint $table) {
-        $table->string('category')->nullable();
-        $table->boolean('status')->default(1); // 1 = Publik, 0 = Draft
+    public function up()
+{
+    Schema::create('categories', function (Blueprint $table) {
+        $table->id();
+        $table->string('name'); // Contoh: TOTAL STATION
+        $table->string('slug'); // Contoh: ts
+        $table->timestamps();
     });
 }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('categories');
     }
 };

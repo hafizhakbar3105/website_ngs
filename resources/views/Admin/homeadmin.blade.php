@@ -46,9 +46,9 @@
                     
                     <div class="flex gap-4">
                         <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center min-w-[120px]">
-                            <p class="text-3xl font-black text-[#E7D532]">{{ $products->count() }}</p>
-                            <p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Total Produk</p>
-                        </div>
+    <p class="text-3xl font-black text-[#E7D532]">{{ $totalSemuaProduk }}</p>
+    <p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Total Produk</p>
+</div>
                         <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center min-w-[120px]">
                             <p class="text-3xl font-black text-[#E7D532]">{{ $feedbacks->where('is_featured', true)->count() }}</p>
                             <p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Ulasan Aktif</p>
@@ -111,6 +111,53 @@
 </div>
         </div>
     </section>
+
+    <section class="py-16 bg-white px-6 relative border-t border-slate-100">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-slate-200 pb-8">
+            <div class="space-y-1 w-full text-center md:text-left">
+                <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Kelola <span class="italic text-[#043978]">Insight & Artikel</span></h2>
+                <p class="text-slate-500 font-medium text-sm">Dokumentasi kegiatan lapangan dan publikasi artikel teknis.</p>
+            </div>
+            
+            <button onclick="openArticleModal()" class="w-full md:w-auto bg-[#043978] text-white px-8 py-4 rounded-xl shadow-lg hover:bg-slate-900 transition-colors flex items-center justify-center gap-3 font-black text-[11px] uppercase tracking-widest shrink-0">
+                <i class="fa-solid fa-file-pen"></i> Tulis Artikel Baru
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4">
+            @foreach($articles as $art)
+            <div class="group bg-slate-50 p-5 rounded-[2rem] border border-slate-200 flex flex-col md:flex-row items-center gap-6 hover:border-[#043978] transition-all">
+                <img src="{{ asset('storage/'.$art->thumbnail) }}" class="w-full md:w-32 h-24 object-cover rounded-2xl shadow-md">
+                <div class="flex-grow text-center md:text-left">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-2">
+                        @if($art->is_highlight)
+                            <span class="px-2 py-0.5 bg-blue-100 text-blue-600 text-[8px] font-black uppercase tracking-widest rounded-md border border-blue-200">Highlight Utama</span>
+                        @endif
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $art->created_at->format('d M Y') }}</span>
+                    </div>
+                    <h3 class="font-black text-slate-800 uppercase tracking-tight group-hover:text-[#043978] transition-colors">{{ $art->title }}</h3>
+                </div>
+                
+                <div class="flex gap-2">
+                    <a href="{{ route('admin.article.edit', $art->id) }}" class="w-12 h-12 bg-[#043978] text-white rounded-2xl flex items-center justify-center shadow-sm hover:bg-slate-900 transition-all">
+                        <i class="fa-solid fa-pen-to-square text-xs"></i>
+                    </a>
+
+                    <form action="{{ route('admin.article.destroy', $art->id) }}" id="delete-art-{{ $art->id }}" method="POST">
+                        @csrf @method('DELETE')
+                        <button type="button" onclick="confirmDeleteArticle('{{ $art->id }}', '{{ $art->title }}')" class="w-12 h-12 bg-white text-red-600 border border-slate-200 rounded-2xl hover:bg-red-500 hover:text-white transition-all shadow-sm">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+
 
     <section class="py-24 bg-white relative border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
@@ -191,7 +238,7 @@
             </div>
 
             <div class="p-8 overflow-y-auto custom-scrollbar bg-white">
-                <form id="productForm" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                <form id="productForm" action="{{ route('product.storeUnggulan') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div id="methodContainer"></div>
 
@@ -241,6 +288,57 @@
         </div>
     </div>
 
+    <div id="articleModal" class="hidden fixed inset-0 z-[9999] bg-slate-900/80 backdrop-blur-sm p-4 items-center justify-center">
+    <div class="relative bg-white w-full max-w-4xl rounded-[2.5rem] shadow-2xl flex flex-col max-h-[90vh] overflow-hidden animate-in zoom-in-95 duration-300">
+        <div class="bg-slate-50 px-8 py-6 border-b border-slate-200 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-[#043978] text-white rounded-xl flex items-center justify-center shadow-md"><i class="fa-solid fa-newspaper"></i></div>
+                <div>
+                    <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight">Penerbitan Konten</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Publikasikan dokumentasi & artikel terbaru</p>
+                </div>
+            </div>
+            <button onclick="closeArticleModal()" class="w-10 h-10 rounded-xl bg-white border border-slate-200 text-slate-500 hover:bg-red-500 hover:text-white transition-colors flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <form action="{{ route('admin.article.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col overflow-hidden">
+            @csrf
+            <div class="p-8 overflow-y-auto custom-scrollbar space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-black uppercase text-[#043978]">Thumbnail Artikel (Utama)</label>
+                        <input type="file" name="thumbnail" required class="w-full p-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl text-xs font-bold">
+                        
+                        <label class="text-[10px] font-black uppercase text-[#043978]">Galeri Foto Dokumentasi (Opsional)</label>
+                        <input type="file" name="gallery[]" multiple class="w-full p-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl text-xs font-bold">
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-black uppercase text-[#043978]">Judul Artikel</label>
+                        <input type="text" name="title" required class="admin-input w-full rounded-xl p-4 text-sm font-bold" placeholder="Masukkan judul menarik...">
+                        
+                        <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 flex items-center gap-3">
+                            <input type="checkbox" name="is_highlight" id="artHighlight" class="w-5 h-5 rounded border-slate-300 text-[#043978] focus:ring-[#043978]">
+                            <label for="artHighlight" class="text-xs font-black uppercase text-[#043978] cursor-pointer">Jadikan Highlight Utama di Beranda</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black uppercase text-[#043978]">Isi Artikel / Deskripsi Dokumentasi</label>
+                    <textarea name="content" rows="8" class="admin-input w-full rounded-[2rem] p-6 text-sm font-medium resize-none" placeholder="Tuliskan isi artikel atau narasi kegiatan lapangan di sini..." required></textarea>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 px-10 py-6 border-t border-slate-200 flex justify-end gap-4">
+                <button type="button" onclick="closeArticleModal()" class="px-8 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest text-slate-500 hover:bg-slate-200 transition-colors">Batal</button>
+                <button type="submit" class="px-10 py-3 bg-[#043978] text-white rounded-xl font-black text-[11px] uppercase tracking-widest shadow-lg hover:bg-slate-900 transition-colors flex items-center gap-3"><i class="fa-solid fa-paper-plane"></i> Terbitkan Sekarang</button>
+            </div>
+        </form>
+    </div>
+</div>
+
     <script>
         function openProductModal(action, productData = null) {
             const modal = document.getElementById('productModal');
@@ -256,7 +354,7 @@
             document.body.style.overflow = 'hidden'; 
             
             if(action === 'edit') {
-                modalTitle.innerHTML = `Edit <span class="text-[#043978]">Instrumen</span>`;
+                modalTitle.innerHTML = `Edit <span class="text-[#043978]">Instrumen Utama</span>`;
                 form.action = `/admin/product/${productData.id}`;
                 methodContainer.innerHTML = '<input type="hidden" name="_method" value="PUT">';
                 
@@ -270,8 +368,9 @@
                 placeholder.classList.add('hidden');
                 imageInput.removeAttribute('required');
             } else {
-                modalTitle.innerHTML = `Tambah <span class="text-[#043978]">Instrumen</span>`;
-                form.action = "{{ route('product.store') }}";
+                modalTitle.innerHTML = `Tambah <span class="text-[#043978]">Instrumen Utama</span>`;
+                // PERUBAHAN DISINI: Pastikan arahnya ke storeUnggulan
+                form.action = "{{ route('product.storeUnggulan') }}";
                 methodContainer.innerHTML = ''; 
                 form.reset();
                 
@@ -341,6 +440,40 @@ function confirmDeleteFeedback(id, name) {
     }).then((result) => {
         if (result.isConfirmed) {
             document.getElementById('delete-feedback-' + id).submit();
+        }
+    });
+}
+
+// Fungsi Modal Artikel
+function openArticleModal() {
+    const modal = document.getElementById('articleModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeArticleModal() {
+    const modal = document.getElementById('articleModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = 'auto';
+}
+
+// Konfirmasi Hapus Artikel
+function confirmDeleteArticle(id, title) {
+    Swal.fire({
+        title: 'Hapus Artikel?',
+        html: `Anda akan menghapus artikel <br><strong>"${title}"</strong>.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ef4444',
+        cancelButtonColor: '#64748b',
+        confirmButtonText: 'Ya, Hapus!',
+        cancelButtonText: 'Batal',
+        customClass: { popup: 'rounded-[2rem]' }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('delete-art-' + id).submit();
         }
     });
 }
