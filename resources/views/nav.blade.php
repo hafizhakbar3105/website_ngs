@@ -40,24 +40,27 @@
         </div>
 
         <div class="flex items-center gap-4">
-            
-            @if(Auth::check() && Auth::user()->role === 'admin' && Str::contains(Request::path(), 'admin'))
-                <form method="POST" action="{{ url('/logout') }}">
-                    @csrf
-                    <button type="submit" class="hidden md:flex items-center gap-2 bg-red-50 text-red-600 border border-red-100 px-5 py-2.5 rounded-xl text-[10px] font-black tracking-wider hover:bg-red-600 hover:text-white transition-all duration-300">
-                        <i class="fa-solid fa-power-off"></i> LOGOUT
-                    </button>
-                </form>
-            @else
-                <a href="#contact" class="hidden md:block bg-slate-900 text-white px-6 py-2.5 rounded-xl text-[10px] font-black tracking-wider hover:bg-[#043978] hover:shadow-xl transition-all duration-300">
-                    HUBUNGI KAMI
-                </a>
-            @endif
-
-            <button id="menuBtn" class="md:hidden text-slate-800 p-2 text-xl focus:outline-none transition-transform active:scale-90">
-                <i class="fa-solid fa-bars-staggered"></i>
+    
+    @if(Auth::check() && Auth::user()->role === 'admin' && Str::contains(Request::path(), 'admin'))
+        <form method="POST" action="{{ url('/logout') }}">
+            @csrf
+            <button type="submit" class="hidden md:flex items-center gap-2 bg-red-50 text-red-600 border border-red-100 px-5 py-2.5 rounded-xl text-[10px] font-black tracking-wider hover:bg-red-600 hover:text-white transition-all duration-300">
+                <i class="fa-solid fa-power-off"></i> LOGOUT
             </button>
-        </div>
+        </form>
+    @else
+        {{-- Link WhatsApp dengan pesan otomatis --}}
+        <a href="https://wa.me/6282123852658?text=Halo%20Nusa%20Geospatial%20Solution,%20saya%20ingin%20bertanya%20mengenai%20layanan%20Anda." 
+           target="_blank" 
+           class="hidden md:block bg-slate-900 text-white px-6 py-2.5 rounded-xl text-[10px] font-black tracking-wider hover:bg-[#043978] hover:shadow-xl transition-all duration-300 uppercase">
+            HUBUNGI KAMI
+        </a>
+    @endif
+
+    <button id="menuBtn" class="md:hidden text-slate-800 p-2 text-xl focus:outline-none transition-transform active:scale-90">
+        <i class="fa-solid fa-bars-staggered"></i>
+    </button>
+</div>
     </div>
 
     <div id="mobileMenu" class="hidden absolute top-20 left-4 right-4 bg-white p-8 rounded-[2rem] shadow-2xl md:hidden border border-slate-100 animate-in fade-in zoom-in duration-300">
@@ -87,3 +90,15 @@
         </div>
     </div>
 </nav>
+
+
+<a href="https://wa.me/6282123852658?text=Halo%20Nusa%20Geospatial%20Solution,%20saya%20tertarik%20dengan%20layanan%20Anda%20dan%20ingin%20berkonsultasi." 
+   target="_blank" 
+   class="fixed bottom-8 right-8 z-[100] group">
+    
+    <div class="absolute inset-0 bg-green-500 rounded-full blur-xl opacity-40 group-hover:opacity-70 group-hover:scale-125 transition-all duration-500"></div>
+    
+    <div class="relative bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110 active:scale-95">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </div>
+</a>

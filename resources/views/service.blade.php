@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
     <title>Expertise & Services | Nusa Geospatial Solution</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -81,7 +82,7 @@
                     <div class="space-y-5">
                         <h2 class="text-3xl font-black text-slate-950 leading-tight uppercase tracking-tighter">Instrumen <br>Presisi Tinggi</h2>
                         <p class="text-slate-500 text-sm leading-relaxed font-medium">
-                            Distribusi resmi teknologi geospasial mutakhir mulai dari GNSS RTK, Total Station, hingga sistem LiDAR SLAM dan Drone VTOL dari pemimpin pasar global.
+                            Distribusi resmi teknologi geospasial mutakhir mulai dari GNSS RTK, Total Station, hingga sistem LiDAR SLAM dan Drone VTOL.
                         </p>
                     </div>
                     <div class="space-y-4 pt-4 border-t border-slate-50">
@@ -94,7 +95,7 @@
                     </div>
                 </div>
                 <div class="p-12 pt-0">
-                    <a href="/produk" class="group flex items-center justify-center gap-3 w-full bg-slate-950 text-white text-center py-5 rounded-3xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 shadow-2xl transition-all">
+                    <a href="{{ route('produk.index') }}" class="group flex items-center justify-center gap-3 w-full bg-slate-950 text-white text-center py-5 rounded-3xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 shadow-2xl transition-all">
                         View Inventory <i class="fa-solid fa-arrow-right-long group-hover:translate-x-2"></i>
                     </a>
                 </div>
@@ -108,7 +109,7 @@
                     <div class="space-y-5">
                         <h2 class="text-3xl font-black text-slate-950 leading-tight uppercase tracking-tighter">Kalibrasi & <br>Sertifikasi</h2>
                         <p class="text-slate-500 text-sm leading-relaxed font-medium">
-                            Memastikan setiap instrumen tetap berada pada standar akurasi industri melalui proses pengujian ketat untuk keandalan data lapangan jangka panjang.
+                            Memastikan setiap instrumen tetap berada pada standar akurasi industri melalui proses pengujian ketat untuk keandalan jangka panjang.
                         </p>
                     </div>
                     <div class="space-y-4 pt-4 border-t border-slate-50">
@@ -121,7 +122,9 @@
                     </div>
                 </div>
                 <div class="p-12 pt-0">
-                    <a href="https://wa.me/..." class="group flex items-center justify-center gap-3 w-full bg-slate-950 text-white text-center py-5 rounded-3xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 shadow-2xl transition-all">
+                    <a href="https://wa.me/6282123852658?text=Halo%20Admin%20NusaGeo,%20saya%20ingin%20mendaftarkan%20alat%20saya%20untuk%20proses%20Kalibrasi/Sertifikasi." 
+                       target="_blank"
+                       class="group flex items-center justify-center gap-3 w-full bg-slate-950 text-white text-center py-5 rounded-3xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 shadow-2xl transition-all">
                         Register Device <i class="fa-solid fa-arrow-right-long group-hover:translate-x-2"></i>
                     </a>
                 </div>
@@ -135,7 +138,7 @@
                     <div class="space-y-5">
                         <h2 class="text-3xl font-black text-slate-950 leading-tight uppercase tracking-tighter">Technical <br>Enablement</h2>
                         <p class="text-slate-500 text-sm leading-relaxed font-medium">
-                            Pendampingan operasional intensif dan pelatihan pengolahan data pasca-pembelian untuk memaksimalkan produktivitas tim Anda di medan tersulit.
+                            Pendampingan operasional intensif dan pelatihan pengolahan data pasca-pembelian untuk memaksimalkan produktivitas tim Anda.
                         </p>
                     </div>
                     <div class="space-y-4 pt-4 border-t border-slate-50">
@@ -148,7 +151,9 @@
                     </div>
                 </div>
                 <div class="p-12 pt-0">
-                    <a href="https://wa.me/..." class="group flex items-center justify-center gap-3 w-full bg-slate-950 text-white text-center py-5 rounded-3xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 shadow-2xl transition-all">
+                    <a href="https://wa.me/6282123852658?text=Halo%20Nusa%20Geospatial,%20saya%20membutuhkan%20layanan%20Technical%20Enablement%20atau%20Pelatihan%20Pengolahan%20Data." 
+                       target="_blank"
+                       class="group flex items-center justify-center gap-3 w-full bg-slate-950 text-white text-center py-5 rounded-3xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 shadow-2xl transition-all">
                         Talk to Experts <i class="fa-solid fa-arrow-right-long group-hover:translate-x-2"></i>
                     </a>
                 </div>
@@ -163,7 +168,7 @@
                 <div class="space-y-8">
                     <h2 class="text-5xl font-black text-slate-950 leading-none tracking-tighter uppercase">Why Choose <br><span class="text-blue-600">NusaGeo?</span></h2>
                     <p class="text-slate-500 leading-relaxed font-medium">
-                        Setiap solusi yang kami berikan didorong oleh keahlian praktis di bidang geodesi. Kami mengombinasikan perangkat keras terbaik dengan dukungan teknis yang tak tertandingi untuk memastikan kesuksesan proyek Anda.
+                        Setiap solusi yang kami berikan didorong oleh keahlian praktis di bidang geodesi. Kami mengombinasikan perangkat keras terbaik dengan dukungan teknis yang tak tertandingi.
                     </p>
                     <div class="flex gap-12 pt-4">
                         <div class="space-y-1">

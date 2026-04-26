@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
     <title>Tentang & Kontak | Nusa Geospatial Solution</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -42,7 +43,7 @@
                         KEAHLIAN <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 italic">TERUKUR</span>
                     </h1>
                     <p class="text-slate-500 text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
-                        Nusa Geospatial Solution adalah mitra strategis penyedia teknologi survei yang berfokus pada akurasi data lapangan. Kami mengintegrasikan perangkat keras kelas dunia dengan pendampingan teknis ahli
+                        Nusa Geospatial Solution adalah mitra strategis penyedia teknologi survei yang berfokus pada akurasi data lapangan. Kami mengintegrasikan perangkat keras kelas dunia dengan pendampingan teknis ahli.
                     </p>
                     
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-12 pt-10 border-t border-slate-100">
@@ -58,20 +59,18 @@
                 </div>
                 
                 <div class="lg:col-span-5 relative">
-    <!-- Container Logo Utama -->
-    <div class="flex items-center justify-center p-12 bg-white rounded-3xl border border-slate-100 shadow-xl min-h-[350px]">
-        <img src="img/logo.png" 
-             alt="Logo NusaGeo" 
-             class="w-full h-auto max-h-40 object-contain">
-    </div>
+                    <div class="flex items-center justify-center p-12 bg-white rounded-3xl border border-slate-100 shadow-xl min-h-[350px]">
+                        <img src="{{ asset('img/logo.png') }}" 
+                             alt="Logo NusaGeo" 
+                             class="w-full h-auto max-h-40 object-contain">
+                    </div>
 
-    <!-- Badge Teks Statis -->
-    <div class="absolute -bottom-4 -right-4 bg-slate-950 p-7 rounded-[2rem] text-white shadow-2xl max-w-[220px] border-4 border-white">
-        <p class="text-[10px] font-black leading-relaxed uppercase tracking-[0.15em]">
-            Mendedikasikan presisi untuk setiap koordinat di Indonesia
-        </p>
-    </div>
-</div>
+                    <div class="absolute -bottom-4 -right-4 bg-slate-950 p-7 rounded-[2rem] text-white shadow-2xl max-w-[220px] border-4 border-white">
+                        <p class="text-[10px] font-black leading-relaxed uppercase tracking-[0.15em]">
+                            Mendedikasikan presisi untuk setiap koordinat di Indonesia
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -118,7 +117,7 @@
             <div class="lg:col-span-5 space-y-16">
                 <div class="space-y-6">
                     <h2 class="text-5xl font-black text-slate-950 tracking-tighter uppercase leading-none">Hubungi <br><span class="text-blue-600 italic">Kami</span></h2>
-                    <p class="text-slate-500 font-medium text-lg leading-relaxed">Punya pertanyaan teknis atau butuh penawaran resmi? Tim ahli kami siap membantu Anda</p>
+                    <p class="text-slate-500 font-medium text-lg leading-relaxed">Punya pertanyaan teknis atau butuh penawaran resmi? Tim ahli kami siap membantu Anda.</p>
                 </div>
 
                 <div class="space-y-10">
@@ -136,11 +135,11 @@
                             <p class="text-sm font-bold text-slate-900">info@nusageo.com</p>
                         </div>
                     </div>
-                    <a href="https://wa.me/..." class="flex items-start gap-8 group">
+                    <a href="https://wa.me/6282123852658?text=Halo%20Nusa%20Geospatial%20Solution,%20saya%20ingin%20berkonsultasi." target="_blank" class="flex items-start gap-8 group">
                         <div class="w-14 h-14 rounded-2xl bg-green-500 flex items-center justify-center text-white text-xl shadow-lg shadow-green-100 group-hover:rotate-12 transition-transform"><i class="fa-brands fa-whatsapp"></i></div>
                         <div>
                             <h5 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">WhatsApp Chat</h5>
-                            <p class="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">+62 812-3456-7890</p>
+                            <p class="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">+62 821-2385-2658</p>
                         </div>
                     </a>
                 </div>
@@ -149,32 +148,32 @@
             <div class="lg:col-span-7 bg-white rounded-[4rem] border border-slate-100 p-12 md:p-16 shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-16 -mt-16"></div>
                 
-                <form action="#" class="relative z-10 space-y-8">
+                <form id="whatsappForm" class="relative z-10 space-y-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="space-y-3">
                             <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 px-1">Nama Lengkap</label>
-                            <input type="text" class="w-full bg-slate-50 border border-transparent rounded-2xl p-5 focus:outline-none input-focus font-semibold text-sm transition-all" placeholder="Masukkan nama Anda">
+                            <input type="text" id="name" required class="w-full bg-slate-50 border border-transparent rounded-2xl p-5 focus:outline-none input-focus font-semibold text-sm transition-all" placeholder="Masukkan nama Anda">
                         </div>
                         <div class="space-y-3">
                             <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 px-1">Instansi / Perusahaan</label>
-                            <input type="text" class="w-full bg-slate-50 border border-transparent rounded-2xl p-5 focus:outline-none input-focus font-semibold text-sm transition-all" placeholder="Nama organisasi">
+                            <input type="text" id="company" required class="w-full bg-slate-50 border border-transparent rounded-2xl p-5 focus:outline-none input-focus font-semibold text-sm transition-all" placeholder="Nama organisasi">
                         </div>
                     </div>
                     <div class="space-y-3">
                         <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 px-1">Layanan yang Dibutuhkan</label>
-                        <select class="w-full bg-slate-50 border border-transparent rounded-2xl p-5 focus:outline-none input-focus font-semibold text-sm transition-all appearance-none cursor-pointer">
-                            <option>Penjualan Alat Survei</option>
-                            <option>Layanan Kalibrasi Alat</option>
-                            <option>Dukungan Teknis & Pelatihan</option>
-                            <option>Lainnya</option>
+                        <select id="service" class="w-full bg-slate-50 border border-transparent rounded-2xl p-5 focus:outline-none input-focus font-semibold text-sm transition-all appearance-none cursor-pointer">
+                            <option value="Penjualan Alat Survei">Penjualan Alat Survei</option>
+                            <option value="Layanan Kalibrasi Alat">Layanan Kalibrasi Alat</option>
+                            <option value="Dukungan Teknis & Pelatihan">Dukungan Teknis & Pelatihan</option>
+                            <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
                     <div class="space-y-3">
                         <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 px-1">Detail Kebutuhan</label>
-                        <textarea rows="4" class="w-full bg-slate-50 border border-transparent rounded-2xl p-5 focus:outline-none input-focus font-semibold text-sm transition-all resize-none" placeholder="Ceritakan proyek atau kebutuhan alat Anda..."></textarea>
+                        <textarea id="message" rows="4" required class="w-full bg-slate-50 border border-transparent rounded-2xl p-5 focus:outline-none input-focus font-semibold text-sm transition-all resize-none" placeholder="Ceritakan proyek atau kebutuhan alat Anda..."></textarea>
                     </div>
                     <button type="submit" class="group flex items-center justify-center gap-3 w-full bg-slate-950 text-white py-6 rounded-3xl font-black uppercase tracking-[0.2em] hover:bg-blue-600 transition-all shadow-2xl shadow-slate-900/10">
-                        Kirim Pesan <i class="fa-solid fa-paper-plane group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform"></i>
+                        Kirim via WhatsApp <i class="fa-solid fa-paper-plane group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform"></i>
                     </button>
                 </form>
             </div>
@@ -182,6 +181,34 @@
     </section>
 
     @include('footer')
+
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 1. Ambil Data
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            // 2. Susun Pesan
+            const waText = `*HALO NUSA GEOSPATIAL SOLUTION*%0A` +
+                           `--------------------------------------------%0A` +
+                           `*Nama:* ${name}%0A` +
+                           `*Instansi:* ${company}%0A` +
+                           `*Layanan:* ${service}%0A` +
+                           `--------------------------------------------%0A` +
+                           `*Detail Kebutuhan:*%0A${message}%0A` +
+                           `--------------------------------------------%0A` +
+                           `_Pesan dikirim melalui Form Website_`;
+
+            const waNumber = "6282123852658";
+
+            // 3. Eksekusi Kirim
+            window.open(`https://wa.me/${waNumber}?text=${waText}`, '_blank');
+        });
+    </script>
 
 </body>
 </html>

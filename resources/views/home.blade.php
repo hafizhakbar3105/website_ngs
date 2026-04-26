@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
     <title>Nusa Geospatial Solution | Precision Technology</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -71,11 +72,13 @@
             </div>
 
             <div class="flex flex-col sm:flex-row gap-5">
-                <a href="https://wa.me/6282123852658" target="_blank" class="relative group overflow-hidden bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-blue-500/20 flex items-center justify-center gap-4">
-                    <span class="relative z-10">Mulai Konsultasi</span>
-                    <i class="fa-solid fa-arrow-right relative z-10 group-hover:translate-x-2 transition-transform"></i>
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </a>
+                <a href="https://wa.me/6282123852658?text=Halo%20Nusa%20Geospatial%20Solution,%20saya%20ingin%20memulai%20konsultasi%20mengenai%20proyek%20geospasial." 
+   target="_blank" 
+   class="relative group overflow-hidden bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-blue-500/20 flex items-center justify-center gap-4">
+    <span class="relative z-10">Mulai Konsultasi</span>
+    <i class="fa-solid fa-arrow-right relative z-10 group-hover:translate-x-2 transition-transform"></i>
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</a>
                 
                 <a href="/produk" class="group bg-white/5 backdrop-blur-xl text-white border border-white/10 px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-3">
                     Lihat Katalog <i class="fa-solid fa-boxes-stacked opacity-50 group-hover:opacity-100"></i>
@@ -274,16 +277,7 @@
     </div>
 </section>
 
-    <a href="https://wa.me/..." class="fixed bottom-8 right-8 z-[100] group">
-    <!-- Efek Blur/Glow Bulat -->
-    <div class="absolute inset-0 bg-green-500 rounded-full blur-xl opacity-40 group-hover:opacity-60 transition"></div>
     
-    <!-- Tombol Bulat -->
-    <div class="relative bg-green-500 text-white p-4 rounded-full flex items-center justify-center shadow-2xl">
-        <i class="fa-brands fa-whatsapp text-2xl"></i>
-        <!-- Teks dihilangkan agar benar-benar bulat sempurna -->
-    </div>
-</a>
     <section class="py-24 bg-white px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 space-y-4">
