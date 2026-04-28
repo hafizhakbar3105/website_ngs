@@ -6,26 +6,26 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-{
-    Schema::create('products', function (Blueprint $table) {
-        $table->id();
-        $table->string('brand');       // Untuk "CHCNAV GNSS"
-        $table->string('badge')->nullable(); // Untuk "Premium Tech" (Bisa kosong)
-        $table->string('name');        // Untuk "i93 Visual IMU RTK"
-        $table->text('description');   // Deskripsi alat
-        $table->string('image');       // Path gambar
-        $table->boolean('is_featured')->default(true); // Penanda tampil di home
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('brand');
+            $table->string('badge')->nullable();
+            $table->string('name');
+            $table->text('description');
+            $table->string('image');
+            $table->boolean('is_featured')->default(true);
+            $table->integer('status')->default(1);
 
-    /**
-     * Reverse the migrations.
-     */
+            // RELASI KE KATEGORI
+            // Baris ini akan error jika tabel 'categories' belum dibuat
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+
+            $table->timestamps();
+        });
+    }
+
     public function down(): void
     {
         Schema::dropIfExists('products');

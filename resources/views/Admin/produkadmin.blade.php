@@ -86,7 +86,9 @@
                     
                     <div class="p-5 flex flex-col flex-grow justify-between pr-16 md:pr-4">
                         <div class="space-y-1">
-                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">{{ strtoupper($produk->category) }} / {{ $produk->brand }}</p>
+                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">
+    {{ strtoupper($produk->category->name ?? 'Tanpa Kategori') }} / {{ $produk->brand }}
+</p>
                             <h3 class="text-base font-black text-slate-900 leading-tight uppercase">{{ $produk->name }}</h3>
                             <p class="text-[11px] text-slate-500 leading-relaxed line-clamp-3 mt-2">{{ $produk->description }}</p>
                         </div>
@@ -149,12 +151,12 @@
                     <div class="md:col-span-7 space-y-6">
                         <div class="space-y-2 bg-blue-50/50 p-4 rounded-2xl border border-blue-100">
                             <label class="text-[10px] font-black uppercase tracking-[0.2em] text-[#043978]">Klasifikasi Kategori</label>
-                            <select name="category" required class="w-full rounded-xl p-4 text-sm font-bold bg-white border border-blue-200">
-                                <option value="" disabled selected>-- Pilih Kategori --</option>
-                                @foreach($categories as $cat)
-                                    <option value="{{ $cat->slug }}">{{ $cat->name }}</option>
-                                @endforeach
-                            </select>
+                            <select name="category_id" required class="w-full rounded-xl p-4 text-sm font-bold bg-white border border-blue-200">
+    <option value="" disabled selected>-- Pilih Kategori --</option>
+    @foreach($categories as $cat)
+        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+    @endforeach
+</select>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">

@@ -67,8 +67,8 @@
                     <div class="p-6 flex flex-col flex-grow justify-between">
                         <div class="space-y-2">
                             <p class="text-[8px] font-black text-blue-600 uppercase tracking-[0.2em]">
-                                {{ str_replace('-', ' ', $produk->category) }} / {{ $produk->brand }}
-                            </p>
+    {{ $produk->category->name ?? 'Uncategorized' }} / {{ $produk->brand }}
+</p>
                             <h3 class="text-xl font-black text-slate-900 leading-tight tracking-tight">{{ $produk->name }}</h3>
                             <p class="text-[11px] text-slate-500 leading-relaxed line-clamp-3">
                                 {{ $produk->description }}
