@@ -87,7 +87,7 @@
                     <div class="p-5 flex flex-col flex-grow justify-between pr-16 md:pr-4">
                         <div class="space-y-1">
                             <p class="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">
-    {{ strtoupper($produk->category->name ?? 'Tanpa Kategori') }} / {{ $produk->brand }}
+    {{ strtoupper($produk->category->name ?? 'Tanpa Kategori') }} 
 </p>
                             <h3 class="text-base font-black text-slate-900 leading-tight uppercase">{{ $produk->name }}</h3>
                             <p class="text-[11px] text-slate-500 leading-relaxed line-clamp-3 mt-2">{{ $produk->description }}</p>
