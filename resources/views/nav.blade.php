@@ -102,3 +102,42 @@
         <i class="fa-brands fa-whatsapp text-3xl"></i>
     </div>
 </a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', function (e) {
+                // Mencegah klik 'tembus' ke latar belakang
+                e.stopPropagation(); 
+                
+                // Munculkan atau sembunyikan menu
+                mobileMenu.classList.toggle('hidden');
+                
+                // Ganti Icon (Garis Tiga jadi Silang)
+                const icon = menuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars-staggered');
+                } else {
+                    icon.classList.remove('fa-bars-staggered');
+                    icon.classList.add('fa-xmark');
+                }
+            });
+
+            // Menutup menu otomatis jika user klik di mana saja selain menu
+            document.addEventListener('click', function (e) {
+                if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    if(icon) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars-staggered');
+                    }
+                }
+            });
+        }
+    });
+</script>
