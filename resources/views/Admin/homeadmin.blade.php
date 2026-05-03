@@ -239,7 +239,7 @@
             </div>
 
             <div class="p-8 overflow-y-auto custom-scrollbar bg-white">
-                <form id="productForm" action="{{ route('product.storeUnggulan') }}" method="POST" enctype="multipart/form-data">
+                <form id="productForm" action="..." method="POST" enctype="multipart/form-data">
                     @csrf
                     <div id="methodContainer"></div>
 
@@ -273,6 +273,15 @@
                                 <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Nama Alat</label>
                                 <input type="text" name="name" id="nameInput" class="admin-input w-full rounded-xl p-4 text-sm font-bold" required>
                             </div>
+                            <div class="space-y-2">
+    <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Kategori Produk</label>
+    <select name="category_id" id="categoryInput" required class="w-full rounded-xl p-4 text-sm font-bold bg-white border border-blue-200 appearance-none">
+        <option value="" disabled selected>-- Pilih Kategori --</option>
+        @foreach($categories as $cat)
+            <option value="{{ $cat->id }}">{{ $cat->name }}</option> 
+        @endforeach
+    </select>
+</div>
                             <div class="space-y-2">
                                 <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Deskripsi Singkat</label>
                                 <textarea name="description" id="descInput" rows="4" class="admin-input w-full rounded-xl p-4 text-sm font-medium resize-none" required></textarea>
@@ -341,143 +350,157 @@
 </div>
 
     <script>
-        function openProductModal(action, productData = null) {
-            const modal = document.getElementById('productModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const form = document.getElementById('productForm');
-            const methodContainer = document.getElementById('methodContainer');
-            const imageInput = document.getElementById('imageInput');
+    /**
+     * FUNGSI MODAL PRODUK UTAMA
+     */
+    function openProductModal(action, productData = null) {
+        const modal = document.getElementById('productModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const form = document.getElementById('productForm');
+        const methodContainer = document.getElementById('methodContainer');
+        const imageInput = document.getElementById('imageInput');
+        const preview = document.getElementById('imagePreview');
+        const placeholder = document.getElementById('uploadPlaceholder');
+        
+        modal.classList.remove('hidden'); 
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden'; 
+        
+        if(action === 'edit') {
+            modalTitle.innerHTML = `Edit <span class="text-[#043978]">Instrumen Utama</span>`;
+            form.action = `/admin/product/${productData.id}`;
+            
+            // Masukkan sinyal Update 'main' untuk Controller
+            methodContainer.innerHTML = `
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="update_type" value="main">
+            `;
+            
+            document.getElementById('brandInput').value = productData.brand;
+            document.getElementById('badgeInput').value = productData.badge || '';
+            document.getElementById('nameInput').value = productData.name;
+            document.getElementById('descInput').value = productData.description;
+            
+            if(document.getElementById('categoryInput')) {
+                document.getElementById('categoryInput').value = productData.category_id;
+            }
+            
+            preview.src = `/storage/${productData.image}`;
+            preview.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+            
+            // Gambar tidak wajib saat edit (agar bisa ubah teks saja)
+            imageInput.removeAttribute('required');
+
+        } else {
+            modalTitle.innerHTML = `Tambah <span class="text-[#043978]">Instrumen Utama</span>`;
+            form.action = "{{ route('product.storeUnggulan') }}";
+            methodContainer.innerHTML = ''; 
+            form.reset();
+            
+            if(document.getElementById('categoryInput')) {
+                document.getElementById('categoryInput').value = "";
+            }
+            
+            imageInput.setAttribute('required', 'required');
+            preview.classList.add('hidden');
+            preview.src = '';
+            placeholder.classList.remove('hidden');
+        }
+    }
+
+    // --- FUNGSI DI BAWAH INI HARUS DI LUAR FUNGSI OPEN ---
+
+    function closeProductModal() {
+        const modal = document.getElementById('productModal');
+        modal.classList.add('hidden'); 
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto'; 
+    }
+
+    function previewImg(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
             const preview = document.getElementById('imagePreview');
             const placeholder = document.getElementById('uploadPlaceholder');
-            
-            modal.classList.remove('hidden'); 
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden'; 
-            
-            if(action === 'edit') {
-                modalTitle.innerHTML = `Edit <span class="text-[#043978]">Instrumen Utama</span>`;
-                form.action = `/admin/product/${productData.id}`;
-                methodContainer.innerHTML = '<input type="hidden" name="_method" value="PUT">';
-                
-                document.getElementById('brandInput').value = productData.brand;
-                document.getElementById('badgeInput').value = productData.badge || '';
-                document.getElementById('nameInput').value = productData.name;
-                document.getElementById('descInput').value = productData.description;
-                
-                preview.src = `/storage/${productData.image}`;
-                preview.classList.remove('hidden');
-                placeholder.classList.add('hidden');
-                imageInput.removeAttribute('required');
-            } else {
-                modalTitle.innerHTML = `Tambah <span class="text-[#043978]">Instrumen Utama</span>`;
-                // PERUBAHAN DISINI: Pastikan arahnya ke storeUnggulan
-                form.action = "{{ route('product.storeUnggulan') }}";
-                methodContainer.innerHTML = ''; 
-                form.reset();
-                
-                imageInput.setAttribute('required', 'required');
-                preview.classList.add('hidden');
-                preview.src = '';
-                placeholder.classList.remove('hidden');
+            preview.src = reader.result;
+            preview.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+        }
+        if(event.target.files[0]) reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function confirmDelete(id, name) {
+        Swal.fire({
+            title: 'Apakah Anda Yakin?',
+            html: `Anda akan menghapus instrumen <br><strong>"${name}"</strong>.<br>Tindakan ini tidak dapat dibatalkan!`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ef4444',
+            cancelButtonColor: '#64748b',
+            confirmButtonText: '<i class="fa-solid fa-trash mr-2"></i> Ya, Hapus!',
+            cancelButtonText: 'Batal',
+            customClass: {
+                popup: 'rounded-[2rem] shadow-2xl border border-slate-100',
+                confirmButton: 'rounded-xl font-bold uppercase tracking-wider text-xs px-6 py-3',
+                cancelButton: 'rounded-xl font-bold uppercase tracking-wider text-xs px-6 py-3'
             }
-        }
-
-        function closeProductModal() {
-            const modal = document.getElementById('productModal');
-            modal.classList.add('hidden'); 
-            modal.classList.remove('flex');
-            document.body.style.overflow = 'auto'; 
-        }
-
-        function previewImg(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const preview = document.getElementById('imagePreview');
-                const placeholder = document.getElementById('uploadPlaceholder');
-                preview.src = reader.result;
-                preview.classList.remove('hidden');
-                placeholder.classList.add('hidden');
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
             }
-            if(event.target.files[0]) reader.readAsDataURL(event.target.files[0]);
-        }
+        });
+    }
 
-        function confirmDelete(id, name) {
-    Swal.fire({
-        title: 'Apakah Anda Yakin?',
-        html: `Anda akan menghapus instrumen <br><strong>"${name}"</strong>.<br>Tindakan ini tidak dapat dibatalkan!`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#ef4444', // Warna merah khas Tailwind (red-500)
-        cancelButtonColor: '#64748b',  // Warna abu-abu Tailwind (slate-500)
-        confirmButtonText: '<i class="fa-solid fa-trash mr-2"></i> Ya, Hapus!',
-        cancelButtonText: 'Batal',
-        background: '#ffffff',
-        backdrop: 'rgba(15, 23, 42, 0.8)', // Efek gelap di belakang modal (slate-900)
-        customClass: {
-            popup: 'rounded-[2rem] shadow-2xl border border-slate-100', // Menyesuaikan dengan gaya border-radius punyamu
-            confirmButton: 'rounded-xl font-bold uppercase tracking-wider text-xs px-6 py-3',
-            cancelButton: 'rounded-xl font-bold uppercase tracking-wider text-xs px-6 py-3'
-        }
-    }).then((result) => {
-        // Jika user mengklik "Ya, Hapus!"
-        if (result.isConfirmed) {
-            // Submit form secara otomatis
-            document.getElementById('delete-form-' + id).submit();
-        }
-    });
-}
+    function confirmDeleteFeedback(id, name) {
+        Swal.fire({
+            title: 'Hapus Ulasan?',
+            text: `Ulasan dari "${name}" akan dihapus permanen.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ef4444',
+            cancelButtonColor: '#64748b',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal',
+            customClass: { popup: 'rounded-[2rem]' }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-feedback-' + id).submit();
+            }
+        });
+    }
 
-function confirmDeleteFeedback(id, name) {
-    Swal.fire({
-        title: 'Hapus Ulasan?',
-        text: `Ulasan dari "${name}" akan dihapus permanen.`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#ef4444',
-        cancelButtonColor: '#64748b',
-        confirmButtonText: 'Ya, Hapus!',
-        cancelButtonText: 'Batal',
-        customClass: { popup: 'rounded-[2rem]' }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.getElementById('delete-feedback-' + id).submit();
-        }
-    });
-}
+    function openArticleModal() {
+        const modal = document.getElementById('articleModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
 
-// Fungsi Modal Artikel
-function openArticleModal() {
-    const modal = document.getElementById('articleModal');
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-}
+    function closeArticleModal() {
+        const modal = document.getElementById('articleModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    }
 
-function closeArticleModal() {
-    const modal = document.getElementById('articleModal');
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.style.overflow = 'auto';
-}
-
-// Konfirmasi Hapus Artikel
-function confirmDeleteArticle(id, title) {
-    Swal.fire({
-        title: 'Hapus Artikel?',
-        html: `Anda akan menghapus artikel <br><strong>"${title}"</strong>.`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#ef4444',
-        cancelButtonColor: '#64748b',
-        confirmButtonText: 'Ya, Hapus!',
-        cancelButtonText: 'Batal',
-        customClass: { popup: 'rounded-[2rem]' }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.getElementById('delete-art-' + id).submit();
-        }
-    });
-}
-    </script>
+    function confirmDeleteArticle(id, title) {
+        Swal.fire({
+            title: 'Hapus Artikel?',
+            html: `Anda akan menghapus artikel <br><strong>"${title}"</strong>.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ef4444',
+            cancelButtonColor: '#64748b',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal',
+            customClass: { popup: 'rounded-[2rem]' }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-art-' + id).submit();
+            }
+        });
+    }
+</script>
 </body>
 </html>

@@ -8,11 +8,11 @@
                 <p class="text-sm leading-relaxed">
                     Penyedia solusi pengukuran modern dan peralatan geospasial presisi tinggi untuk berbagai sektor industri di Indonesia.
                 </p>
-                <div class="flex gap-4">
+                {{-- <div class="flex gap-4">
                     <a href="#" class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition text-white"><i class="fa-brands fa-linkedin-in"></i></a>
                     <a href="#" class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-pink-600 hover:border-pink-600 transition text-white"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition text-white"><i class="fa-brands fa-youtube"></i></a>
-                </div>
+                </div> --}}
             </div>
 
             <div>
@@ -48,12 +48,12 @@
                 <ul class="space-y-4 text-sm">
                     <li class="flex gap-3">
                         <i class="fa-solid fa-location-dot text-blue-500 mt-1"></i>
-                        <span>Jl. Raya Geospasial No. 10, Sukabumi, Jawa Barat</span>
+                        <span>Jln kupang tanjakan no 117 Cimanggis Kota Depok</span>
                     </li>
-                    <li class="flex gap-3">
+                    {{-- <li class="flex gap-3">
                         <i class="fa-solid fa-envelope text-blue-500 mt-1"></i>
                         <a href="mailto:admin@nusageospatialsolution.co.id" class="hover:text-blue-400 transition">admin@nusageospatialsolution.co.id</a>
-                    </li>
+                    </li> --}}
                     <li class="flex gap-3">
                         <i class="fa-solid fa-phone text-blue-500 mt-1"></i>
                         <a href="https://wa.me/6282123852658" target="_blank" class="hover:text-blue-400 transition">+62 821-2385-2658</a>

@@ -55,21 +55,34 @@
 
     <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-16 items-center">
         <div class="space-y-10 order-2 lg:order-1">
-            <div class="space-y-6">
-                
+            <!-- Ganti bagian teks di dalam Hero Section (sekitar baris 61-75) -->
+<div class="space-y-12">
+    <!-- Judul Utama -->
+    <h1 class="text-6xl lg:text-8xl font-black text-white leading-tight lg:leading-[1.1] tracking-tighter">
+        Precision <span class="inline-block text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 py-1">Data</span><br>
+        <span class="relative inline-block py-2">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 italic px-2">Trusted</span>
+            <span class="absolute bottom-1 left-2 w-[90%] h-1 bg-gradient-to-r from-blue-500 to-transparent"></span>
+        </span> Solutions
+    </h1>
 
-                <h1 class="text-6xl lg:text-8xl font-black text-white leading-tight lg:leading-[1.1] tracking-tighter">
-    Precision <span class="inline-block text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 py-1">Data</span><br>
-    <span class="relative inline-block py-2">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 italic px-2">Trusted</span>
-        <span class="absolute bottom-1 left-2 w-[90%] h-1 bg-gradient-to-r from-blue-500 to-transparent"></span>
-    </span> Solutions
-</h1>
+    <!-- Deskripsi Super Clean & Rapi -->
+    <div class="max-w-3xl space-y-6">
+        <p class="text-slate-200 text-lg md:text-xl leading-relaxed">
+            <span class="font-black text-white">Nusa Geospasial Solution</span> merupakan trusted reseller produk survei dan pemetaan dari berbagai brand ternama seperti CHC, Hi-Target, Tersus, Ruide, Topcon, ComNav, dan Garmin.
+        </p>
 
-                <p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-xl font-medium">
-                    Menghadirkan ekosistem pengukuran modern berbasis <span class="text-blue-300 border-b border-blue-300/30">GNSS & LiDAR SLAM</span>. Solusi cerdas untuk efisiensi lapangan tanpa batas.
-                </p>
-            </div>
+        <p class="text-slate-400 text-lg md:text-xl leading-relaxed">
+            Menyediakan beragam software untuk survey dan pemetaan seperti Agisoft Metashape, RedToolbox, dll, serta perlengkapan aksesoris berkualitas untuk kegiatan survey dan pemetaan.
+        </p>
+
+        <div class="pt-8 border-t border-white/10">
+            <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+                Dengan semangat <span class="text-blue-400 font-bold">“Precision Data, Trusted Solution,”</span> kami berkomitmen menghadirkan produk geospasial yang presisi, tepercaya, dan mampu mendukung kinerja profesional Anda secara optimal.
+            </p>
+        </div>
+    </div>
+</div>
 
             <div class="flex flex-col sm:flex-row gap-5">
                 <a href="https://wa.me/6282123852658?text=Halo%20Nusa%20Geospatial%20Solution,%20saya%20ingin%20memulai%20konsultasi%20mengenai%20proyek%20geospasial." 
@@ -119,23 +132,24 @@
     </div>
 </section>
 
+<!-- Ganti bagian Brand Scroll (sekitar baris 112-120) -->
 <div class="bg-white py-12 border-y border-slate-100 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 mb-6">
-        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 text-center">Authorized Distributor & Partner</p>
+        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 text-center">Best Trusted Reseller of</p>
     </div>
     
     <div class="flex space-x-12 animate-scroll whitespace-nowrap">
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">TOPCON</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">CHCNAV</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">HI-TARGET</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">SOUTH</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">RUIDE</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">FOIF</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">COMNAV</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">TERSUS</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">TOPCON</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">CHCNAV</span>
-        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter">HI-TARGET</span>
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">CHCNAV</span>
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">Hi-Target</span>
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">Tersus</span>
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">Ruide</span>
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">Topcon</span>
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">ComNav</span>
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">Garmin</span>
+        <!-- Duplikasi untuk efek looping -->
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">CHCNAV</span>
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">Hi-Target</span>
+        <span class="text-2xl font-black text-slate-300 hover:text-blue-600 transition tracking-tighter uppercase">Tersus</span>
     </div>
 </div>
 
@@ -233,22 +247,25 @@
                 <img src="img/penjualan.jpeg" class="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s] z-0" alt="Penjualan">
                 <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/70 to-transparent z-0"></div>
 
-                <div class="relative z-10 flex flex-col h-full justify-between">
-                    <div>
-                        <div class="w-20 h-20 bg-blue-600 rounded-[2rem] flex items-center justify-center text-white text-3xl shadow-[0_20px_40px_-10px_rgba(59,130,246,0.5)] mb-10 transition-all duration-500 group-hover:rotate-[10deg] group-hover:scale-110">
-                            <i class="fa-solid fa-satellite-dish"></i>
-                        </div>
-                        <h3 class="text-4xl font-black text-white uppercase tracking-tighter mb-4 leading-tight">Solusi Instrumen<br><span class="text-blue-400">Geospasial</span></h3>
-                        <p class="text-slate-300 leading-relaxed max-w-xl font-medium text-lg opacity-80 group-hover:opacity-100 transition-all">Mendukung efisiensi dan akurasi akuisisi data lapangan Anda dengan perangkat pemetaan berstandar industri.</p>
-                    </div>
+                <!-- Ganti konten Solusi Instrumen Geospasial (sekitar baris 218-232) -->
+<div class="relative z-10 flex flex-col h-full justify-between">
+    <div>
+        <div class="w-20 h-20 bg-blue-600 rounded-[2rem] flex items-center justify-center text-white text-3xl shadow-[0_20px_40px_-10px_rgba(59,130,246,0.5)] mb-10 transition-all duration-500 group-hover:rotate-[10deg] group-hover:scale-110">
+            <i class="fa-solid fa-satellite-dish"></i>
+        </div>
+        <h3 class="text-4xl font-black text-white uppercase tracking-tighter mb-4 leading-tight">Solusi Instrumen<br><span class="text-blue-400">Kinematic GNSS</span></h3>
+        <p class="text-slate-300 leading-relaxed max-w-xl font-medium text-lg opacity-80 group-hover:opacity-100 transition-all">
+            Mendukung efisiensi dan akurasi akuisisi data lapangan Anda dengan perangkat pemetaan berstandar industri <span class="italic text-[#E7D532]">with affordable price</span>, tanpa mengurangi kualitas dan kepercayaan Anda.
+        </p>
+    </div>
 
-                    <div class="flex justify-end mt-10">
-                        <a href="/produk" class="group/btn relative overflow-hidden bg-white px-12 py-5 rounded-2xl text-sm font-black uppercase tracking-widest text-slate-900 transition-all duration-500 hover:bg-[#E7D532] shadow-xl">
-                            <span class="relative z-10">Lihat Produk</span>
-                            <i class="fa-solid fa-arrow-right ml-2 group-hover/btn:translate-x-2 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
+    <div class="flex justify-end mt-10">
+        <a href="/produk" class="group/btn relative overflow-hidden bg-white px-12 py-5 rounded-2xl text-sm font-black uppercase tracking-widest text-slate-900 transition-all duration-500 hover:bg-[#E7D532] shadow-xl">
+            <span class="relative z-10">Lihat Produk</span>
+            <i class="fa-solid fa-arrow-right ml-2 group-hover/btn:translate-x-2 transition-transform"></i>
+        </a>
+    </div>
+</div>
             </div>
 
             <div class="group relative overflow-hidden p-8 rounded-[2.5rem] border border-white/10 flex flex-col justify-between min-h-[320px] transition-all duration-700 hover:border-indigo-500/40 hover:shadow-[0_0_50px_-12px_rgba(99,102,241,0.3)]">
