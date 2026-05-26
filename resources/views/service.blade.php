@@ -166,9 +166,9 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                 <div class="space-y-8">
-                    <h2 class="text-5xl font-black text-slate-950 leading-none tracking-tighter uppercase">Why Choose <br><span class="text-blue-600">NusaGeo?</span></h2>
+                    <h2 class="text-5xl font-black text-slate-950 leading-none tracking-tighter normal-case">Why Choose <br><span class="text-blue-600">NusaGeo?</span></h2>
                     <p class="text-slate-500 leading-relaxed font-medium">
-                        Setiap solusi yang kami berikan didorong oleh keahlian praktis di bidang geodesi. Kami mengombinasikan perangkat keras terbaik dengan dukungan teknis yang tak tertandingi.
+                        Setiap solusi yang kami berikan didorong oleh keahlian lebih dari 10 tahun di bidang geospasial.Kami mengombinasikan perangkat survey terbaik terbaik dengan dukungan teknis dan pelayanan terbaik untuk anda.
                     </p>
                     <div class="flex gap-12 pt-4">
                         <div class="space-y-1">
@@ -189,7 +189,7 @@
                         </div>
                         <div>
                             <h4 class="text-lg font-black text-slate-900 uppercase">Trusted by Professionals</h4>
-                            <p class="text-xs text-slate-500 font-medium">Dukungan penuh tenaga ahli berpengalaman bidang Geodesi.</p>
+                            <p class="text-xs text-slate-500 font-medium">Dukungan penuh tenaga ahli berpengalaman lebih dari 10 tahun di bidang geospasial.</p>
                         </div>
                     </div>
                 </div>

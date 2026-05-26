@@ -61,7 +61,7 @@
                         <div class="absolute top-4 left-4 z-20">
                             <span class="px-2.5 py-1 bg-white/90 backdrop-blur text-slate-900 text-[7px] font-black uppercase tracking-widest rounded-lg shadow-sm">Premium</span>
                         </div>
-                        <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-[75%] object-contain group-hover:scale-110 transition-transform duration-700">
+                        <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-full h-full object-contain p-2 drop-shadow-2xl group-hover:scale-110 transition-transform duration-700 ease-out">
                     </div>
                     
                     <div class="p-6 flex flex-col flex-grow justify-between">

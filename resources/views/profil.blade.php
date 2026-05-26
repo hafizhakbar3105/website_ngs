@@ -44,8 +44,8 @@
                     
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-12 pt-10 border-t border-slate-100">
                         <div class="space-y-1">
-                            <h4 class="text-3xl font-black text-slate-900 leading-none">Reseller</h4>
-                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Best Trusted of</p>
+                            <h4 class="text-3xl font-black text-slate-900 leading-none">Deliver Best</h4>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Product Survey in Indonesia</p>
                         </div>
                         <div class="space-y-1">
                             <h4 class="text-3xl font-black text-slate-900 leading-none">Kualitas</h4>
