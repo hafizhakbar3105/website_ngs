@@ -15,10 +15,10 @@ class AdminUserSeeder extends Seeder
     {
         // Menggunakan updateOrCreate agar tidak terjadi error double data jika seeder dijalankan ulang
         User::updateOrCreate(
-            ['email' => 'admin@nusageo.com'], // Cari berdasarkan email
+            ['email' => 'admin@ksurvey.com'], // Cari berdasarkan email
             [
-                'name' => 'Admin NGS',
-                'password' => Hash::make('nusageo123'), // Password Anda
+                'name' => 'Admin KSurvey',
+                'password' => Hash::make('ksurvey123'), // Password Anda
                 'role' => 'admin',
             ]
         );

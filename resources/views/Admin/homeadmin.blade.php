@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
-    <title>Dashboard Admin | Nusa Geospatial Solution</title>
+    <title>Dashboard Admin | K Survey</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
         
         /* CSS Input Admin */
         .admin-input { background-color: #F8FAFC; border: 1px solid #E2E8F0; transition: all 0.2s ease; }
-        .admin-input:focus { background-color: #FFFFFF; border-color: #043978; outline: none; box-shadow: 0 0 0 4px rgba(4, 57, 120, 0.08); }
+        .admin-input:focus { background-color: #FFFFFF; border-color: #C9490F; outline: none; box-shadow: 0 0 0 4px rgba(201, 73, 15, 0.1); }
         .custom-scrollbar::-webkit-scrollbar { display: none; }
         .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -31,28 +31,28 @@
 
     <section class="pt-32 pb-12 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="bg-[#043978] rounded-[2.5rem] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl shadow-blue-900/20">
+            <div class="bg-gradient-to-br from-orange-600 to-orange-500 rounded-[2.5rem] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl shadow-orange-600/30">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
-                <div class="absolute bottom-0 left-10 w-40 h-40 bg-[#E7D532]/10 rounded-full blur-2xl"></div>
+                <div class="absolute bottom-0 left-10 w-40 h-40 bg-amber-300/15 rounded-full blur-2xl"></div>
                 <i class="fa-solid fa-server absolute -bottom-10 -right-10 text-[15rem] text-white/5 -rotate-12"></i>
 
                 <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                     <div class="space-y-4 text-center md:text-left">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[#E7D532] text-[10px] font-black uppercase tracking-widest">
-                            <span class="w-1.5 h-1.5 bg-[#E7D532] rounded-full animate-pulse"></span> Administrator Portal
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] font-black uppercase tracking-widest">
+                            <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span> Administrator Portal
                         </div>
                         <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Selamat Datang, Admin</h1>
-                        <p class="text-blue-200 font-medium max-w-xl">Anda memiliki akses penuh untuk mengelola konten halaman beranda. Pastikan data yang dimasukkan akurat dan sesuai dengan standar perusahaan.</p>
+                        <p class="text-orange-100 font-medium max-w-xl">Anda memiliki akses penuh untuk mengelola konten halaman beranda. Pastikan data yang dimasukkan akurat dan sesuai dengan standar perusahaan.</p>
                     </div>
                     
                     <div class="flex gap-4">
                         <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center min-w-[120px]">
-    <p class="text-3xl font-black text-[#E7D532]">{{ $totalSemuaProduk }}</p>
-    <p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Total Produk</p>
+    <p class="text-3xl font-black text-white">{{ $totalSemuaProduk }}</p>
+    <p class="text-[9px] font-bold uppercase tracking-widest text-orange-100 mt-1">Total Produk</p>
 </div>
                         <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center min-w-[120px]">
-                            <p class="text-3xl font-black text-[#E7D532]">{{ $feedbacks->where('is_featured', true)->count() }}</p>
-                            <p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Ulasan Aktif</p>
+                            <p class="text-3xl font-black text-white">{{ $feedbacks->where('is_featured', true)->count() }}</p>
+                            <p class="text-[9px] font-bold uppercase tracking-widest text-orange-100 mt-1">Ulasan Aktif</p>
                         </div>
                     </div>
                 </div>
@@ -63,23 +63,23 @@
     <section class="py-16 bg-slate-50 px-6 relative">
         <div class="max-w-7xl mx-auto">
             
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-slate-200 pb-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-orange-100 pb-8">
                 <div class="space-y-1 w-full text-center md:text-left">
-                    <h2 class="text-3xl font-black text-slate-900 tracking-tighter uppercase">Kelola <span class="text-[#043978] italic">Produk Utama</span></h2>
+                    <h2 class="text-3xl font-black text-slate-900 tracking-tighter uppercase">Kelola <span class="text-[#C9490F] italic">Produk Utama</span></h2>
                     <p class="text-slate-500 font-medium text-sm">Menampilkan 3 produk unggulan di halaman beranda publik.</p>
                 </div>
                 
-                <button onclick="openProductModal('add')" class="w-full md:w-auto bg-[#043978] text-white px-8 py-4 rounded-xl shadow-lg hover:bg-slate-900 transition-colors flex items-center justify-center gap-3 font-black text-[11px] uppercase tracking-widest shrink-0">
+                <button onclick="openProductModal('add')" class="w-full md:w-auto bg-gradient-to-r from-orange-600 to-orange-500 text-white px-8 py-4 rounded-xl shadow-lg shadow-orange-500/30 hover:brightness-110 transition-all flex items-center justify-center gap-3 font-black text-[11px] uppercase tracking-widest shrink-0">
                     <i class="fa-solid fa-plus"></i> Tambah Alat Baru
                 </button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     @foreach($products as $item)
-    <div class="group bg-white rounded-[2.5rem] p-6 border-2 border-slate-200 hover:border-[#043978] transition duration-300 flex flex-col h-full shadow-sm relative">
+    <div class="group bg-white rounded-[2.5rem] p-6 border-2 border-slate-200 hover:border-[#C9490F] transition duration-300 flex flex-col h-full shadow-sm relative">
         
         <div class="absolute top-4 right-4 z-30 flex gap-2">
-            <button type="button" onclick="openProductModal('edit', {{ $item }})" class="w-10 h-10 bg-[#043978] text-white rounded-xl flex items-center justify-center shadow-md hover:bg-slate-900 transition-colors">
+            <button type="button" onclick="openProductModal('edit', {{ $item }})" class="w-10 h-10 bg-gradient-to-br from-orange-600 to-orange-500 text-white rounded-xl flex items-center justify-center shadow-md hover:brightness-110 transition-all">
                 <i class="fa-solid fa-pen text-xs"></i>
             </button>
             
@@ -94,16 +94,16 @@
 
         <div class="aspect-square bg-slate-50 rounded-[2rem] mb-6 overflow-hidden flex items-center justify-center relative border border-slate-100">
             @if($item->badge)
-            <div class="absolute top-4 left-4 bg-slate-900 text-[#E7D532] text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest z-10">{{ $item->badge }}</div>
+            <div class="absolute top-4 left-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest z-10 shadow-md">{{ $item->badge }}</div>
             @endif
             <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="w-48 object-contain">
         </div>
 
         <div class="px-2 flex flex-col flex-grow">
-            <p class="text-[#043978] text-[10px] font-black uppercase tracking-[0.3em] mb-2">{{ $item->brand }}</p>
+            <p class="text-[#C9490F] text-[10px] font-black uppercase tracking-[0.3em] mb-2">{{ $item->brand }}</p>
             <h3 class="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">{{ $item->name }}</h3>
             <p class="text-xs text-slate-500 leading-relaxed mb-6 flex-grow">{{ $item->description }}</p>
-            <a href="{{ route('admin.produk.detail', $item->id) }}" class="w-full bg-slate-100 text-slate-900 hover:bg-[#043978] hover:text-white py-3.5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-colors duration-300 mt-auto border border-slate-200 hover:border-[#043978]">
+            <a href="{{ route('admin.produk.detail', $item->id) }}" class="w-full bg-slate-100 text-slate-900 hover:bg-gradient-to-r hover:from-orange-600 hover:to-orange-500 hover:text-white py-3.5 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 mt-auto border border-slate-200 hover:border-transparent">
     <i class="fa-solid fa-circle-info"></i> Detail Produk
 </a>
         </div>
@@ -115,33 +115,33 @@
 
     <section class="py-16 bg-white px-6 relative border-t border-slate-100">
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-slate-200 pb-8">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-orange-100 pb-8">
             <div class="space-y-1 w-full text-center md:text-left">
-                <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Kelola <span class="italic text-[#043978]">Insight & Artikel</span></h2>
+                <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Kelola <span class="italic text-[#C9490F]">Insight & Artikel</span></h2>
                 <p class="text-slate-500 font-medium text-sm">Dokumentasi kegiatan lapangan dan publikasi artikel teknis.</p>
             </div>
             
-            <button onclick="openArticleModal()" class="w-full md:w-auto bg-[#043978] text-white px-8 py-4 rounded-xl shadow-lg hover:bg-slate-900 transition-colors flex items-center justify-center gap-3 font-black text-[11px] uppercase tracking-widest shrink-0">
+            <button onclick="openArticleModal()" class="w-full md:w-auto bg-gradient-to-r from-orange-600 to-orange-500 text-white px-8 py-4 rounded-xl shadow-lg shadow-orange-500/30 hover:brightness-110 transition-all flex items-center justify-center gap-3 font-black text-[11px] uppercase tracking-widest shrink-0">
                 <i class="fa-solid fa-file-pen"></i> Tulis Artikel Baru
             </button>
         </div>
 
         <div class="grid grid-cols-1 gap-4">
             @foreach($articles as $art)
-            <div class="group bg-slate-50 p-5 rounded-[2rem] border border-slate-200 flex flex-col md:flex-row items-center gap-6 hover:border-[#043978] transition-all">
+            <div class="group bg-slate-50 p-5 rounded-[2rem] border border-slate-200 flex flex-col md:flex-row items-center gap-6 hover:border-[#C9490F] transition-all">
                 <img src="{{ asset('storage/'.$art->thumbnail) }}" class="w-full md:w-32 h-24 object-cover rounded-2xl shadow-md">
                 <div class="flex-grow text-center md:text-left">
                     <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-2">
                         @if($art->is_highlight)
-                            <span class="px-2 py-0.5 bg-blue-100 text-blue-600 text-[8px] font-black uppercase tracking-widest rounded-md border border-blue-200">Highlight Utama</span>
+                            <span class="px-2 py-0.5 bg-orange-100 text-orange-700 text-[8px] font-black uppercase tracking-widest rounded-md border border-orange-200">Highlight Utama</span>
                         @endif
                         <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $art->created_at->format('d M Y') }}</span>
                     </div>
-                    <h3 class="font-black text-slate-800 uppercase tracking-tight group-hover:text-[#043978] transition-colors">{{ $art->title }}</h3>
+                    <h3 class="font-black text-slate-800 uppercase tracking-tight group-hover:text-[#C9490F] transition-colors">{{ $art->title }}</h3>
                 </div>
                 
                 <div class="flex gap-2">
-                    <a href="{{ route('admin.article.edit', $art->id) }}" class="w-12 h-12 bg-[#043978] text-white rounded-2xl flex items-center justify-center shadow-sm hover:bg-slate-900 transition-all">
+                    <a href="{{ route('admin.article.edit', $art->id) }}" class="w-12 h-12 bg-gradient-to-br from-orange-600 to-orange-500 text-white rounded-2xl flex items-center justify-center shadow-sm hover:brightness-110 transition-all">
                         <i class="fa-solid fa-pen-to-square text-xs"></i>
                     </a>
 
@@ -163,9 +163,9 @@
     <section class="py-24 bg-white relative border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
             
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-slate-200 pb-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-orange-100 pb-8">
                 <div class="space-y-1 w-full text-center md:text-left">
-                    <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Kelola <span class="italic text-[#043978]">Ulasan Pelanggan</span></h2>
+                    <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Kelola <span class="italic text-[#C9490F]">Ulasan Pelanggan</span></h2>
                     <p class="text-slate-500 font-medium text-sm">Pilih testimoni terbaik untuk ditampilkan di halaman publik.</p>
                 </div>
                 
@@ -173,7 +173,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     @foreach($feedbacks as $item)
-    <div class="bg-slate-50 p-8 rounded-[2.5rem] border {{ $item->is_featured ? 'border-[#043978] shadow-lg' : 'border-slate-200' }} relative group transition-all">
+    <div class="bg-slate-50 p-8 rounded-[2.5rem] border {{ $item->is_featured ? 'border-[#C9490F] shadow-lg shadow-orange-500/10' : 'border-slate-200' }} relative group transition-all">
         
         <div class="absolute top-4 right-4 z-30 flex gap-2">
             <form action="{{ route('feedback.toggle', $item->id) }}" method="POST">
@@ -194,13 +194,13 @@
 
         <div class="flex gap-1 text-xs mb-6">
             @for($i = 1; $i <= 5; $i++)
-                <i class="fa-solid fa-star {{ $i <= $item->rating ? 'text-[#E7D532]' : 'text-slate-300' }}"></i>
+                <i class="fa-solid fa-star {{ $i <= $item->rating ? 'text-[#FFB347]' : 'text-slate-300' }}"></i>
             @endfor
         </div>
         <p class="text-slate-700 font-medium leading-relaxed italic text-sm mb-8">"{{ Str::limit($item->message, 120) }}"</p>
         
         <div class="flex items-center gap-4 border-t border-slate-200 pt-6">
-            <div class="w-12 h-12 rounded-xl bg-[#043978] text-white flex items-center justify-center font-black text-lg">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-600 to-orange-500 text-white flex items-center justify-center font-black text-lg shadow-md shadow-orange-500/30">
                 {{ strtoupper(substr($item->name, 0, 2)) }}
             </div>
             <div>
@@ -210,7 +210,7 @@
         </div>
         
         @if($item->is_featured)
-            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#043978] text-white text-[8px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">
+            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-600 to-orange-500 text-white text-[8px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-md shadow-orange-500/30">
                 Tampil di Publik
             </div>
         @endif
@@ -227,7 +227,7 @@
         <div class="relative bg-white w-full max-w-4xl rounded-[2.5rem] shadow-2xl flex flex-col max-h-[90vh] overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-300">
             <div class="bg-slate-50 px-8 py-6 border-b border-slate-200 flex justify-between items-center">
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-[#043978] text-white rounded-xl flex items-center justify-center shadow-md"><i class="fa-solid fa-pen-to-square"></i></div>
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-600 to-orange-500 text-white rounded-xl flex items-center justify-center shadow-md"><i class="fa-solid fa-pen-to-square"></i></div>
                     <div>
                         <h3 id="modalTitle" class="text-xl font-black text-slate-900 uppercase tracking-tight">Formulir Instrumen</h3>
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Lengkapi data teknis perangkat</p>
@@ -246,11 +246,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
                         <div class="md:col-span-5 space-y-6">
                             <div class="space-y-2">
-                                <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Foto Perangkat (PNG/JPG)</label>
+                                <label class="text-[10px] font-black uppercase text-[#C9490F] ml-1">Foto Perangkat (PNG/JPG)</label>
                                 <div class="aspect-square rounded-3xl border-2 border-dashed border-slate-300 bg-slate-50 relative group flex items-center justify-center overflow-hidden">
                                     <input type="file" name="image" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="imageInput" onchange="previewImg(event)">
                                     <div id="uploadPlaceholder" class="text-center flex flex-col items-center z-0">
-                                        <i class="fa-solid fa-cloud-arrow-up text-4xl text-slate-300 group-hover:text-[#043978] mb-3 transition-colors"></i>
+                                        <i class="fa-solid fa-cloud-arrow-up text-4xl text-slate-300 group-hover:text-[#C9490F] mb-3 transition-colors"></i>
                                         <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Klik / Drop Foto</p>
                                     </div>
                                     <img id="imagePreview" src="" class="absolute inset-0 w-full h-full object-contain p-4 hidden z-0 bg-white">
@@ -261,21 +261,21 @@
                         <div class="md:col-span-7 space-y-6">
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="space-y-2">
-                                    <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Merk / Brand</label>
+                                    <label class="text-[10px] font-black uppercase text-[#C9490F] ml-1">Merk / Brand</label>
                                     <input type="text" name="brand" id="brandInput" class="admin-input w-full rounded-xl p-4 text-sm font-bold" required>
                                 </div>
                                 <div class="space-y-2">
-                                    <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Badge (Opsional)</label>
+                                    <label class="text-[10px] font-black uppercase text-[#C9490F] ml-1">Badge (Opsional)</label>
                                     <input type="text" name="badge" id="badgeInput" class="admin-input w-full rounded-xl p-4 text-sm font-bold">
                                 </div>
                             </div>
                             <div class="space-y-2">
-                                <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Nama Alat</label>
+                                <label class="text-[10px] font-black uppercase text-[#C9490F] ml-1">Nama Alat</label>
                                 <input type="text" name="name" id="nameInput" class="admin-input w-full rounded-xl p-4 text-sm font-bold" required>
                             </div>
                             <div class="space-y-2">
-    <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Kategori Produk</label>
-    <select name="category_id" id="categoryInput" required class="w-full rounded-xl p-4 text-sm font-bold bg-white border border-blue-200 appearance-none">
+    <label class="text-[10px] font-black uppercase text-[#C9490F] ml-1">Kategori Produk</label>
+    <select name="category_id" id="categoryInput" required class="w-full rounded-xl p-4 text-sm font-bold bg-white border border-orange-200 appearance-none">
         <option value="" disabled selected>-- Pilih Kategori --</option>
         @foreach($categories as $cat)
             <option value="{{ $cat->id }}">{{ $cat->name }}</option> 
@@ -283,7 +283,7 @@
     </select>
 </div>
                             <div class="space-y-2">
-                                <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Deskripsi Singkat</label>
+                                <label class="text-[10px] font-black uppercase text-[#C9490F] ml-1">Deskripsi Singkat</label>
                                 <textarea name="description" id="descInput" rows="4" class="admin-input w-full rounded-xl p-4 text-sm font-medium resize-none" required></textarea>
                             </div>
                         </div>
@@ -291,7 +291,7 @@
                     
                     <div class="mt-8 pt-6 border-t border-slate-200 flex justify-end gap-4">
                         <button type="button" onclick="closeProductModal()" class="px-8 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest text-slate-500 hover:bg-slate-200 transition-colors">Batal</button>
-                        <button type="submit" class="px-10 py-3 bg-[#043978] text-white rounded-xl font-black text-[11px] uppercase tracking-widest shadow-lg hover:bg-slate-900 transition-colors flex items-center gap-3"><i class="fa-solid fa-floppy-disk"></i> Simpan Data</button>
+                        <button type="submit" class="px-10 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-xl font-black text-[11px] uppercase tracking-widest shadow-lg shadow-orange-500/30 hover:brightness-110 transition-all flex items-center gap-3"><i class="fa-solid fa-floppy-disk"></i> Simpan Data</button>
                     </div>
                 </form>
             </div>
@@ -302,7 +302,7 @@
     <div class="relative bg-white w-full max-w-4xl rounded-[2.5rem] shadow-2xl flex flex-col max-h-[90vh] overflow-hidden animate-in zoom-in-95 duration-300">
         <div class="bg-slate-50 px-8 py-6 border-b border-slate-200 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <div class="w-10 h-10 bg-[#043978] text-white rounded-xl flex items-center justify-center shadow-md"><i class="fa-solid fa-newspaper"></i></div>
+                <div class="w-10 h-10 bg-gradient-to-br from-orange-600 to-orange-500 text-white rounded-xl flex items-center justify-center shadow-md"><i class="fa-solid fa-newspaper"></i></div>
                 <div>
                     <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight">Penerbitan Konten</h3>
                     <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Publikasikan dokumentasi & artikel terbaru</p>
@@ -318,32 +318,32 @@
             <div class="p-8 overflow-y-auto custom-scrollbar space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-4">
-                        <label class="text-[10px] font-black uppercase text-[#043978]">Thumbnail Artikel (Utama)</label>
+                        <label class="text-[10px] font-black uppercase text-[#C9490F]">Thumbnail Artikel (Utama)</label>
                         <input type="file" name="thumbnail" required class="w-full p-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl text-xs font-bold">
                         
-                        <label class="text-[10px] font-black uppercase text-[#043978]">Galeri Foto Dokumentasi (Opsional)</label>
+                        <label class="text-[10px] font-black uppercase text-[#C9490F]">Galeri Foto Dokumentasi (Opsional)</label>
                         <input type="file" name="gallery[]" multiple class="w-full p-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl text-xs font-bold">
                     </div>
                     <div class="space-y-4">
-                        <label class="text-[10px] font-black uppercase text-[#043978]">Judul Artikel</label>
+                        <label class="text-[10px] font-black uppercase text-[#C9490F]">Judul Artikel</label>
                         <input type="text" name="title" required class="admin-input w-full rounded-xl p-4 text-sm font-bold" placeholder="Masukkan judul menarik...">
                         
-                        <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 flex items-center gap-3">
-                            <input type="checkbox" name="is_highlight" id="artHighlight" class="w-5 h-5 rounded border-slate-300 text-[#043978] focus:ring-[#043978]">
-                            <label for="artHighlight" class="text-xs font-black uppercase text-[#043978] cursor-pointer">Jadikan Highlight Utama di Beranda</label>
+                        <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100 flex items-center gap-3">
+                            <input type="checkbox" name="is_highlight" id="artHighlight" class="w-5 h-5 rounded border-slate-300 text-[#C9490F] focus:ring-[#C9490F]">
+                            <label for="artHighlight" class="text-xs font-black uppercase text-[#C9490F] cursor-pointer">Jadikan Highlight Utama di Beranda</label>
                         </div>
                     </div>
                 </div>
                 
                 <div class="space-y-2">
-                    <label class="text-[10px] font-black uppercase text-[#043978]">Isi Artikel / Deskripsi Dokumentasi</label>
+                    <label class="text-[10px] font-black uppercase text-[#C9490F]">Isi Artikel / Deskripsi Dokumentasi</label>
                     <textarea name="content" rows="8" class="admin-input w-full rounded-[2rem] p-6 text-sm font-medium resize-none" placeholder="Tuliskan isi artikel atau narasi kegiatan lapangan di sini..." required></textarea>
                 </div>
             </div>
 
             <div class="bg-slate-50 px-10 py-6 border-t border-slate-200 flex justify-end gap-4">
                 <button type="button" onclick="closeArticleModal()" class="px-8 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest text-slate-500 hover:bg-slate-200 transition-colors">Batal</button>
-                <button type="submit" class="px-10 py-3 bg-[#043978] text-white rounded-xl font-black text-[11px] uppercase tracking-widest shadow-lg hover:bg-slate-900 transition-colors flex items-center gap-3"><i class="fa-solid fa-paper-plane"></i> Terbitkan Sekarang</button>
+                <button type="submit" class="px-10 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-xl font-black text-[11px] uppercase tracking-widest shadow-lg shadow-orange-500/30 hover:brightness-110 transition-all flex items-center gap-3"><i class="fa-solid fa-paper-plane"></i> Terbitkan Sekarang</button>
             </div>
         </form>
     </div>
@@ -367,7 +367,7 @@
         document.body.style.overflow = 'hidden'; 
         
         if(action === 'edit') {
-            modalTitle.innerHTML = `Edit <span class="text-[#043978]">Instrumen Utama</span>`;
+            modalTitle.innerHTML = `Edit <span class="text-[#C9490F]">Instrumen Utama</span>`;
             form.action = `/admin/product/${productData.id}`;
             
             // Masukkan sinyal Update 'main' untuk Controller
@@ -393,7 +393,7 @@
             imageInput.removeAttribute('required');
 
         } else {
-            modalTitle.innerHTML = `Tambah <span class="text-[#043978]">Instrumen Utama</span>`;
+            modalTitle.innerHTML = `Tambah <span class="text-[#C9490F]">Instrumen Utama</span>`;
             form.action = "{{ route('product.storeUnggulan') }}";
             methodContainer.innerHTML = ''; 
             form.reset();

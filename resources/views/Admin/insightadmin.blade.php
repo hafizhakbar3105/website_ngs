@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
-    <title>Manage Insight | Nusa Geospatial Admin</title>
+    <title>Manage Insight | K Survey Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .admin-input { background-color: #F8FAFC; border: 1px solid #E2E8F0; transition: all 0.2s ease; }
-        .admin-input:focus { background-color: #FFFFFF; border-color: #043978; outline: none; box-shadow: 0 0 0 4px rgba(4, 57, 120, 0.08); }
+        .admin-input:focus { background-color: #FFFFFF; border-color: #C9490F; outline: none; box-shadow: 0 0 0 4px rgba(201, 73, 15, 0.1); }
         .photo-item { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
@@ -45,9 +45,9 @@
                     <a href="{{ route('admin.article.index') }}" class="text-[10px] font-black uppercase text-slate-400 hover:text-red-500 transition-colors">
                         <i class="fa-solid fa-arrow-left"></i> Batal & Kembali
                     </a>
-                    <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Edit <span class="text-[#043978]">Insight Detail</span></h2>
+                    <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Edit <span class="text-[#C9490F]">Insight Detail</span></h2>
                 </div>
-                <button type="submit" form="editForm" class="bg-[#043978] text-white px-8 py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest shadow-xl hover:bg-slate-900 transition-all flex items-center gap-3">
+                <button type="submit" form="editForm" class="bg-gradient-to-r from-orange-600 to-orange-500 text-white px-8 py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest shadow-xl shadow-orange-500/30 hover:brightness-110 transition-all flex items-center gap-3">
                     <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan
                 </button>
             </div>
@@ -58,14 +58,14 @@
 
                 {{-- KOLOM KIRI: KONTEN --}}
                 <div class="lg:col-span-7 space-y-8">
-                    <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm space-y-6">
+                    <div class="bg-white p-8 rounded-[2.5rem] border-2 border-orange-100 shadow-sm shadow-orange-500/5 space-y-6">
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Judul Artikel</label>
+                            <label class="text-[10px] font-black uppercase text-[#C9490F] ml-1">Judul Artikel</label>
                             <input type="text" name="title" value="{{ $article->title }}" required class="w-full p-4 admin-input rounded-2xl text-sm font-bold">
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-[#043978] ml-1">Konten / Narasi</label>
+                            <label class="text-[10px] font-black uppercase text-[#C9490F] ml-1">Konten / Narasi</label>
                             <textarea name="content" rows="15" required class="w-full p-6 admin-input rounded-[2rem] text-sm font-medium resize-none leading-relaxed">{{ $article->content }}</textarea>
                         </div>
                     </div>
@@ -74,11 +74,11 @@
                 {{-- KOLOM KANAN: MEDIA --}}
                 <div class="lg:col-span-5 space-y-8">
                     {{-- Thumbnail Manager --}}
-                    <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm">
+                    <div class="bg-white p-8 rounded-[2.5rem] border-2 border-orange-100 shadow-sm shadow-orange-500/5">
                         <h3 class="text-[10px] font-black uppercase text-slate-400 mb-6 flex items-center gap-2">
                             <i class="fa-solid fa-image"></i> Main Thumbnail
                         </h3>
-                        <div class="aspect-video rounded-3xl overflow-hidden mb-4 border border-slate-100 bg-slate-50 relative group">
+                        <div class="aspect-video rounded-3xl overflow-hidden mb-4 border border-orange-50 bg-slate-50 relative group">
                             <img id="thumbPreview" src="{{ asset('storage/'.$article->thumbnail) }}" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                 <label for="thumbInput" class="cursor-pointer bg-white text-slate-900 px-6 py-2 rounded-xl font-bold text-[10px] uppercase shadow-lg">Ganti Foto</label>
@@ -88,7 +88,7 @@
                     </div>
 
                     {{-- Gallery Manager --}}
-                    <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm">
+                    <div class="bg-white p-8 rounded-[2.5rem] border-2 border-orange-100 shadow-sm shadow-orange-500/5">
                         <h3 class="text-[10px] font-black uppercase text-slate-400 mb-6 flex items-center gap-2">
                             <i class="fa-solid fa-images"></i> Field Gallery
                         </h3>
@@ -109,7 +109,7 @@
                             @endif
                             
                             {{-- Tombol Tambah --}}
-                            <label for="galleryInput" class="aspect-square rounded-xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-300 hover:text-[#043978] hover:border-[#043978] cursor-pointer transition-all bg-slate-50">
+                            <label for="galleryInput" class="aspect-square rounded-xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-300 hover:text-[#C9490F] hover:border-[#C9490F] cursor-pointer transition-all bg-slate-50">
                                 <i class="fa-solid fa-plus text-xl mb-1"></i>
                                 <span class="text-[8px] font-black uppercase">Add Photo</span>
                             </label>
@@ -118,9 +118,9 @@
                         <div id="deletePhotosContainer"></div>
                         <input type="file" name="gallery[]" id="galleryInput" class="hidden" multiple onchange="previewGallery(event)">
                         
-                        <div class="p-4 bg-blue-50 rounded-2xl flex items-center gap-3 border border-blue-100 mt-4">
-                            <input type="checkbox" name="is_highlight" id="highCheck" {{ $article->is_highlight ? 'checked' : '' }} class="w-5 h-5 rounded text-[#043978]">
-                            <label for="highCheck" class="text-[10px] font-black uppercase text-[#043978] cursor-pointer">Highlight Beranda</label>
+                        <div class="p-4 bg-orange-50 rounded-2xl flex items-center gap-3 border border-orange-100 mt-4">
+                            <input type="checkbox" name="is_highlight" id="highCheck" {{ $article->is_highlight ? 'checked' : '' }} class="w-5 h-5 rounded text-[#C9490F]">
+                            <label for="highCheck" class="text-[10px] font-black uppercase text-[#C9490F] cursor-pointer">Highlight Beranda</label>
                         </div>
                     </div>
                 </div>
@@ -130,32 +130,32 @@
             {{-- ==========================================
                  MODE 2: DAFTAR ARTIKEL (INDEX)
                  ========================================== --}}
-            <div class="bg-[#043978] p-10 rounded-[3rem] text-white flex flex-col md:flex-row justify-between items-center mb-10 shadow-2xl relative overflow-hidden">
+            <div class="bg-gradient-to-br from-orange-600 to-orange-500 p-10 rounded-[3rem] text-white flex flex-col md:flex-row justify-between items-center mb-10 shadow-2xl shadow-orange-600/30 relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
                 <div class="relative z-10">
                     <h1 class="text-4xl font-black uppercase italic tracking-tighter">Insight Manager</h1>
-                    <p class="text-blue-200 font-medium">Kelola publikasi artikel dan dokumentasi lapangan.</p>
+                    <p class="text-orange-100 font-medium">Kelola publikasi artikel dan dokumentasi lapangan.</p>
                 </div>
-                <button onclick="openArticleModal()" class="relative z-10 mt-6 md:mt-0 bg-[#E7D532] text-[#043978] px-8 py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white transition-all">
+                <button onclick="openArticleModal()" class="relative z-10 mt-6 md:mt-0 bg-white text-[#C9490F] px-8 py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-orange-50 transition-all shadow-md">
                     Tulis Artikel Baru
                 </button>
             </div>
 
             <div class="grid grid-cols-1 gap-4">
                 @foreach($articles as $art)
-                <div class="group bg-white p-5 rounded-[2.5rem] border border-slate-200 flex flex-col md:flex-row items-center gap-6 hover:border-[#043978] transition-all shadow-sm">
+                <div class="group bg-white p-5 rounded-[2.5rem] border border-slate-200 flex flex-col md:flex-row items-center gap-6 hover:border-[#C9490F] hover:shadow-lg hover:shadow-orange-500/10 transition-all shadow-sm">
                     <img src="{{ asset('storage/'.$art->thumbnail) }}" class="w-full md:w-32 h-24 object-cover rounded-3xl shadow-md">
                     <div class="flex-grow text-center md:text-left">
                         <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-2">
                             @if($art->is_highlight)
-                                <span class="px-2 py-0.5 bg-blue-100 text-blue-600 text-[8px] font-black uppercase tracking-widest rounded-md border border-blue-200">Highlight</span>
+                                <span class="px-2 py-0.5 bg-orange-100 text-orange-700 text-[8px] font-black uppercase tracking-widest rounded-md border border-orange-200">Highlight</span>
                             @endif
                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $art->created_at->format('d M Y') }}</span>
                         </div>
-                        <h3 class="font-black text-slate-800 uppercase tracking-tight group-hover:text-[#043978] transition-colors leading-tight">{{ $art->title }}</h3>
+                        <h3 class="font-black text-slate-800 uppercase tracking-tight group-hover:text-[#C9490F] transition-colors leading-tight">{{ $art->title }}</h3>
                     </div>
                     <div class="flex gap-2">
-                        <a href="{{ route('admin.article.edit', $art->id) }}" class="w-12 h-12 bg-[#043978] text-white rounded-2xl flex items-center justify-center hover:bg-slate-900 transition-all shadow-sm">
+                        <a href="{{ route('admin.article.edit', $art->id) }}" class="w-12 h-12 bg-gradient-to-br from-orange-600 to-orange-500 text-white rounded-2xl flex items-center justify-center hover:brightness-110 transition-all shadow-sm">
                             <i class="fa-solid fa-pen-to-square text-xs"></i>
                         </a>
                         <form action="{{ route('admin.article.destroy', $art->id) }}" method="POST">
@@ -198,11 +198,11 @@
                     const reader = new FileReader();
                     reader.onload = function(e) {
                         const div = document.createElement('div');
-                        div.className = "new-preview aspect-square rounded-xl overflow-hidden border-2 border-blue-400 relative group shadow-md";
+                        div.className = "new-preview aspect-square rounded-xl overflow-hidden border-2 border-orange-400 relative group shadow-md";
                         div.innerHTML = `
                             <img src="${e.target.result}" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-blue-600/20 flex items-center justify-center">
-                                <span class="text-[7px] font-black text-white uppercase bg-blue-600 px-1.5 py-0.5 rounded">New</span>
+                            <div class="absolute inset-0 bg-orange-600/20 flex items-center justify-center">
+                                <span class="text-[7px] font-black text-white uppercase bg-orange-600 px-1.5 py-0.5 rounded">New</span>
                             </div>
                         `;
                         container.insertBefore(div, container.lastElementChild);
