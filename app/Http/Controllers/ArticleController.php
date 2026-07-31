@@ -11,7 +11,6 @@ class ArticleController extends Controller {
 
     public function showPublic($slug) {
         $article = Article::where('slug', $slug)->firstOrFail();
-        // Ambil artikel lain untuk rekomendasi di bawah/samping
         $otherArticles = Article::where('id', '!=', $article->id)->latest()->take(3)->get();
         return view('detailartikel', compact('article', 'otherArticles'));
     }
@@ -21,12 +20,13 @@ class ArticleController extends Controller {
         return view('Admin.insightadmin', compact('articles'));
     }
 
+    // --- FITUR TAMBAH ARTIKEL BARU ---
     public function store(Request $request) {
         $request->validate([
-            'title' => 'required',
-            'thumbnail' => 'required|image|max:2048',
-            'content' => 'required',
-            'gallery.*' => 'image|max:2048'
+            'title'     => 'required|string|max:255',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,webp|max:102400', // Maksimal 100 MB
+            'content'   => 'required',
+            'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:102400'  // Maksimal 100 MB
         ]);
 
         $thumbPath = $request->file('thumbnail')->store('articles/thumbs', 'public');
@@ -39,11 +39,11 @@ class ArticleController extends Controller {
         }
 
         Article::create([
-            'title' => $request->title,
-            'slug' => Str::slug($request->title),
-            'thumbnail' => $thumbPath,
-            'content' => $request->content,
-            'gallery' => $galleryPaths,
+            'title'        => $request->title,
+            'slug'         => Str::slug($request->title),
+            'thumbnail'    => $thumbPath,
+            'content'      => $request->content,
+            'gallery'      => $galleryPaths,
             'is_highlight' => $request->has('is_highlight')
         ]);
 
@@ -52,70 +52,69 @@ class ArticleController extends Controller {
 
     public function destroy($id) {
         $article = Article::findOrFail($id);
-        Storage::disk('public')->delete($article->thumbnail);
-        if($article->gallery) {
-            foreach($article->gallery as $img) { Storage::disk('public')->delete($img); }
+        if($article->thumbnail) {
+            Storage::disk('public')->delete($article->thumbnail);
+        }
+        if($article->gallery && is_array($article->gallery)) {
+            foreach($article->gallery as $img) { 
+                Storage::disk('public')->delete($img); 
+            }
         }
         $article->delete();
         return back()->with('success', 'Konten berhasil dihapus!');
     }
 
-   public function edit($id) {
-    $article = Article::findOrFail($id);
-    
-    // Ubah 'Admin.edit_insight' menjadi 'Admin.insightadmin'
-    return view('Admin.insightadmin', compact('article'));
-}
+    public function edit($id) {
+        $article = Article::findOrFail($id);
+        return view('Admin.insightadmin', compact('article'));
+    }
 
-public function update(Request $request, $id) {
-    $article = Article::findOrFail($id);
-    
-    $request->validate([
-        'title' => 'required',
-        'content' => 'required',
-        'thumbnail' => 'nullable|image|max:2048',
-        'gallery.*' => 'nullable|image|max:2048'
-    ]);
+    // --- FITUR UPDATE ARTIKEL ---
+    public function update(Request $request, $id) {
+        $article = Article::findOrFail($id);
+        
+        // PERBAIKAN: 'thumbnail' dibuat NULLABLE agar tidak wajib diunggah ulang saat edit
+        $request->validate([
+            'title'     => 'required|string|max:255',
+            'content'   => 'required',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:102400', // Nullable
+            'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:102400'
+        ]);
 
-    // Ambil galeri yang lama
-    $currentGallery = $article->gallery ?? [];
+        $currentGallery = $article->gallery ?? [];
 
-    // LOGIKA HAPUS FOTO SPESIFIK (Jika ada request hapus)
-    if ($request->has('remove_photos')) {
-        foreach ($request->remove_photos as $photoPath) {
-            // Hapus dari file fisik storage
-            \Illuminate\Support\Facades\Storage::disk('public')->delete($photoPath);
-            // Hapus dari array
-            $currentGallery = array_diff($currentGallery, [$photoPath]);
+        if ($request->has('remove_photos')) {
+            foreach ($request->remove_photos as $photoPath) {
+                Storage::disk('public')->delete($photoPath);
+                $currentGallery = array_diff($currentGallery, [$photoPath]);
+            }
+            $currentGallery = array_values($currentGallery);
         }
-        // Reset index array agar tetap berurutan
-        $currentGallery = array_values($currentGallery);
-    }
 
-    $data = [
-        'title' => $request->title,
-        'slug' => \Illuminate\Support\Str::slug($request->title),
-        'content' => $request->content,
-        'is_highlight' => $request->has('is_highlight')
-    ];
+        $data = [
+            'title'        => $request->title,
+            'slug'         => Str::slug($request->title),
+            'content'      => $request->content,
+            'is_highlight' => $request->has('is_highlight')
+        ];
 
-    // Ganti Thumbnail
-    if ($request->hasFile('thumbnail')) {
-        if($article->thumbnail) \Illuminate\Support\Facades\Storage::disk('public')->delete($article->thumbnail);
-        $data['thumbnail'] = $request->file('thumbnail')->store('articles/thumbs', 'public');
-    }
-
-    // Tambah Foto Baru ke Galeri
-    if ($request->hasFile('gallery')) {
-        foreach ($request->file('gallery') as $file) {
-            $currentGallery[] = $file->store('articles/gallery', 'public');
+        if ($request->hasFile('thumbnail')) {
+            if($article->thumbnail) {
+                Storage::disk('public')->delete($article->thumbnail);
+            }
+            $data['thumbnail'] = $request->file('thumbnail')->store('articles/thumbs', 'public');
         }
+
+        if ($request->hasFile('gallery')) {
+            foreach ($request->file('gallery') as $file) {
+                $currentGallery[] = $file->store('articles/gallery', 'public');
+            }
+        }
+        
+        $data['gallery'] = $currentGallery;
+
+        $article->update($data);
+
+        return redirect()->route('admin.article.index')->with('success', 'Perubahan berhasil disimpan!');
     }
-    
-    $data['gallery'] = $currentGallery;
-
-    $article->update($data);
-
-    return redirect()->route('admin.article.index')->with('success', 'Perubahan berhasil disimpan!');
-}
 }

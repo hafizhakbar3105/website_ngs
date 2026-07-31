@@ -59,11 +59,12 @@
 <div class="space-y-12">
     <!-- Judul Utama -->
     <h1 class="text-6xl lg:text-8xl font-black text-white leading-tight lg:leading-[1.1] tracking-tighter">
-        Precision <span class="inline-block text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 py-1">Data</span><br>
+        Trusted 
+        <br><span class="inline-block text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 py-1">Your </span><br>
         <span class="relative inline-block py-2">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-600 italic px-2">Trusted</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-600 italic px-2">Partner</span>
             <span class="absolute bottom-1 left-2 w-[90%] h-1 bg-gradient-to-r from-orange-500 to-transparent"></span>
-        </span> Solutions
+        </span> Survey
     </h1>
 
     <!-- Deskripsi Super Clean & Rapi -->
@@ -114,7 +115,7 @@
                     <div class="absolute top-0 -inset-full h-full w-full z-20 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-30 group-hover:animate-shine"></div>
                 </div>
 
-                <div class="absolute -bottom-10 -right-10 bg-white/95 backdrop-blur-2xl p-8 rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border border-slate-100 transform hover:-translate-y-2 transition-transform duration-500">
+                {{-- <div class="absolute -bottom-10 -right-10 bg-white/95 backdrop-blur-2xl p-8 rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border border-slate-100 transform hover:-translate-y-2 transition-transform duration-500">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center">
                             <i class="fa-solid fa-bullseye text-orange-600 text-xl"></i>
@@ -124,7 +125,7 @@
                             <p class="text-3xl font-black text-[#C9490F] tracking-tighter">99.9% <span class="text-sm font-bold text-slate-400">Precision</span></p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 
             </div>
@@ -167,14 +168,33 @@
 
 <section class="relative py-24 bg-white px-6 overflow-hidden border-t border-slate-100">
     
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-orange-500/20 rounded-full animate-[ping_4s_linear_infinite] pointer-events-none"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-orange-400/10 rounded-full animate-[ping_6s_linear_infinite] pointer-events-none"></div>
-
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full animate-[spin_10s_linear_infinite] pointer-events-none"
-         style="background: conic-gradient(from 0deg, transparent 70%, rgba(201, 73, 15, 0.15) 100%);">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1/2 bg-gradient-to-b from-[#C9490F] to-transparent opacity-40"></div>
+    <!-- BACKGROUND ANIMASI KONTUR TANAH (TOPOGRAPHIC LINES) -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.30] overflow-hidden">
+        <svg class="w-full h-full animate-[pulse_8s_ease-in-out_infinite]" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#C9490F" stroke-width="1.5">
+                <!-- Garis-garis kontur topografi bergelombang -->
+                <path d="M-100,200 C150,300 350,100 600,250 C850,400 1050,150 1200,300" class="animate-[dash_20s_linear_infinite]" />
+                <path d="M-100,300 C200,450 400,200 650,350 C900,500 1000,300 1200,450" />
+                <path d="M-100,400 C100,550 300,300 550,500 C800,700 1100,400 1200,600" />
+                <path d="M-100,550 C250,650 450,450 700,600 C950,750 1050,500 1200,700" />
+                <path d="M-100,700 C150,800 350,600 600,750 C850,900 1000,700 1200,850" />
+                <!-- Elemen Kontur Melingkar (Elevasi Topografi) -->
+                <circle cx="300" cy="400" r="180" stroke-dasharray="8,8" class="animate-[spin_60s_linear_infinite]" />
+                <circle cx="300" cy="400" r="120" />
+                <circle cx="300" cy="400" r="60" />
+                
+                <circle cx="800" cy="650" r="220" stroke-dasharray="6,6" class="animate-[spin_45s_linear_infinite_reverse]" />
+                <circle cx="800" cy="650" r="150" />
+                <circle cx="800" cy="650" r="80" />
+            </g>
+        </svg>
     </div>
 
+    <!-- Pendaran Gelombang / Ping -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-orange-500/15 rounded-full animate-[ping_5s_linear_infinite] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-orange-400/10 rounded-full animate-[ping_8s_linear_infinite] pointer-events-none"></div>
+
+    <!-- Micro Tech Dots -->
     <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
     <div class="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-orange-800 rounded-full animate-pulse delay-700"></div>
 
@@ -222,18 +242,32 @@
 
 
     <section class="relative py-32 px-6 overflow-hidden tech-gradient">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-orange-600/5 rounded-full blur-[120px] pointer-events-none"></div>
     
-    <div class="absolute inset-0 opacity-[0.05] pointer-events-none" 
-         style="background-image: linear-gradient(#ff6a1a 1px, transparent 1px), linear-gradient(90deg, #ff6a1a 1px, transparent 1px); background-size: 100px 100px;">
+    <!-- BACKGROUND ANIMASI UNIK: GEOSPATIAL RADAR & SCANNER GRID -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <!-- 1. Perspective Tech Grid (Garis Kotak Presisi) -->
+        <div class="absolute inset-0 opacity-[0.07]" 
+             style="background-image: linear-gradient(to right, #ff6a1a 1px, transparent 1px), linear-gradient(to bottom, #ff6a1a 1px, transparent 1px); background-size: 80px 80px;">
+        </div>
+
+        <!-- 2. Rotating Radar Line (Efek Pemindai Sinyal Geospasial) -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full animate-[spin_25s_linear_infinite] opacity-30"
+             style="background: conic-gradient(from 0deg, transparent 80%, rgba(255, 106, 26, 0.4) 100%);">
+        </div>
+
+        <!-- 3. Pulse Waves Radius (Sonar Gelombang Sinyal) -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-orange-500/20 rounded-full animate-[ping_7s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-orange-500/10 rounded-full animate-[ping_10s_cubic-bezier(0,0,0.2,1)_infinite_1s]"></div>
+        
+        <!-- 4. Pendaran Ambient Glow Oranye -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-orange-600/10 rounded-full blur-[140px]"></div>
     </div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-orange-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-white/5 pb-10">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-white/10 pb-10">
             <div class="max-w-2xl">
                 <h2 class="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase leading-tight">
-                    Layanan <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300 italic px-2">Terintegrasi</span>
+                    Layanan <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 italic px-2">Terintegrasi</span>
                 </h2>
                 <p class="text-slate-400 mt-6 font-medium leading-relaxed text-lg italic">
                     “Memberikan ekosistem lengkap dari pengadaan hingga dukungan teknis pasca-jual.”
@@ -243,93 +277,185 @@
 
         <div class="grid grid-cols-1 gap-10">
             
-            <div class="group relative overflow-hidden p-10 rounded-[3.5rem] border border-white/10 flex flex-col justify-between min-h-[450px] transition-all duration-700 hover:border-orange-500/40 hover:shadow-[0_0_50px_-12px_rgba(255,106,26,0.3)]">
+            <!-- CARD 1: KINEMATIC GNSS -->
+            <div class="group relative overflow-hidden p-10 rounded-[3.5rem] border border-white/10 flex flex-col justify-between min-h-[450px] transition-all duration-700 hover:border-orange-500/50 hover:shadow-[0_0_60px_-10px_rgba(255,106,26,0.35)]">
                 <img src="img/penjualan.jpeg" class="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s] z-0" alt="Penjualan">
-                <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/70 to-transparent z-0"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/80 to-transparent z-0"></div>
 
-                <!-- Ganti konten Solusi Instrumen Geospasial (sekitar baris 218-232) -->
-<div class="relative z-10 flex flex-col h-full justify-between">
-    <div>
-        <div class="w-20 h-20 bg-orange-600 rounded-[2rem] flex items-center justify-center text-white text-3xl shadow-[0_20px_40px_-10px_rgba(255,106,26,0.5)] mb-10 transition-all duration-500 group-hover:rotate-[10deg] group-hover:scale-110">
-            <i class="fa-solid fa-satellite-dish"></i>
-        </div>
-        <h3 class="text-4xl font-black text-white uppercase tracking-tighter mb-4 leading-tight">Solusi Instrumen<br><span class="text-orange-400">Kinematic GNSS</span></h3>
-        <p class="text-slate-300 leading-relaxed max-w-xl font-medium text-lg opacity-80 group-hover:opacity-100 transition-all">
-            Mendukung efisiensi dan akurasi akuisisi data lapangan Anda dengan perangkat pemetaan berstandar industri <span class="italic text-[#FFB347]">with affordable price</span>, tanpa mengurangi kualitas dan kepercayaan Anda.
-        </p>
-    </div>
+                <div class="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="w-20 h-20 bg-orange-600 rounded-[2rem] flex items-center justify-center text-white text-3xl shadow-[0_20px_40px_-10px_rgba(255,106,26,0.5)] mb-10 transition-all duration-500 group-hover:rotate-[10deg] group-hover:scale-110">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                        </div>
+                        <h3 class="text-4xl font-black text-white uppercase tracking-tighter mb-4 leading-tight">Solusi Instrumen<br><span class="text-orange-400">Kinematic GNSS</span></h3>
+                        <p class="text-slate-300 leading-relaxed max-w-xl font-medium text-lg opacity-80 group-hover:opacity-100 transition-all">
+                            Mendukung efisiensi dan akurasi akuisisi data lapangan Anda dengan perangkat pemetaan berstandar industri <span class="italic text-[#FFB347]">with affordable price</span>, tanpa mengurangi kualitas dan kepercayaan Anda.
+                        </p>
+                    </div>
 
-    <div class="flex justify-end mt-10">
-        <a href="/produk" class="group/btn relative overflow-hidden bg-white px-12 py-5 rounded-2xl text-sm font-black uppercase tracking-widest text-slate-900 transition-all duration-500 hover:bg-[#FFB347] shadow-xl">
-            <span class="relative z-10">Lihat Produk</span>
-            <i class="fa-solid fa-arrow-right ml-2 group-hover/btn:translate-x-2 transition-transform"></i>
-        </a>
-    </div>
-</div>
+                    <div class="flex justify-end mt-10">
+                        <a href="/produk" class="group/btn relative overflow-hidden bg-white px-12 py-5 rounded-2xl text-sm font-black uppercase tracking-widest text-slate-900 transition-all duration-500 hover:bg-[#FFB347] shadow-xl">
+                            <span class="relative z-10">Lihat Produk</span>
+                            <i class="fa-solid fa-arrow-right ml-2 group-hover/btn:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="group relative overflow-hidden p-8 rounded-[2.5rem] border border-white/10 flex flex-col justify-between min-h-[320px] transition-all duration-700 hover:border-orange-800/40 hover:shadow-[0_0_50px_-12px_rgba(180,60,20,0.3)]">
-    <img src="img/kalibrasi.jpeg" class="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s] z-0" alt="Kalibrasi">
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/70 to-transparent z-0"></div>
+            <!-- CARD 2: AFTER SALES & PELATIHAN -->
+            <div class="group relative overflow-hidden p-8 rounded-[2.5rem] border border-white/10 flex flex-col justify-between min-h-[320px] transition-all duration-700 hover:border-orange-500/50 hover:shadow-[0_0_60px_-10px_rgba(255,106,26,0.25)]">
+                <img src="img/kalibrasi.jpeg" class="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s] z-0" alt="Kalibrasi">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/80 to-transparent z-0"></div>
 
-    <div class="relative z-10 flex flex-col h-full justify-between">
-        <div>
-            <div class="w-14 h-14 bg-orange-800 rounded-2xl flex items-center justify-center text-white text-xl shadow-[0_15px_30px_-10px_rgba(180,60,20,0.5)] mb-6 transition-all duration-500 group-hover:rotate-[10deg] group-hover:scale-110">
-                <i class="fa-solid fa-graduation-cap"></i>
+                <div class="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-orange-800 rounded-2xl flex items-center justify-center text-white text-xl shadow-[0_15px_30px_-10px_rgba(180,60,20,0.5)] mb-6 transition-all duration-500 group-hover:rotate-[10deg] group-hover:scale-110">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-3xl font-black text-white uppercase tracking-tighter mb-3 leading-tight">After Sales &<br><span class="text-orange-300">Pelatihan</span></h3>
+                        <p class="text-slate-300 leading-relaxed max-w-xl font-medium text-sm opacity-80 group-hover:opacity-100 transition-all">Pendampingan teknis dan pengolahan data untuk produktivitas tim Anda di lapangan.</p>
+                    </div>
+
+                    <div class="flex justify-end mt-6">
+                        <a href="https://wa.me/6282123852658?text=Halo%20K%20Survey,%20saya%20ingin%20menjadwalkan%20training%20dan%20layanan%20after%20sales." target="_blank" class="group/btn relative overflow-hidden bg-white px-7 py-4 rounded-lg text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 transition-all duration-500 hover:bg-orange-600 hover:text-white shadow-md">
+                            <span class="relative z-10">Jadwalkan Training</span>
+                            <i class="fa-solid fa-calendar-check ml-2 text-[9px] transition-transform group-hover/btn:rotate-12"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-3xl font-black text-white uppercase tracking-tighter mb-3 leading-tight">After Sales &<br><span class="text-orange-300">Pelatihan</span></h3>
-            <p class="text-slate-300 leading-relaxed max-w-xl font-medium text-sm opacity-80 group-hover:opacity-100 transition-all">Pendampingan teknis dan pengolahan data untuk produktivitas tim Anda di lapangan.</p>
-        </div>
-
-        <div class="flex justify-end mt-6">
-            <a href="https://wa.me/6282123852658" target="_blank" class="group/btn relative overflow-hidden bg-white px-7 py-4 rounded-lg text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 transition-all duration-500 hover:bg-orange-600 hover:text-white shadow-md">
-                <span class="relative z-10">Jadwalkan Training</span>
-                <i class="fa-solid fa-calendar-check ml-2 text-[9px] transition-transform group-hover/btn:rotate-12"></i>
-            </a>
-        </div>
-    </div>
-</div>
 
         </div>
     </div>
 </section>
 
     
-    <section class="py-24 bg-white px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 space-y-4">
-                <p class="text-orange-600 font-bold uppercase tracking-[0.2em] text-xs">Expertise & Trust </p>
-                <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight">Mengapa Memilih Kami?</h2>
+    <section class="relative py-28 bg-slate-50 px-6 overflow-hidden border-t border-slate-100">
+    
+    <!-- ANIMASI BACKGROUND BARU: ELEVATION TOPOGRAPHY & BLUR ORBS (TANPA GARIS KOTAK/GRID) -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <!-- 1. Topographic Blur Blobs (Efek Kontur Warna Elevasi yang Mengambang & Bernapas) -->
+        <div class="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] bg-gradient-to-br from-orange-400/15 via-amber-300/10 to-transparent rounded-full blur-[120px] animate-[pulse_7s_ease-in-out_infinite]"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[700px] h-[700px] bg-gradient-to-tl from-orange-600/15 via-orange-400/5 to-transparent rounded-full blur-[140px] animate-[pulse_10s_ease-in-out_infinite_2s]"></div>
+
+        <!-- 2. Concentric Wave Waves (Ring Topografi Halus yang Membesar Lambat) -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-500/5 rounded-full animate-[ping_8s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-orange-400/5 rounded-full animate-[ping_12s_cubic-bezier(0,0,0.2,1)_infinite_3s]"></div>
+        
+        <!-- 3. Floating Sparkle Particles (Partikel Cahaya Mengambang Halus) -->
+        <div class="absolute top-1/3 left-1/5 w-3 h-3 bg-amber-400/40 rounded-full blur-[1px] animate-[bounce_6s_infinite]"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-2 h-2 bg-orange-500/40 rounded-full blur-[1px] animate-[bounce_8s_infinite_1.5s]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-20 space-y-3">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-orange-200/80 text-orange-600 text-[10px] font-black uppercase tracking-[0.3em] shadow-sm">
+                <span class="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></span> Expertise & Trust
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black text-slate-950 tracking-tighter uppercase leading-none">
+                Mengapa Memilih <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 italic">Kami?</span>
+            </h2>
+            <p class="text-slate-500 font-medium text-sm md:text-base max-w-xl mx-auto">
+                Komitmen kami dalam memberikan standar layanan geospasial terbaik untuk mendukung efisiensi proyek Anda.
+            </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Card 1 -->
+            <div class="group relative bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 border border-slate-200/80 shadow-sm hover:border-orange-500 hover:shadow-[0_25px_50px_-12px_rgba(255,106,26,0.18)] hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="space-y-6">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 text-2xl group-hover:bg-gradient-to-br group-hover:from-orange-600 group-hover:to-orange-500 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-sm">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-black text-slate-900 tracking-tight uppercase">Tenaga Profesional</h4>
+                        <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                            Didukung tim ahli berpengalaman di bidang geodesi dan teknologi geospasial terkini.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="space-y-4 text-center md:text-left">
-                    <div class="text-orange-600 text-3xl"><i class="fa-solid fa-user-graduate"></i></div>
-                    <h4 class="font-bold text-slate-800">Tenaga Profesional</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed">Didukung ahli berpengalaman di bidang geodesi dan teknologi geospasial</p>
-                </div>
-                <div class="space-y-4 text-center md:text-left">
-                    <div class="text-orange-600 text-3xl"><i class="fa-solid fa-microchip"></i></div>
-                    <h4 class="font-bold text-slate-800">Teknologi Modern</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed">Solusi pengukuran terbaru mulai dari GNSS hingga LiDAR SLAM</p>
-                </div>
-                <div class="space-y-4 text-center md:text-left">
-                    <div class="text-orange-600 text-3xl"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="font-bold text-slate-800">Layanan Kalibrasi</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed">Memastikan akurasi dan performa alat sesuai standar industri global</p>
-                </div>
-                <div class="space-y-4 text-center md:text-left">
-                    <div class="text-orange-600 text-3xl"><i class="fa-solid fa-headset"></i></div>
-                    <h4 class="font-bold text-slate-800">Dukungan Teknis</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed">Pendampingan operasional dan pengolahan data pasca-pembelian</p>
+            <!-- Card 2 -->
+            <div class="group relative bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 border border-slate-200/80 shadow-sm hover:border-orange-500 hover:shadow-[0_25px_50px_-12px_rgba(255,106,26,0.18)] hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="space-y-6">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 text-2xl group-hover:bg-gradient-to-br group-hover:from-orange-600 group-hover:to-orange-500 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-sm">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-black text-slate-900 tracking-tight uppercase">Teknologi Modern</h4>
+                        <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                            Solusi pengukuran paling mutakhir mulai dari sistem Kinematic GNSS hingga LiDAR SLAM.
+                        </p>
+                    </div>
                 </div>
             </div>
+
+            <!-- Card 3 -->
+            <div class="group relative bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 border border-slate-200/80 shadow-sm hover:border-orange-500 hover:shadow-[0_25px_50px_-12px_rgba(255,106,26,0.18)] hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="space-y-6">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 text-2xl group-hover:bg-gradient-to-br group-hover:from-orange-600 group-hover:to-orange-500 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-sm">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-black text-slate-900 tracking-tight uppercase">Layanan Kalibrasi</h4>
+                        <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                            Memastikan presisi dan performa instrumen sesuai standar ketat industri global.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="group relative bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 border border-slate-200/80 shadow-sm hover:border-orange-500 hover:shadow-[0_25px_50px_-12px_rgba(255,106,26,0.18)] hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="space-y-6">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 text-2xl group-hover:bg-gradient-to-br group-hover:from-orange-600 group-hover:to-orange-500 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-sm">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-xl font-black text-slate-900 tracking-tight uppercase">Dukungan Teknis</h4>
+                        <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                            Pendampingan penuh untuk operasional lapangan hingga pengolahan data hasil ukur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="py-24 bg-[#f8fafc] px-6 relative overflow-hidden border-t border-slate-100">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[100px] pointer-events-none"></div>
     
+    <!-- ANIMASI BACKGROUND BARU: CAMERA LENS SHUTTER & DIGITAL MAP NODES -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <!-- 1. Focal Ring (Aperture Lensa Kamera Besar yang Berputar Lambat) -->
+        <div class="absolute -top-20 -right-20 w-[600px] h-[600px] rounded-full border border-orange-500/10 animate-[spin_40s_linear_infinite]">
+            <div class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-500/20 to-transparent"></div>
+            <div class="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-orange-500/20 to-transparent"></div>
+        </div>
+
+        <!-- 2. Shutter Aperture Ring 2 (Aksen Ring Lensa Kedua) -->
+        <div class="absolute -top-10 -right-10 w-[450px] h-[450px] rounded-full border border-dashed border-orange-400/15 animate-[spin_30s_linear_infinite_reverse]"></div>
+
+        <!-- 3. Ambient Glow Blur Oranye -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-orange-600/10 rounded-full blur-[120px] animate-[pulse_6s_ease-in-out_infinite]"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[140px] animate-[pulse_9s_ease-in-out_infinite_2s]"></div>
+
+        <!-- 4. Node Digital Map (Titik Lokasi Lapangan yang Berkedip) -->
+        <div class="absolute bottom-12 left-10 flex items-center gap-2 opacity-30 animate-[pulse_4s_infinite]">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            
+        </div>
+    </div>
+
     <div class="max-w-7xl mx-auto relative z-10">
         <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div class="space-y-3">
@@ -404,69 +530,105 @@
     </div>
 </section>
 
-<section class="py-32 bg-primary relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-full h-px bg-white/20"></div>
-    <div class="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px]"></div>
+<section class="py-32 bg-slate-950 relative overflow-hidden border-t border-slate-800">
+    
+    <!-- ANIMASI BACKGROUND TEGAS: DYNAMIC GEOSPATIAL NETWORK & GLOWING NODES -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <!-- 1. Grid Line Tegas (Jaringan Garis Geospasial) -->
+        <div class="absolute inset-0 opacity-15" 
+             style="background-image: linear-gradient(to right, #FF6000 1.5px, transparent 1.5px), linear-gradient(to bottom, #FF6000 1.5px, transparent 1.5px); background-size: 70px 70px;">
+        </div>
+
+        <!-- 2. Pulsing Radar Scan Ring (Lingkaran Sinyal Terang) -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border-2 border-[#FF6000]/30 rounded-full animate-[ping_6s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] border-2 border-amber-400/20 rounded-full animate-[ping_10s_cubic-bezier(0,0,0.2,1)_infinite_2s]"></div>
+
+        <!-- 3. Animated Connection Lines SVG (Garis Jaringan Bergerak Jelas) -->
+        <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#FF6000" stroke-width="1.5" fill="none" class="opacity-40">
+                <path d="M150,150 L350,250 L250,500 Z" class="animate-[pulse_3s_ease-in-out_infinite]" />
+                <path d="M800,200 L1000,350 L900,600 L750,400 Z" class="animate-[pulse_4s_ease-in-out_infinite_1s]" />
+                <path d="M350,650 L550,750 L450,900 Z" class="animate-[pulse_5s_ease-in-out_infinite_2s]" />
+            </g>
+        </svg>
+
+        <!-- 4. Glowing GPS Nodes (Titik Sinyal Terang Berkedip) -->
+        <div class="absolute top-1/4 left-1/6 w-4 h-4 bg-[#FF6000] rounded-full animate-ping shadow-[0_0_20px_6px_rgba(255,96,0,0.8)]"></div>
+        <div class="absolute top-1/4 left-1/6 w-4 h-4 bg-white rounded-full"></div>
+
+        <div class="absolute bottom-1/3 right-1/5 w-4 h-4 bg-amber-400 rounded-full animate-ping delay-500 shadow-[0_0_20px_6px_rgba(255,180,0,0.8)]"></div>
+        <div class="absolute bottom-1/3 right-1/5 w-4 h-4 bg-white rounded-full"></div>
+
+        <div class="absolute top-2/3 left-1/3 w-3 h-3 bg-[#FF6000] rounded-full animate-ping delay-1000 shadow-[0_0_15px_4px_rgba(255,96,0,0.8)]"></div>
+        
+        <!-- 5. Ambient Glow Oranye Kuat -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#FF6000]/15 rounded-full blur-[140px]"></div>
+    </div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-20 space-y-4">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-highlight text-[10px] font-black uppercase tracking-[0.3em]">
-                Verified Technical Feedback
+            <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/10 border border-[#FF6000]/40 text-[#FF8800] text-[10px] font-black uppercase tracking-[0.3em] backdrop-blur-md shadow-[0_0_20px_rgba(255,96,0,0.2)]">
+                <span class="w-2 h-2 bg-[#FF6000] rounded-full animate-pulse shadow-[0_0_8px_#FF6000]"></span> Verified Technical Feedback
             </div>
             <div class="space-y-4">
-    <!-- Judul: Menggunakan Oranye Tua NGS untuk kesan Teknologi & Kepercayaan -->
-    <h2 class="text-5xl md:text-6xl font-black text-[#C9490F] uppercase tracking-tighter leading-none">
-        Suara <span class="italic text-slate-500">Pelanggan</span>
-    </h2>
-    
-    <!-- Deskripsi: Menggunakan Abu Gelap (Slate-600) untuk kesan Presisi & Profesional -->
-    <p class="text-slate-600 max-w-2xl mx-auto font-semibold text-lg leading-relaxed">
-        Transparansi kualitas adalah komitmen kami. Pengalaman nyata dari para profesional geodesi.
-    </p>
-</div>
-        </div>
-
-        <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide">
-    
-    @forelse($ulasan as $item)
-    <div class="flex-none w-[350px] md:w-[450px] snap-center bg-white p-10 rounded-[3.5rem] shadow-2xl space-y-8 border border-slate-100">
-        <div class="flex justify-between items-start">
-            <div class="flex gap-1 text-primary text-xs">
-                @for($i = 1; $i <= 5; $i++)
-                    @if($i <= $item->rating)
-                        <i class="fa-solid fa-star text-[#FFB347]"></i>
-                    @else
-                        <i class="fa-solid fa-star text-slate-200"></i>
-                    @endif
-                @endfor
-            </div>
-            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ $item->created_at->format('M Y') }}</span>
-        </div>
-        <p class="text-slate-700 font-medium leading-relaxed italic text-lg">"{{ $item->message }}"</p>
-        <div class="flex items-center gap-5 border-t border-slate-100 pt-8">
-            <div class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center font-black text-xl">
-                {{ strtoupper(substr($item->name, 0, 2)) }}
-            </div>
-            <div>
-                <h4 class="text-sm font-black text-slate-900 uppercase tracking-tight">{{ $item->name }}</h4>
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $item->company ?? 'Personal' }}</p>
+                <!-- Judul -->
+                <h2 class="text-5xl md:text-6xl font-black text-white uppercase tracking-tighter leading-none">
+                    Suara <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FF8800] via-[#FF6000] to-amber-300 italic">Pelanggan</span>
+                </h2>
+                
+                <!-- Deskripsi -->
+                <p class="text-slate-300 max-w-2xl mx-auto font-medium text-lg leading-relaxed">
+                    Transparansi kualitas adalah komitmen kami. Pengalaman nyata dari para profesional geodesi.
+                </p>
             </div>
         </div>
-    </div>
-    @empty
-    <div class="w-full text-center py-10">
-        <p class="text-slate-400 font-medium italic"></p>
-    </div>
-    @endforelse
 
-</div>
+        <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory scrollbar-hide relative z-20">
+            @forelse($ulasan as $item)
+            <!-- Card Testimonial -->
+            <div class="flex-none w-[350px] md:w-[450px] snap-center bg-white p-10 rounded-[3rem] shadow-2xl space-y-8 border-2 border-transparent hover:border-[#FF6000] hover:shadow-[0_20px_50px_-10px_rgba(255,96,0,0.3)] transition-all duration-500 overflow-hidden relative group">
+                <div class="flex justify-between items-start">
+                    <div class="flex gap-1.5 text-sm">
+                        @for($i = 1; $i <= 5; $i++)
+                            @if($i <= $item->rating)
+                                <i class="fa-solid fa-star text-[#FF8800]"></i>
+                            @else
+                                <i class="fa-solid fa-star text-slate-200"></i>
+                            @endif
+                        @endfor
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ $item->created_at->format('M Y') }}</span>
+                </div>
+                
+                <blockquote class="text-slate-700 font-medium leading-relaxed italic text-lg relative">
+                    <i class="fa-solid fa-quote-left absolute -top-4 -left-6 text-[#FF6000]/10 text-6xl z-0"></i>
+                    <span class="relative z-10">"{{ $item->message }}"</span>
+                </blockquote>
 
-        <div class="mt-16 text-center">
-    <button onclick="toggleModal('feedbackModal')" class="inline-flex items-center gap-4 px-12 py-5 rounded-full bg-[#FFB347] text-[#C9490F] font-black uppercase text-[11px] tracking-[0.3em] hover:scale-105 transition-all shadow-2xl border-2 border-white/10">
-        Submit Engineering Feedback <i class="fa-solid fa-pen-to-square"></i>
-    </button>
-</div>
+                <div class="flex items-center gap-5 border-t border-slate-100 pt-8 mt-auto">
+                    <div class="w-14 h-14 rounded-2xl bg-[#FF6000] text-white flex items-center justify-center font-black text-xl shadow-lg shadow-[#FF6000]/30 group-hover:scale-105 transition-transform">
+                        {{ strtoupper(substr($item->name, 0, 2)) }}
+                    </div>
+                    <div>
+                        <h4 class="text-base font-black text-slate-900 uppercase tracking-tight">{{ $item->name }}</h4>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $item->company ?? 'Personal' }}</p>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="w-full text-center py-16 bg-white rounded-[3rem] border border-dashed border-slate-200">
+                <i class="fa-solid fa-comments text-slate-300 text-5xl mb-4"></i>
+                <p class="text-slate-400 font-medium italic">Belum ada masukan teknis dari pelanggan.</p>
+            </div>
+            @endforelse
+        </div>
 
+        <!-- Tombol Submit Feedback -->
+        <div class="mt-16 text-center relative z-20">
+            <button onclick="toggleModal('feedbackModal')" class="inline-flex items-center gap-4 px-12 py-5 rounded-full bg-[#FF6000] text-white font-black uppercase text-[11px] tracking-[0.3em] hover:bg-[#E04800] hover:scale-105 transition-all shadow-2xl shadow-[#FF6000]/40 border-2 border-white/20">
+                Submit Engineering Feedback <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+        </div>
     </div>
 </section>
 

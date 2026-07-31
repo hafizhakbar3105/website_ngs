@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable = ['title', 'slug', 'thumbnail', 'content', 'gallery', 'is_highlight'];
+    use HasFactory;
 
-// Casting gallery ke array agar mudah dikelola di Controller & View
-protected $casts = [
-    'gallery' => 'array',
-];
+    protected $guarded = ['id'];
+
+    // WAJIB: Agar gallery dibaca sebagai Array/JSON
+    protected $casts = [
+        'gallery' => 'array',
+        'is_highlight' => 'boolean',
+    ];
 }

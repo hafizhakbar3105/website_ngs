@@ -1,11 +1,15 @@
 <nav class="fixed top-0 left-0 w-full z-[100] px-4 md:px-6 py-4">
     <div class="max-w-7xl mx-auto bg-white rounded-2xl px-6 py-3 flex justify-between items-center shadow-lg border border-orange-100">
         
-        <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
-            <a href="{{ url('/') }}">
-                <img src="{{ asset('img/logo.png') }}" alt="NusaGeo Logo" class="h-9 w-auto">
-            </a>
-        </div>
+        <div class="relative flex items-center w-[170px]">
+    <a href="{{ url('/') }}" class="absolute left-0 top-1/2 -translate-y-1/2">
+        <img
+            src="{{ asset('img/logo2.png') }}"
+            alt="K Survey Logo"
+            class="h-9 w-auto transition-transform duration-300 hover:scale-110"
+            style="transform: scale(1.45); transform-origin: left center;">
+    </a>
+</div>
 
         <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500">
             
