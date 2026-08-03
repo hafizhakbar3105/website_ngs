@@ -125,9 +125,9 @@
             <!-- VISI -->
             <div class="group p-12 rounded-[4rem] bg-slate-900/80 border border-orange-500/20 backdrop-blur-xl space-y-8 hover:bg-slate-900 hover:border-orange-500/50 transition-all duration-500 shadow-2xl flex flex-col justify-between">
                 <div class="space-y-8">
-                    <div class="w-16 h-16 rounded-3xl bg-gradient-to-br from-orange-600 to-orange-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform">
+                    {{-- <div class="w-16 h-16 rounded-3xl bg-gradient-to-br from-orange-600 to-orange-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-eye"></i>
-                    </div>
+                    </div> --}}
                     <div class="space-y-4">
                         <h3 class="text-orange-400 font-black text-xs uppercase tracking-[0.4em]">Visi Kami</h3>
                         <p class="text-3xl font-bold text-white leading-tight tracking-tight">
@@ -189,7 +189,9 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 relative z-10">
         <div class="lg:col-span-5 space-y-16">
             <div class="space-y-6">
-                <h2 class="text-5xl font-black text-slate-950 tracking-tighter uppercase leading-none">Hubungi <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-400 italic">Kami</span></h2>
+                <h2 class="text-5xl font-black text-slate-950 tracking-tighter uppercase leading-none">Hubungi <br><span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-400 -skew-x-12">
+    Kami
+</span></h2>
                 <p class="text-slate-500 font-medium text-lg leading-relaxed">
                     Solusi alat survei berkualitas dengan harga terjangkau dan layanan yang bisa diandalkan.
                 </p>

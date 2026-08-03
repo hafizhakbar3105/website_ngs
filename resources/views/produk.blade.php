@@ -181,10 +181,10 @@
                             
                             <div class="mt-6 pt-6 border-t border-slate-100">
                                 <div class="flex gap-3">
-                                    <a href="https://wa.me/6282123852658?text={{ urlencode('Halo K Survey, saya ingin mengajukan kalibrasi untuk produk ' . $produk->name . ' (' . $produk->brand . '). Mohon informasi prosedur dan biayanya.') }}" 
+                                    <a href="https://wa.me/6282123852658?text={{ urlencode('Halo K Survey, saya tertarik untuk mengajukan demo alat untuk produk ' . $produk->name . ' (' . $produk->brand . '). Mohon informasi prosedur dan biayanya.') }}" 
                                        target="_blank" 
                                        class="flex-[2] bg-gradient-to-r from-orange-600 to-orange-500 text-white text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:shadow-lg hover:shadow-orange-500/40 hover:brightness-110 transition-all duration-300">
-                                        Ajukan Kalibrasi
+                                        Ajukan Demo Alat
                                     </a>
                                     <a href="{{ route('produk.detail', $produk->id) }}" class="flex-1 bg-white border-2 border-orange-200 text-orange-700 text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-orange-50 hover:border-orange-500 transition-all duration-300">
                                         Detail

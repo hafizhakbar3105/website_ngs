@@ -63,7 +63,9 @@
                     <span class="text-[10px] font-black uppercase tracking-[0.4em] text-white">Integrated Ecosystem</span>
                 </div>
                 <h1 class="text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter uppercase">
-                    OUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-300 italic">SOLUTIONS</span>
+                    OUR <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-400 -skew-x-12">
+    SOLUTIONS
+</span>
                 </h1>
                 <p class="text-slate-400 text-sm md:text-xl font-medium leading-relaxed max-w-2xl">
                     Lebih dari sekadar penyedia alat, kami menghadirkan ekosistem teknis yang menjamin setiap koordinat data Anda memiliki tingkat presisi dan reliabilitas tertinggi.
