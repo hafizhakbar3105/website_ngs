@@ -464,100 +464,167 @@
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECTION: SERTIFIKAT & LISENSI (THUMBNAIL + MODAL PDF) -->
-    <!-- ========================================== -->
-    <section class="relative py-28 bg-[#1a0f0a] px-6 overflow-hidden border-t border-orange-900/30">
+        <!-- ========================================== -->
+<!-- SECTION: SERTIFIKAT & LISENSI (SCROLLING LOGOS & ANIMATED TRACER) -->
+<!-- ========================================== -->
+<style>
+    /* Keyframe logo bergerak dari Kiri ke Kanan */
+    @keyframes scroll-cert {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+    }
+    
+    .animate-scroll-cert {
+        display: flex;
+        width: max-content;
+        animation: scroll-cert 30s linear infinite;
+    }
+
+    /* Efek fade/pudar di ujung kiri dan kanan layar */
+    .fade-edges {
+        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+
+    /* Animasi Garis Mengelilingi Bingkai Logo (Tracing Border) */
+    @keyframes spin-tracer {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .card-tracer {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem; /* rounded-2xl */
+        padding: 2px; /* Ketebalan garis animasi */
+        background: rgba(255, 255, 255, 0.1);
+    }
+    .card-tracer::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150%;
+        height: 250%;
+        /* Warna garis animasi (Oranye terang ke transparan) */
+        background: conic-gradient(from 0deg, transparent 70%, #FF6000 80%, transparent 100%);
+        animation: spin-tracer 3s linear infinite;
+        z-index: 0;
+    }
+    .card-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.98); /* Latar belakang dalam kotak (Putih) */
+        border-radius: 0.9rem;
+        backdrop-filter: blur(12px);
+    }
+</style>
+
+<section class="relative py-28 bg-[#1a0f0a] overflow-hidden border-t border-orange-900/30">
+    
+    <!-- Animasi Latar Belakang Geologi -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute inset-0 opacity-10 mix-blend-overlay animate-tectonic" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.83v58.34h-58.34l-.83-.83L0 54.628v-58.34h58.34l.83.83z\' fill=\'%23c9490f\' fill-opacity=\'0.4\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"></div>
+        <div class="absolute bottom-[-15%] left-[10%] w-[600px] h-[600px] bg-[#C9490F]/20 rounded-full blur-[140px] animate-magma"></div>
+        <div class="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-orange-600/10 rounded-full blur-[150px] animate-magma delay-700"></div>
         
-        <!-- Animasi Latar Belakang Geologi -->
-        <div class="absolute inset-0 pointer-events-none overflow-hidden">
-            <div class="absolute inset-0 opacity-10 mix-blend-overlay animate-tectonic" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.83v58.34h-58.34l-.83-.83L0 54.628v-58.34h58.34l.83.83z\' fill=\'%23c9490f\' fill-opacity=\'0.4\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"></div>
-            <div class="absolute bottom-[-15%] left-[10%] w-[600px] h-[600px] bg-[#C9490F]/20 rounded-full blur-[140px] animate-magma"></div>
-            <div class="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-orange-600/10 rounded-full blur-[150px] animate-magma delay-700"></div>
+        <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path d="M-200,800 C150,750 350,900 600,850 C850,800 1050,950 1200,900" stroke="#FF6000" stroke-width="2" fill="none" class="animate-[dash_15s_linear_infinite]" />
+            <path d="M-200,600 C200,550 400,700 650,650 C900,600 1000,750 1200,700" stroke="#FF6000" stroke-width="1" fill="none" opacity="0.5" class="animate-[dash_20s_linear_infinite]" />
+        </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10 px-6">
+        <!-- Header Sertifikat -->
+        <div class="text-center mb-16 space-y-4">
+            <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-orange-950/50 border border-[#C9490F]/40 text-[#FFB347] text-[10px] font-black uppercase tracking-[0.3em] backdrop-blur-md">
+                <i class="fa-solid fa-award"></i> Legalitas & Standar Mutu
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none">
+                Sertifikasi & <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-400 -skew-x-12 pr-2">LISENSI</span>
+            </h2>
+            <p class="text-orange-200/70 font-medium text-sm md:text-base max-w-2xl mx-auto">
+                K Survey telah tersertifikasi dan diuji oleh badan berstandar internasional. Kami menjamin akurasi data, keaslian perangkat, dan layanan operasional yang mematuhi regulasi ketat geospasial.
+            </p>
+        </div>
+    </div>
+
+    <!-- Area Marquee Logo Penguji -->
+    <div class="relative w-full overflow-hidden fade-edges mt-8 py-10">
+        <!-- Kontainer Fleksibel Berjalan (Bisa di-pause saat hover) -->
+        <div class="animate-scroll-cert hover:[animation-play-state:paused] flex gap-8 items-center px-4">
             
-            <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-                <path d="M-200,800 C150,750 350,900 600,850 C850,800 1050,950 1200,900" stroke="#FF6000" stroke-width="2" fill="none" class="animate-[dash_15s_linear_infinite]" />
-                <path d="M-200,600 C200,550 400,700 650,650 C900,600 1000,750 1200,700" stroke="#FF6000" stroke-width="1" fill="none" opacity="0.5" class="animate-[dash_20s_linear_infinite]" />
-            </svg>
-        </div>
-
-        <div class="max-w-7xl mx-auto relative z-10">
-            <!-- Header Sertifikat -->
-            <div class="text-center mb-16 space-y-4">
-                <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-orange-950/50 border border-[#C9490F]/40 text-[#FFB347] text-[10px] font-black uppercase tracking-[0.3em] backdrop-blur-md">
-                    <i class="fa-solid fa-award"></i> Legalitas & Standar Mutu
+            <!-- ====== SET 1 ====== -->
+            <!-- Logo 1 -->
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)]">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser1.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 1">
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none">
-                    Sertifikasi  <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-400 -skew-x-12">
-     RESMI
-</span>
-                </h2>
-                <p class="text-orange-200/70 font-medium text-sm md:text-base max-w-2xl mx-auto">
-                    K Survey terdaftar secara legal dan mematuhi regulasi distribusi instrumen survei geospasial di Indonesia. Kami menjamin keaslian, jaminan kualitas, serta layanan berstandar internasional.
-                </p>
+            </div>
+            
+            <!-- Logo 2 -->
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)]">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser2.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 2">
+                </div>
+            </div>
+            
+            <!-- Logo 3 -->
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)]">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser3.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 3">
+                </div>
+            </div>
+            
+            <!-- Logo 4 -->
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)]">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser4.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 4">
+                </div>
             </div>
 
-            <!-- Grid Sertifikat (PDF Buttons) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:px-10">
-                
-                <!-- Sertifikat 1 (Memanggil Modal PDF) -->
-                <!-- Note: Ganti url didalam asset('doc/sertifikat1.pdf') dan asset('img/thumb_sertifikat1.png') sesuai dengan struktur folder Anda -->
-                <button onclick="openPdfModal('{{ asset('doc/sertifikat1.pdf') }}')" class="group relative bg-white/5 backdrop-blur-xl p-4 rounded-[2rem] border border-white/10 hover:border-[#FF6000]/60 transition-all duration-700 hover:-translate-y-3 hover:shadow-[0_20px_50px_-15px_rgba(201,73,15,0.4)] flex justify-center items-center overflow-hidden w-full text-left cursor-pointer md:translate-y-0">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#C9490F]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
-                    <div class="relative w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/50 aspect-[3/4]">
-                        <!-- Thumbnail Cover Halaman 1 -->
-                        <img src="{{ asset('img/thumb_sertifikat1.png') }}" alt="Sertifikat 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90 group-hover:brightness-50">
-                        
-                        <!-- Teks Overlay Muncul Saat Hover -->
-                        <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
-                            <i class="fa-solid fa-file-pdf text-4xl text-white mb-2"></i>
-                            <span class="text-white font-bold tracking-widest uppercase text-xs">Lihat Dokumen</span>
-                            <span class="text-orange-200 text-[10px] mt-1">2 Halaman</span>
-                        </div>
-                        
-                        <!-- Lencana Label PDF -->
-                        <div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md text-white px-3 py-1.5 flex items-center gap-2 rounded-full shadow-lg z-10 border border-white/20">
-                            <i class="fa-solid fa-file-pdf text-[#FFB347]"></i> <span class="text-[9px] font-bold tracking-widest">PDF</span>
-                        </div>
-                    </div>
-                </button>
-
-                <!-- Sertifikat 2 -->
-                <button onclick="openPdfModal('{{ asset('doc/sertifikat2.pdf') }}')" class="group relative bg-white/5 backdrop-blur-xl p-4 rounded-[2rem] border border-white/10 hover:border-[#FF6000]/60 transition-all duration-700 hover:-translate-y-3 hover:shadow-[0_20px_50px_-15px_rgba(201,73,15,0.4)] flex justify-center items-center overflow-hidden w-full text-left cursor-pointer md:translate-y-6">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#C9490F]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
-                    <div class="relative w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/50 aspect-[3/4]">
-                        <img src="{{ asset('img/thumb_sertifikat2.png') }}" alt="Sertifikat 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90 group-hover:brightness-50">
-                        <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
-                            <i class="fa-solid fa-file-pdf text-4xl text-white mb-2"></i>
-                            <span class="text-white font-bold tracking-widest uppercase text-xs">Lihat Dokumen</span>
-                            <span class="text-orange-200 text-[10px] mt-1">2 Halaman</span>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md text-white px-3 py-1.5 flex items-center gap-2 rounded-full shadow-lg z-10 border border-white/20">
-                            <i class="fa-solid fa-file-pdf text-[#FFB347]"></i> <span class="text-[9px] font-bold tracking-widest">PDF</span>
-                        </div>
-                    </div>
-                </button>
-
-                <!-- Sertifikat 3 -->
-                <button onclick="openPdfModal('{{ asset('doc/sertifikat3.pdf') }}')" class="group relative bg-white/5 backdrop-blur-xl p-4 rounded-[2rem] border border-white/10 hover:border-[#FF6000]/60 transition-all duration-700 hover:-translate-y-3 hover:shadow-[0_20px_50px_-15px_rgba(201,73,15,0.4)] flex justify-center items-center overflow-hidden w-full text-left cursor-pointer md:translate-y-0">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#C9490F]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
-                    <div class="relative w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/50 aspect-[3/4]">
-                        <img src="{{ asset('img/thumb_sertifikat3.png') }}" alt="Sertifikat 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90 group-hover:brightness-50">
-                        <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
-                            <i class="fa-solid fa-file-pdf text-4xl text-white mb-2"></i>
-                            <span class="text-white font-bold tracking-widest uppercase text-xs">Lihat Dokumen</span>
-                            <span class="text-orange-200 text-[10px] mt-1">2 Halaman</span>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md text-white px-3 py-1.5 flex items-center gap-2 rounded-full shadow-lg z-10 border border-white/20">
-                            <i class="fa-solid fa-file-pdf text-[#FFB347]"></i> <span class="text-[9px] font-bold tracking-widest">PDF</span>
-                        </div>
-                    </div>
-                </button>
-
+            <!-- ====== SET 2 (DIDUPLIKASI AGAR ANIMASI LOOPING MULUS) ====== -->
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)]">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser1.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 1">
+                </div>
             </div>
+            
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)]">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser2.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 2">
+                </div>
+            </div>
+            
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)]">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser3.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 3">
+                </div>
+            </div>
+            
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)]">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser4.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 4">
+                </div>
+            </div>
+
+            <!-- ====== SET 3 (OPSIONAL UNTUK LAYAR MONITOR BESAR/ULTRAWIDE) ====== -->
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)] hidden md:block">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser1.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 1">
+                </div>
+            </div>
+            <div class="card-tracer w-48 h-32 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-110 shadow-[0_0_20px_rgba(201,73,15,0.15)] hover:shadow-[0_0_40px_rgba(201,73,15,0.6)] hidden md:block">
+                <div class="card-content flex items-center justify-center p-5">
+                    <img src="{{ asset('img/ser2.jpeg') }}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Sertifikasi Penguji 2">
+                </div>
+            </div>
+
         </div>
-    </section>
-    <!-- ========================================== -->
+    </div>
+</section>
+<!-- ========================================== -->
 
 
     <!-- SUARA PELANGGAN SECTION -->
