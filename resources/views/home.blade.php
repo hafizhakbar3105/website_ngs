@@ -97,7 +97,7 @@
 
                     <div class="max-w-3xl space-y-6">
                         <p class="text-slate-200 text-lg md:text-xl leading-relaxed">
-                            <span class="font-black text-white">K Survey</span> merupakan trusted reseller produk survei dan pemetaan dari berbagai brand ternama seperti CHC, Hi-Target, Tersus, Ruide, Topcon, ComNav, dan Garmin.
+                            <span class="font-black text-white">K Survey</span> merupakan trusted seller produk survei dan pemetaan dari berbagai brand ternama seperti CHC, Hi-Target, Tersus, Ruide, Topcon, ComNav, dan Garmin.
                         </p>
                         <p class="text-slate-400 text-lg md:text-xl leading-relaxed">
                             Menyediakan beragam software untuk survey dan pemetaan seperti Agisoft Metashape, RedToolbox, dll, serta perlengkapan aksesoris berkualitas untuk kegiatan survey dan pemetaan.

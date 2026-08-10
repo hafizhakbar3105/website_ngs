@@ -64,7 +64,7 @@
                     MITRA <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-400 italic">TERPERCAYA</span>
                 </h1>
                 <p class="text-slate-500 text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
-                    <span class="font-bold text-slate-900">K Survey</span> merupakan trusted reseller produk survei dan pemetaan dari berbagai brand ternama seperti CHC, Hi-Target, Tersus, Ruide, Topcon, ComNav, hingga Garmin. Kami berkomitmen menghadirkan produk geospasial yang presisi, tepercaya, dan mampu mendukung kinerja profesional Anda secara optimal.
+                    <span class="font-bold text-slate-900">K Survey</span> merupakan trusted seller produk survei dan pemetaan dari berbagai brand ternama seperti CHC, Hi-Target, Tersus, Ruide, Topcon, ComNav, hingga Garmin. Kami berkomitmen menghadirkan produk geospasial yang presisi, tepercaya, dan mampu mendukung kinerja profesional Anda secara optimal.
                 </p>
                 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-12 pt-10 border-t border-orange-100">

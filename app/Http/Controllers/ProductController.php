@@ -35,39 +35,38 @@ class ProductController extends Controller
     }
 
     public function index(Request $request) {
-    $categories = Category::all();
+        $categories = Category::all();
 
-    // Query untuk daftar produk yang tampil di dashboard (Tetap is_featured = 1)
-    $productQuery = Product::where('is_featured', 1);
+        // Query untuk daftar produk yang tampil di dashboard (Tetap is_featured = 1)
+        $productQuery = Product::where('is_featured', 1);
 
-    if ($request->has('category') && $request->category != '') {
-        $slug = $request->category;
-        $productQuery->whereHas('category', function($q) use ($slug) {
-            $q->where('slug', $slug);
-        });
+        if ($request->has('category') && $request->category != '') {
+            $slug = $request->category;
+            $productQuery->whereHas('category', function($q) use ($slug) {
+                $q->where('slug', $slug);
+            });
+        }
+
+        $products = $productQuery->latest()->get();
+        $feedbacks = Feedback::latest()->get(); 
+        $articles = Article::latest()->get();
+        
+        // Ambil total dari SEMUA baris produk
+        $totalSemuaProduk = Product::count(); 
+        
+        return view('Admin.homeadmin', compact(
+            'products', 
+            'feedbacks', 
+            'totalSemuaProduk', 
+            'articles', 
+            'categories'
+        ));
     }
 
-    $products = $productQuery->latest()->get();
-    $feedbacks = Feedback::latest()->get(); 
-    $articles = Article::latest()->get();
-    
-    // --- PERBAIKAN DI SINI ---
-    // Jangan pakai where('is_featured', 1), ambil total dari SEMUA baris produk
-    $totalSemuaProduk = Product::count(); 
-    
-    return view('Admin.homeadmin', compact(
-        'products', 
-        'feedbacks', 
-        'totalSemuaProduk', 
-        'articles', 
-        'categories'
-    ));
-}
-
-    // FUNGSI UNTUK MENYIMPAN PRODUK DARI DASHBOARD ADMIN
+    // FUNGSI UNTUK MENYIMPAN PRODUK DARI DASHBOARD ADMIN (DINAIKKAN KE 10MB)
     public function storeUnggulan(Request $request) {
         $data = $request->validate([
-            'image'       => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'image'       => 'required|image|mimes:png,jpg,jpeg,webp|max:10240', // Maksimal 10 MB
             'brand'       => 'required|string',
             'name'        => 'required|string',
             'description' => 'required|string',
@@ -91,64 +90,58 @@ class ProductController extends Controller
     // BAGIAN 2: FUNGSI UNTUK HALAMAN KATALOG
     // ==========================================
 
-   public function produkPublic(Request $request) {
-    $categories = Category::all();
-    
-    // HAPUS ->where('is_featured', 0) agar produk unggulan juga muncul di sini
-    $query = Product::where('status', 1); 
-    
-    if ($request->has('category') && $request->category != '') {
-        $slug = $request->category;
-        $query->whereHas('category', function($q) use ($slug) {
-            $q->where('slug', $slug);
-        });
+    public function produkPublic(Request $request) {
+        $categories = Category::all();
+        $query = Product::where('status', 1); 
+        
+        if ($request->has('category') && $request->category != '') {
+            $slug = $request->category;
+            $query->whereHas('category', function($q) use ($slug) {
+                $q->where('slug', $slug);
+            });
+        }
+        
+        $products = $query->orderBy('created_at', 'desc')->get();
+        return view('produk', compact('products', 'categories'));
     }
-    
-    $products = $query->orderBy('created_at', 'desc')->get();
-    return view('produk', compact('products', 'categories'));
-}
 
-public function produkAdmin(Request $request) {
-    $categories = Category::all();
-
-    // HAPUS ->where('is_featured', 0) agar semua alat (termasuk unggulan) muncul di manajemen katalog
-    $query = Product::query(); 
-    
-    if ($request->has('category') && $request->category != '') {
-        $categorySlug = $request->category;
-        $query->whereHas('category', function($q) use ($categorySlug) {
-            $q->where('slug', $categorySlug);
-        });
+    public function produkAdmin(Request $request) {
+        $categories = Category::all();
+        $query = Product::query(); 
+        
+        if ($request->has('category') && $request->category != '') {
+            $categorySlug = $request->category;
+            $query->whereHas('category', function($q) use ($categorySlug) {
+                $q->where('slug', $categorySlug);
+            });
+        }
+        
+        $products = $query->latest()->get();
+        return view('Admin.produkadmin', compact('products', 'categories'));
     }
-    
-    $products = $query->latest()->get();
-    return view('Admin.produkadmin', compact('products', 'categories'));
-}
 
-    // FUNGSI UNTUK MENYIMPAN ALAT DARI KATALOG ADMIN
-   public function store(Request $request) {
-    $data = $request->validate([
-        'image'       => 'required|image|mimes:png,jpg,jpeg|max:2048',
-        'status'      => 'required', 
-        'category_id' => 'required|exists:categories,id',
-        'brand'       => 'required|string',
-        'badge'       => 'nullable|string',
-        'name'        => 'required|string',
-        'description' => 'required|string',
-    ]);
+    // FUNGSI UNTUK MENYIMPAN ALAT DARI KATALOG ADMIN (DINAIKKAN KE 10MB)
+    public function store(Request $request) {
+        $data = $request->validate([
+            'image'       => 'required|image|mimes:png,jpg,jpeg,webp|max:10240', // Maksimal 10 MB
+            'status'      => 'required', 
+            'category_id' => 'required|exists:categories,id',
+            'brand'       => 'required|string',
+            'badge'       => 'nullable|string',
+            'name'        => 'required|string',
+            'description' => 'required|string',
+        ]);
 
-    $data['status'] = (int) $request->status;
-    
-    // INI KUNCINYA: Harus 0 agar muncul di Katalog (Public & Admin)
-    $data['is_featured'] = 0; 
+        $data['status'] = (int) $request->status;
+        $data['is_featured'] = 0; 
 
-    if ($request->hasFile('image')) {
-        $data['image'] = $request->file('image')->store('products', 'public');
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('products', 'public');
+        }
+        
+        Product::create($data);
+        return back()->with('success', 'Alat baru berhasil ditambahkan ke katalog!');
     }
-    
-    Product::create($data);
-    return back()->with('success', 'Alat baru berhasil ditambahkan ke katalog!');
-}
 
 
     // ==========================================
@@ -195,19 +188,31 @@ public function produkAdmin(Request $request) {
     // LOGIKA 1: Update Konten Utama (Dari Halaman Detail)
     if ($request->update_type == 'main') {
         $request->validate([
-            'image'            => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10248', 
+            'image'            => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10240', // Maksimal 10 MB
             'brand'            => 'required|string',
             'name'             => 'required|string',
-            'full_description' => 'nullable|string', // Sesuai input di blade detail
-            'description'      => 'nullable|string', // Sesuai input di dashboard
-            'brochure'         => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:5120',
-            'gallery.*'        => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'full_description' => 'nullable|string', 
+            'description'      => 'nullable|string', 
+            'brochure'         => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:10240', // Maksimal 10 MB
+            'gallery.*'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10240',      // Maksimal 10 MB
         ]);
 
         // Ambil data teks
         $data = $request->only(['brand', 'badge', 'name', 'full_description', 'description']);
+        $existingGallery = $product->gallery ?? [];
 
-        // A. Update Foto Utama
+        // A. FITUR HAPUS FOTO SPESIFIK DARI GALERI
+        if ($request->has('remove_gallery')) {
+            foreach ($request->remove_gallery as $photoPath) {
+                if (Storage::disk('public')->exists($photoPath)) {
+                    Storage::disk('public')->delete($photoPath);
+                }
+                $existingGallery = array_diff($existingGallery, [$photoPath]);
+            }
+            $existingGallery = array_values($existingGallery); // Reset index array
+        }
+
+        // B. Update Foto Utama
         if ($request->hasFile('image')) {
             if ($product->image && Storage::disk('public')->exists($product->image)) {
                 Storage::disk('public')->delete($product->image);
@@ -215,7 +220,7 @@ public function produkAdmin(Request $request) {
             $data['image'] = $request->file('image')->store('products', 'public');
         }
 
-        // B. Update Brosur
+        // C. Update Brosur
         if ($request->hasFile('brochure')) {
             if ($product->brochure && Storage::disk('public')->exists($product->brochure)) {
                 Storage::disk('public')->delete($product->brochure);
@@ -223,16 +228,15 @@ public function produkAdmin(Request $request) {
             $data['brochure'] = $request->file('brochure')->store('brochures', 'public');
         }
 
-        // C. Update Galeri (Menambah foto baru ke yang sudah ada)
+        // D. Tambah Foto Baru ke Galeri
         if ($request->hasFile('gallery')) {
-            $existingGallery = $product->gallery ?? []; 
             foreach ($request->file('gallery') as $file) {
                 $existingGallery[] = $file->store('gallery', 'public'); 
             }
-            $data['gallery'] = $existingGallery;
         }
+        $data['gallery'] = $existingGallery;
 
-        // D. Update Advantages (Keunggulan)
+        // E. Update Advantages (Keunggulan)
         if ($request->has('adv_titles')) {
             $advs = [];
             foreach ($request->adv_titles as $index => $title) {
@@ -268,7 +272,6 @@ public function produkAdmin(Request $request) {
 
     return back()->with('success', 'Konten berhasil diperbarui!');
 }
-
     public function storeCategory(Request $request) {
         $request->validate(['name' => 'required|unique:categories,name']);
         Category::create([

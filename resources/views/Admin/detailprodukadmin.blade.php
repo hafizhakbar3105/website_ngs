@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; scroll-behavior: smooth; }
+        /* Memastikan container SweetAlert selalu tampil paling depan di atas modal manapun */
+        .swal2-container { z-index: 100000 !important; }
     </style>
 </head>
 <body class="text-slate-900 overflow-x-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"> 
@@ -64,7 +66,7 @@
                     @endforeach
                 </div>
                 @endif
-                </div>
+            </div>
 
             <div class="lg:col-span-5 space-y-12">
                 <div class="bg-gradient-to-br from-[#170902] to-[#2a160b] shadow-[0_25px_50px_-12px_rgba(201,73,15,0.25)] p-10 rounded-[3rem] text-white relative overflow-hidden">
@@ -144,11 +146,13 @@
 
     @include('footer')
 
+    <!-- FULLSCREEN IMAGE OVERLAY -->
     <div id="fullscreenOverlay" class="hidden fixed inset-0 z-[10000] bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-6 opacity-0 transition-opacity duration-300">
         <button onclick="closeFullscreen()" class="absolute top-6 right-8 text-white/50 hover:text-white text-4xl transition-colors"><i class="fa-solid fa-xmark"></i></button>
         <img id="fullscreenImg" src="" class="max-w-full max-h-[90vh] object-contain drop-shadow-2xl scale-95 transition-transform duration-300">
     </div>
 
+    <!-- MODAL EDIT KONTEN UTAMA -->
     <div id="detailModal" class="hidden fixed inset-0 z-[9999] bg-slate-900/85 backdrop-blur-sm items-center justify-center p-4 transition-all duration-300">
         <div class="absolute inset-0" onclick="closeModal('detailModal')"></div>
         <div class="relative bg-white w-full max-w-4xl rounded-[2.5rem] shadow-2xl flex flex-col max-h-[90vh] overflow-hidden border border-slate-200 mx-auto animate-in zoom-in-95 duration-300">
@@ -170,15 +174,17 @@
                     @method('PUT')
                     <input type="hidden" name="update_type" value="main">
                     
+                    <!-- MANAJEMEN GALERI VISUAL DENGAN GRID RAPI DAN TOMBOL HAPUS STATIS -->
                     <div class="space-y-4 bg-orange-50/40 p-6 rounded-3xl border border-orange-100">
                         <div class="flex justify-between items-center border-b border-orange-200 pb-3">
                             <label class="text-[10px] font-black uppercase tracking-[0.2em] text-[#C9490F] ml-1"><i class="fa-solid fa-images mr-2"></i> Manajemen Galeri Visual</label>
                         </div>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="galleryContainerAdmin">
                             
+                            <!-- FOTO UTAMA -->
                             <div class="relative group aspect-square bg-white border border-slate-200 rounded-2xl flex items-center justify-center overflow-hidden shadow-sm">
                                 <span class="absolute top-2 left-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white text-[8px] font-black px-2 py-1 rounded-md uppercase tracking-widest z-10 shadow-sm">Main Photo</span>
-                                <img src="{{ asset('storage/' . $produk->image) }}" id="previewMainImg" class="w-full h-full object-contain p-4">
+                                <img src="{{ asset('storage/' . $produk->image) }}" id="previewMainImg" class="w-full h-full object-contain p-2">
                                 <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm z-20">
                                     <label class="w-10 h-10 rounded-xl bg-white text-[#C9490F] hover:bg-orange-50 flex items-center justify-center shadow-lg cursor-pointer transition-transform hover:scale-110" title="Ganti Foto Utama">
                                         <i class="fa-solid fa-camera-rotate text-sm"></i>
@@ -187,23 +193,32 @@
                                 </div>
                             </div>
 
+                            <!-- FOTO GALERI TAMBAHAN (DIBUAT RAPI OBJECT-COVER DENGAN ICON HAPUS STATIS) -->
                             @if(isset($produk->gallery) && count($produk->gallery) > 0)
                                 @foreach($produk->gallery as $img)
-                                <div class="relative group aspect-square bg-white border border-slate-200 rounded-2xl flex items-center justify-center overflow-hidden shadow-sm">
-                                    <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-contain p-4">
+                                <div class="relative group aspect-square bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex items-center justify-center" id="photoCard-{{ $loop->index }}">
+                                    <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover">
+                                    
+                                    <!-- TOMBOL HAPUS STATIS DI POJOK KANAN ATAS -->
+                                    <button type="button" 
+                                            onclick="markGalleryForDeletion('{{ $img }}', 'photoCard-{{ $loop->index }}')" 
+                                            class="absolute top-2 right-2 w-8 h-8 rounded-lg bg-red-600 hover:bg-red-700 text-white flex items-center justify-center shadow-md transition-all hover:scale-110 z-30 cursor-pointer" 
+                                            title="Hapus Foto Ini">
+                                        <i class="fa-solid fa-trash-can text-xs"></i>
+                                    </button>
+
+                                    <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                                 </div>
                                 @endforeach
                             @endif
+
+                            <div id="deletedGalleryInputs"></div>
                             
+                            <!-- TOMBOL UNGGAN FOTO BARU -->
                             <label id="btnTambahGaleri" class="aspect-square bg-white border-2 border-dashed border-slate-300 rounded-2xl flex flex-col items-center justify-center cursor-pointer hover:border-[#C9490F] hover:bg-orange-50/40 transition-all group p-2 text-center">
                                 <i id="iconGaleri" class="fa-solid fa-cloud-arrow-up text-3xl text-slate-300 group-hover:text-[#C9490F] mb-3 transition-colors"></i>
                                 <span id="textGaleri" class="text-[9px] font-black uppercase tracking-widest text-slate-400 group-hover:text-[#C9490F]">Tambah Foto</span>
-                                <input type="file" name="gallery[]" multiple accept="image/*" class="hidden" onchange="
-                                    document.getElementById('textGaleri').innerText = this.files.length + ' Foto Siap Disimpan!';
-                                    document.getElementById('iconGaleri').className = 'fa-solid fa-circle-check text-3xl text-green-500 mb-2';
-                                    document.getElementById('btnTambahGaleri').classList.add('border-green-500', 'bg-green-50');
-                                    document.getElementById('btnTambahGaleri').classList.remove('border-slate-300');
-                                ">
+                                <input type="file" name="gallery[]" multiple accept="image/*" class="hidden" onchange="handleNewGalleryPreview(this)">
                             </label>
                             
                         </div>
@@ -249,7 +264,7 @@
                                 </label>
                             </div>
                         </div>
-                        <p class="text-[9px] font-bold text-slate-400 italic pt-1" id="brochureName">* Format didukung: PDF, Word, JPG, PNG (Max 5MB).</p>
+                        <p class="text-[9px] font-bold text-slate-400 italic pt-1" id="brochureName">* Format didukung: PDF, Word, JPG, PNG (Max 10MB).</p>
                     </div>
 
                     <div class="pt-6 border-t border-slate-100">
@@ -292,6 +307,7 @@
         </div>
     </div>
 
+    <!-- MODAL EDIT SPESIFIKASI TEKNIS -->
     <div id="specModal" class="hidden fixed inset-0 z-[9999] bg-slate-900/85 backdrop-blur-sm items-center justify-center p-4 transition-all duration-300">
         <div class="absolute inset-0" onclick="closeModal('specModal')"></div>
         <div class="relative bg-white w-full max-w-3xl rounded-[2.5rem] shadow-2xl flex flex-col max-h-[90vh] overflow-hidden border border-slate-200 mx-auto animate-in zoom-in-95 duration-300">
@@ -343,6 +359,7 @@
         </div>
     </div>
 
+    <!-- SCRIPT LOGICAL INTERACTION -->
     <script>
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -358,7 +375,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Script Fullscreen Image
         function openFullscreen(src) {
             const overlay = document.getElementById('fullscreenOverlay');
             const img = document.getElementById('fullscreenImg');
@@ -381,29 +397,67 @@
         }
 
         function changeMainImage(imageSrc, element) {
-            // 1. Ganti gambar utama
             const mainImage = document.getElementById('mainProductImage');
-            
-            // Efek transisi halus saat ganti foto
             mainImage.style.opacity = 0;
             setTimeout(() => {
                 mainImage.src = imageSrc;
                 mainImage.style.opacity = 1;
             }, 150);
 
-            // 2. Perbarui link pada tombol fullscreen agar sesuai dengan foto yang aktif
             const btnFullscreen = document.getElementById('btnFullscreen');
             btnFullscreen.setAttribute('onclick', `openFullscreen('${imageSrc}')`);
 
-            // 3. Atur gaya bingkai thumbnail (oranye untuk aktif, abu-abu untuk tidak aktif)
             const allThumbnails = document.querySelectorAll('.thumbnail-btn');
             allThumbnails.forEach(thumb => {
-                // Reset semua thumbnail ke gaya default (tidak aktif)
                 thumb.className = 'thumbnail-btn aspect-square w-24 md:w-32 rounded-3xl border border-slate-100 p-2 bg-slate-50 hover:bg-white cursor-pointer overflow-hidden opacity-60 hover:opacity-100 shrink-0 transition-all duration-300';
             });
 
-            // Beri gaya aktif (bingkai tebal oranye & opacity penuh) pada thumbnail yang baru saja diklik
             element.className = 'thumbnail-btn aspect-square w-24 md:w-32 rounded-3xl border-2 border-[#C9490F] p-2 bg-white shadow-sm cursor-pointer overflow-hidden shrink-0 opacity-100 transition-all duration-300';
+        }
+
+        // FUNGSIONALITAS MENANDAI FOTO GALERI UNTUK DIHAPUS DENGAN Z-INDEX SWEETALERT TINGGI
+        function markGalleryForDeletion(photoPath, cardId) {
+            Swal.fire({
+                title: 'Hapus Foto Ini?',
+                text: "Foto galeri ini akan ditandai hapus dan dihilangkan secara permanen saat Anda menekan tombol 'Simpan Perubahan Utama'.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#C9490F',
+                cancelButtonColor: '#64748B',
+                confirmButtonText: 'Ya, Tandai Hapus',
+                cancelButtonText: 'Batal',
+                customClass: { 
+                    popup: 'rounded-[2rem]',
+                    container: 'z-[100000]'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const card = document.getElementById(cardId);
+                    if(card) {
+                        card.style.display = 'none';
+                    }
+
+                    const container = document.getElementById('deletedGalleryInputs');
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'remove_gallery[]';
+                    input.value = photoPath;
+                    container.appendChild(input);
+                }
+            });
+        }
+
+        function handleNewGalleryPreview(input) {
+            const textElem = document.getElementById('textGaleri');
+            const iconElem = document.getElementById('iconGaleri');
+            const btnElem = document.getElementById('btnTambahGaleri');
+
+            if (input.files && input.files.length > 0) {
+                textElem.innerText = input.files.length + ' Foto Siap Disimpan!';
+                iconElem.className = 'fa-solid fa-circle-check text-3xl text-green-500 mb-2';
+                btnElem.classList.add('border-green-500', 'bg-green-50');
+                btnElem.classList.remove('border-slate-300');
+            }
         }
 
         function addSpecRow() {
@@ -436,7 +490,7 @@
                     <input type="text" name="adv_descs[]" class="bg-[#F8FAFC] border border-[#E2E8F0] focus:bg-[#FFFFFF] focus:border-[#C9490F] outline-none w-full rounded-xl p-3 text-xs" placeholder="Penjelasan singkat...">
                 </div>
                 <div class="pt-4">
-                    <button type="button" onclick="this.parentElement.parentElement.remove()" class="w-11 h-11 bg-white border border-slate-200 text-slate-400 rounded-xl hover:bg-red-500 hover:text-white transition-colors flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-trash"></i></button>
+                    <button type="button" onclick="this.parentElement.remove()" class="w-11 h-11 bg-white border border-slate-200 text-slate-400 rounded-xl hover:bg-red-500 hover:text-white transition-colors flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-trash"></i></button>
                 </div>
             `;
             container.appendChild(row);
@@ -445,7 +499,16 @@
 
     @if(session('success'))
     <script>
-        Swal.fire({ icon: 'success', title: 'Berhasil!', text: '{{ session('success') }}', confirmButtonColor: '#C9490F', customClass: { popup: 'rounded-[2rem]' } });
+        Swal.fire({ 
+            icon: 'success', 
+            title: 'Berhasil!', 
+            text: '{{ session('success') }}', 
+            confirmButtonColor: '#C9490F', 
+            customClass: { 
+                popup: 'rounded-[2rem]',
+                container: 'z-[100000]'
+            } 
+        });
     </script>
     @endif
 </body>

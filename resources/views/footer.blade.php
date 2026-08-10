@@ -8,11 +8,6 @@
                 <p class="text-sm leading-relaxed">
                     Penyedia solusi pengukuran modern dan peralatan geospasial presisi tinggi untuk berbagai sektor industri di Indonesia.
                 </p>
-                {{-- <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-orange-600 hover:border-orange-600 transition text-white"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-pink-600 hover:border-pink-600 transition text-white"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition text-white"><i class="fa-brands fa-youtube"></i></a>
-                </div> --}}
             </div>
 
             <div>
@@ -33,13 +28,21 @@
                 </ul>
             </div>
 
+            <!-- BAGIAN KATEGORI PRODUK DINAMIS -->
             <div>
                 <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Kategori Produk</h4>
                 <ul class="space-y-4 text-sm font-medium">
-                    <li><a href="{{ route('produk.index') }}?category=GNSS" class="hover:text-orange-400 transition">GNSS RTK System</a></li>
-                    <li><a href="{{ route('produk.index') }}?category=TotalStation" class="hover:text-orange-400 transition">Total Station</a></li>
-                    <li><a href="{{ route('produk.index') }}?category=LiDAR" class="hover:text-orange-400 transition">LiDAR SLAM</a></li>
-                    <li><a href="{{ route('produk.index') }}?category=Drone" class="hover:text-orange-400 transition">Drone Mapping</a></li>
+                    @if(isset($categoriesFooter) && count($categoriesFooter) > 0)
+                        @foreach($categoriesFooter as $cat)
+                        <li>
+                            <a href="{{ route('produk.index') }}?category={{ $cat->slug }}" class="hover:text-orange-400 transition">
+                                {{ $cat->name }}
+                            </a>
+                        </li>
+                        @endforeach
+                    @else
+                        <li class="text-xs italic text-slate-500">Belum ada kategori.</li>
+                    @endif
                 </ul>
             </div>
 
@@ -50,10 +53,6 @@
                         <i class="fa-solid fa-location-dot text-orange-500 mt-1"></i>
                         <span>Jl. Kiyai Abdul Aziz 1, Karang Tengah, Kec. Gunungpuyuh, Kabupaten Sukabumi, Jawa Barat 43152</span>
                     </li>
-                    {{-- <li class="flex gap-3">
-                        <i class="fa-solid fa-envelope text-orange-500 mt-1"></i>
-                        <a href="mailto:admin@nusageospatialsolution.co.id" class="hover:text-orange-400 transition">admin@nusageospatialsolution.co.id</a>
-                    </li> --}}
                     <li class="flex gap-3">
                         <i class="fa-solid fa-phone text-orange-500 mt-1"></i>
                         <a href="https://wa.me/6282123852658" target="_blank" class="hover:text-orange-400 transition">+62 821-2385-2658</a>
