@@ -182,96 +182,97 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $product = Product::findOrFail($id);
+    {
+        $product = Product::findOrFail($id);
 
-    // LOGIKA 1: Update Konten Utama (Dari Halaman Detail)
-    if ($request->update_type == 'main') {
-        $request->validate([
-            'image'            => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10240', // Maksimal 10 MB
-            'brand'            => 'required|string',
-            'name'             => 'required|string',
-            'full_description' => 'nullable|string', 
-            'description'      => 'nullable|string', 
-            'brochure'         => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:10240', // Maksimal 10 MB
-            'gallery.*'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10240',      // Maksimal 10 MB
-        ]);
+        // LOGIKA 1: Update Konten Utama (Dari Halaman Detail)
+        if ($request->update_type == 'main') {
+            $request->validate([
+                'image'            => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10240', // Maksimal 10 MB
+                'brand'            => 'required|string',
+                'name'             => 'required|string',
+                'full_description' => 'nullable|string', 
+                'description'      => 'nullable|string', 
+                'brochure'         => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:10240', // Maksimal 10 MB
+                'gallery.*'        => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10240',      // Maksimal 10 MB
+            ]);
 
-        // Ambil data teks
-        $data = $request->only(['brand', 'badge', 'name', 'full_description', 'description']);
-        $existingGallery = $product->gallery ?? [];
+            // Ambil data teks
+            $data = $request->only(['brand', 'badge', 'name', 'full_description', 'description']);
+            $existingGallery = $product->gallery ?? [];
 
-        // A. FITUR HAPUS FOTO SPESIFIK DARI GALERI
-        if ($request->has('remove_gallery')) {
-            foreach ($request->remove_gallery as $photoPath) {
-                if (Storage::disk('public')->exists($photoPath)) {
-                    Storage::disk('public')->delete($photoPath);
+            // A. Fitur Hapus Foto Spesifik dari Galeri
+            if ($request->has('remove_gallery')) {
+                foreach ($request->remove_gallery as $photoPath) {
+                    if (Storage::disk('public')->exists($photoPath)) {
+                        Storage::disk('public')->delete($photoPath);
+                    }
+                    $existingGallery = array_diff($existingGallery, [$photoPath]);
                 }
-                $existingGallery = array_diff($existingGallery, [$photoPath]);
+                $existingGallery = array_values($existingGallery); // Reset index array
             }
-            $existingGallery = array_values($existingGallery); // Reset index array
-        }
 
-        // B. Update Foto Utama
-        if ($request->hasFile('image')) {
-            if ($product->image && Storage::disk('public')->exists($product->image)) {
-                Storage::disk('public')->delete($product->image);
+            // B. Update Foto Utama
+            if ($request->hasFile('image')) {
+                if ($product->image && Storage::disk('public')->exists($product->image)) {
+                    Storage::disk('public')->delete($product->image);
+                }
+                $data['image'] = $request->file('image')->store('products', 'public');
             }
-            $data['image'] = $request->file('image')->store('products', 'public');
-        }
 
-        // C. Update Brosur
-        if ($request->hasFile('brochure')) {
-            if ($product->brochure && Storage::disk('public')->exists($product->brochure)) {
-                Storage::disk('public')->delete($product->brochure);
+            // C. Update Brosur
+            if ($request->hasFile('brochure')) {
+                if ($product->brochure && Storage::disk('public')->exists($product->brochure)) {
+                    Storage::disk('public')->delete($product->brochure);
+                }
+                $data['brochure'] = $request->file('brochure')->store('brochures', 'public');
             }
-            $data['brochure'] = $request->file('brochure')->store('brochures', 'public');
-        }
 
-        // D. Tambah Foto Baru ke Galeri
-        if ($request->hasFile('gallery')) {
-            foreach ($request->file('gallery') as $file) {
-                $existingGallery[] = $file->store('gallery', 'public'); 
-            }
-        }
-        $data['gallery'] = $existingGallery;
-
-        // E. Update Advantages (Keunggulan)
-        if ($request->has('adv_titles')) {
-            $advs = [];
-            foreach ($request->adv_titles as $index => $title) {
-                if (!empty($title)) {
-                    $advs[] = [
-                        'icon'  => $request->adv_icons[$index] ?? 'fa-check',
-                        'title' => $title,
-                        'desc'  => $request->adv_descs[$index] ?? ''
-                    ];
+            // D. Tambah Foto Baru ke Galeri
+            if ($request->hasFile('gallery')) {
+                foreach ($request->file('gallery') as $file) {
+                    $existingGallery[] = $file->store('gallery', 'public'); 
                 }
             }
-            $data['advantages'] = $advs;
+            $data['gallery'] = $existingGallery;
+
+            // E. Update Advantages (Keunggulan)
+            if ($request->has('adv_titles')) {
+                $advs = [];
+                foreach ($request->adv_titles as $index => $title) {
+                    if (!empty($title)) {
+                        $advs[] = [
+                            'icon'  => $request->adv_icons[$index] ?? 'fa-check',
+                            'title' => $title,
+                            'desc'  => $request->adv_descs[$index] ?? ''
+                        ];
+                    }
+                }
+                $data['advantages'] = $advs;
+            }
+
+            $product->update($data);
         }
 
-        $product->update($data);
+        // LOGIKA 2: Update Spesifikasi
+        if ($request->update_type == 'specs') {
+            $specs = [];
+            if ($request->has('spec_labels') && $request->has('spec_values')) {
+                foreach ($request->spec_labels as $index => $label) {
+                    if (!empty($label) && !empty($request->spec_values[$index])) {
+                        $specs[] = [
+                            'label' => $label,
+                            'value' => $request->spec_values[$index]
+                        ];
+                    }
+                }
+            }
+            $product->update(['specifications' => $specs]);
+        }
+
+        return back()->with('success', 'Konten berhasil diperbarui!');
     }
 
-    // LOGIKA 2: Update Spesifikasi
-    if ($request->update_type == 'specs') {
-        $specs = [];
-        if ($request->has('spec_labels') && $request->has('spec_values')) {
-            foreach ($request->spec_labels as $index => $label) {
-                if (!empty($label) && !empty($request->spec_values[$index])) {
-                    $specs[] = [
-                        'label' => $label,
-                        'value' => $request->spec_values[$index]
-                    ];
-                }
-            }
-        }
-        $product->update(['specifications' => $specs]);
-    }
-
-    return back()->with('success', 'Konten berhasil diperbarui!');
-}
     public function storeCategory(Request $request) {
         $request->validate(['name' => 'required|unique:categories,name']);
         Category::create([

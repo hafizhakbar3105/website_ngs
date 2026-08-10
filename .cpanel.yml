@@ -10,5 +10,4 @@ deployment:
     - /bin/cp -R database $APPPATH/
     - /bin/cp -R resources $APPPATH/
     - /bin/cp -R routes $APPPATH/
-
     - /bin/cp -R public/* $PUBLICPATH/
