@@ -6,10 +6,9 @@
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
     <title>Katalog | K Survey</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
-    <!-- CSS ANIMASI MURNI DENGAN OPASITAS TEGAS -->
     <style>
         @keyframes glowPulse {
             0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.6; }
@@ -36,82 +35,74 @@
 
     <!-- HEADER PAGE -->
     <header class="relative pt-52 pb-24 px-6 bg-slate-950 overflow-hidden border-b border-orange-500/10">
-    <!-- 1. Ambient Glow Accent -->
-    <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-orange-600/30 to-amber-500/10 rounded-full blur-[130px] pointer-events-none anim-glow-main-1"></div>
-    <div class="absolute bottom-0 left-1/4 w-[500px] h-[300px] bg-orange-600/15 rounded-full blur-[110px] pointer-events-none anim-glow-main-2"></div>
+        <!-- 1. Ambient Glow Accent -->
+        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-orange-600/30 to-amber-500/10 rounded-full blur-[130px] pointer-events-none anim-glow-main-1"></div>
+        <div class="absolute bottom-0 left-1/4 w-[500px] h-[300px] bg-orange-600/15 rounded-full blur-[110px] pointer-events-none anim-glow-main-2"></div>
 
-    <!-- 2. Top Border Gradient Line -->
-    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-orange-600 via-amber-400 to-orange-600 z-20"></div>
+        <!-- 2. Top Border Gradient Line -->
+        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-orange-600 via-amber-400 to-orange-600 z-20"></div>
 
-    <!-- 3. Element HUD Geospasial / Reticle Crosshair di Latar Belakang -->
-    <div class="absolute top-1/2 right-12 -translate-y-1/2 pointer-events-none hidden lg:block opacity-20 z-0">
-        <div class="relative w-80 h-80 flex items-center justify-center">
-            <!-- Ring Luar Berputar -->
-            <div class="absolute inset-0 border border-dashed border-orange-500 rounded-full animate-[spin_30s_linear_infinite]"></div>
-            <!-- Ring Dalam -->
-            <div class="w-56 h-56 border border-orange-400/50 rounded-full flex items-center justify-center">
-                <div class="w-32 h-32 border border-amber-300/40 rounded-full border-t-transparent animate-[spin_15s_linear_infinite_reverse]"></div>
+        <!-- 3. Element HUD Geospasial / Reticle Crosshair di Latar Belakang -->
+        <div class="absolute top-1/2 right-12 -translate-y-1/2 pointer-events-none hidden lg:block opacity-20 z-0">
+            <div class="relative w-80 h-80 flex items-center justify-center">
+                <div class="absolute inset-0 border border-dashed border-orange-500 rounded-full animate-[spin_30s_linear_infinite]"></div>
+                <div class="w-56 h-56 border border-orange-400/50 rounded-full flex items-center justify-center">
+                    <div class="w-32 h-32 border border-amber-300/40 rounded-full border-t-transparent animate-[spin_15s_linear_infinite_reverse]"></div>
+                </div>
+                <div class="absolute top-0 left-1/2 w-px h-full bg-orange-500/40"></div>
+                <div class="absolute top-1/2 left-0 w-full h-px bg-orange-500/40"></div>
             </div>
-            <!-- Crosshair Line -->
-            <div class="absolute top-0 left-1/2 w-px h-full bg-orange-500/40"></div>
-            <div class="absolute top-1/2 left-0 w-full h-px bg-orange-500/40"></div>
         </div>
-    </div>
 
-    <div class="max-w-7xl mx-auto relative z-10">
-        <div class="space-y-6 text-center md:text-left">
-            <!-- Badge Status -->
-            <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900/90 border border-orange-500/40 shadow-[0_0_25px_-5px_rgba(255,106,26,0.4)] backdrop-blur-md">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                </span>
-                <span class="text-[9px] font-black uppercase tracking-[0.3em] text-orange-400">Engineering Grade Equipment</span>
-            </div>
-
-            <!-- Judul Utama -->
-            <h1 class="text-5xl md:text-7xl font-black text-white leading-none tracking-tighter uppercase italic">
-                KATALOG <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-400 to-orange-400 drop-shadow-[0_10px_20px_rgba(255,106,26,0.2)]">PRODUK</span>
-            </h1>
-
-            <!-- Subtitle -->
-            <p class="text-slate-300 text-sm md:text-lg max-w-xl font-medium leading-relaxed">
-                Peralatan geospasial presisi tinggi dari brand terpercaya dunia untuk hasil pengukuran yang akurat di setiap medan.
-            </p>
-
-            <!-- Tech Stats Badge / Quick Info -->
-            <div class="pt-4 flex flex-wrap gap-6 justify-center md:justify-start text-left border-t border-white/10 max-w-xl">
-                <div>
-                    <span class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Sertifikasi</span>
-                    <span class="text-xs font-black text-white uppercase tracking-wider">Standar Industri</span>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="space-y-6 text-center md:text-left">
+                <!-- Badge Status -->
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900/90 border border-orange-500/40 shadow-[0_0_25px_-5px_rgba(255,106,26,0.4)] backdrop-blur-md">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                    </span>
+                    <span class="text-[9px] font-black uppercase tracking-[0.3em] text-orange-400">Engineering Grade Equipment</span>
                 </div>
-                <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
-                <div>
-                    <span class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Dukungan</span>
-                    <span class="text-xs font-black text-white uppercase tracking-wider">Layanan Kalibrasi</span>
-                </div>
-                <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
-                <div>
-                    <span class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Garansi</span>
-                    <span class="text-xs font-black text-white uppercase tracking-wider">Resmi Brand</span>
+
+                <!-- Judul Utama -->
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-none tracking-tighter uppercase italic">
+                    KATALOG <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-400 to-orange-400 drop-shadow-[0_10px_20px_rgba(255,106,26,0.2)]">PRODUK</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-slate-300 text-sm md:text-lg max-w-xl font-medium leading-relaxed">
+                    Peralatan geospasial presisi tinggi dari brand terpercaya dunia untuk hasil pengukuran yang akurat di setiap medan.
+                </p>
+
+                <!-- Quick Info -->
+                <div class="pt-4 flex flex-wrap gap-6 justify-center md:justify-start text-left border-t border-white/10 max-w-xl">
+                    <div>
+                        <span class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Sertifikasi</span>
+                        <span class="text-xs font-black text-white uppercase tracking-wider">Standar Industri</span>
+                    </div>
+                    <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
+                    <div>
+                        <span class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Dukungan</span>
+                        <span class="text-xs font-black text-white uppercase tracking-wider">Layanan Kalibrasi</span>
+                    </div>
+                    <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
+                    <div>
+                        <span class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Garansi</span>
+                        <span class="text-xs font-black text-white uppercase tracking-wider">Resmi Brand</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
-    <!-- MAIN CONTAINER WITH VISIBLE BACKGROUND ANIMATIONS -->
+    <!-- MAIN CONTAINER -->
     <div class="relative overflow-hidden">
         
-        <!-- ANIMASI BACKGROUND LAMPU PENDAR ORANYE BERGERAK DI SELURUH AREA KATALOG -->
+        <!-- ANIMASI BACKGROUND -->
         <div class="absolute inset-0 pointer-events-none z-0">
-            <!-- 1. Bola Pendar Besar Atas Kanan (Oranye Terang) -->
             <div class="absolute top-10 right-10 w-[550px] h-[550px] bg-orange-500/25 rounded-full blur-[90px] anim-glow-main-1"></div>
-            
-            <!-- 2. Bola Pendar Besar Bawah Kiri (Amber / Emas Terang) -->
             <div class="absolute bottom-10 left-10 w-[600px] h-[600px] bg-amber-500/20 rounded-full blur-[100px] anim-glow-main-2"></div>
-
-            <!-- 3. Sphere Mengambang Tengah -->
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-orange-600/15 rounded-full blur-[60px] anim-float-orb"></div>
         </div>
 
@@ -145,19 +136,20 @@
 
             <!-- DAFTAR KATALOG PRODUK -->
             <section class="flex-1">
-                <!-- GRID KARTU PRODUK -->
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
                     
                     @forelse($products as $produk)
                     <div class="relative flex flex-col md:flex-row h-full min-h-[320px] bg-white/80 backdrop-blur-md rounded-[2.5rem] p-5 border-2 border-white/80 shadow-lg hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/25 hover:border-orange-500 transition-all duration-700 group overflow-hidden">
 
-                        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-orange-600 via-amber-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-orange-600 via-amber-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30"></div>
                         
-                        <div class="md:w-2/5 relative aspect-square md:aspect-auto bg-slate-50/80 rounded-[2rem] overflow-hidden flex items-center justify-center p-6 flex-shrink-0">
+                        <!-- KOTAK GAMBAR: DIREVISI AGAR GAMBAR FULL MEMENUHI CONTAINER DAN BEBAS RONGGA KOSONG -->
+                        <div class="md:w-2/5 relative aspect-square md:aspect-auto bg-slate-50/80 rounded-[2rem] overflow-hidden flex items-center justify-center flex-shrink-0">
                             <div class="absolute top-4 left-4 z-20">
                                 <span class="px-2.5 py-1 bg-gradient-to-r from-orange-600 to-orange-500 text-white text-[7px] font-black uppercase tracking-widest rounded-lg shadow-md shadow-orange-500/40">Premium</span>
                             </div>
-                            <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-full h-full object-contain p-2 drop-shadow-2xl group-hover:scale-110 transition-transform duration-700 ease-out">
+                            <!-- OBJECT-COVER MEMBUAT GAMBAR TERISI PENUH PADA BACKGROUND KARTU -->
+                            <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
                         </div>
                         
                         <div class="p-6 flex flex-col flex-grow justify-between">
@@ -183,10 +175,10 @@
                                 <div class="flex gap-3">
                                     <a href="https://wa.me/6282123852658?text={{ urlencode('Halo K Survey, saya tertarik untuk mengajukan demo alat untuk produk ' . $produk->name . ' (' . $produk->brand . '). Mohon informasi prosedur dan biayanya.') }}" 
                                        target="_blank" 
-                                       class="flex-[2] bg-gradient-to-r from-orange-600 to-orange-500 text-white text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:shadow-lg hover:shadow-orange-500/40 hover:brightness-110 transition-all duration-300">
+                                       class="flex-[2] bg-gradient-to-r from-orange-600 to-orange-500 text-white text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:shadow-lg hover:shadow-orange-500/40 hover:brightness-110 transition-all duration-300 flex items-center justify-center">
                                         Ajukan Demo Alat
                                     </a>
-                                    <a href="{{ route('produk.detail', $produk->id) }}" class="flex-1 bg-white border-2 border-orange-200 text-orange-700 text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-orange-50 hover:border-orange-500 transition-all duration-300">
+                                    <a href="{{ route('produk.detail', $produk->id) }}" class="flex-1 bg-white border-2 border-orange-200 text-orange-700 text-center py-3.5 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-orange-50 hover:border-orange-500 transition-all duration-300 flex items-center justify-center">
                                         Detail
                                     </a>
                                 </div>
@@ -194,7 +186,6 @@
                         </div>
                     </div>
                     @empty
-                    <!-- KOTAK KOSONG TRANSPARAN DENGAN BLUR (MEMUNGKINKAN CAHAYA ORANYE DI BELAKANG TERLIHAT PENDARANNYA) -->
                     <div class="col-span-full text-center py-24 bg-white/60 backdrop-blur-md rounded-[3.5rem] border-2 border-orange-200/60 shadow-xl relative z-10">
                         <div class="w-20 h-20 bg-orange-100/80 rounded-full flex items-center justify-center mx-auto mb-4 border border-orange-200 shadow-inner">
                             <i class="fa-solid fa-boxes-open text-orange-500 text-3xl"></i>
