@@ -94,19 +94,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
                     @forelse($products as $produk)
-                    <!-- CARD UTAMA LANDSCAPE -->
+                    <!-- CARD UTAMA -->
                     <div class="relative flex flex-col h-full bg-white/90 backdrop-blur-md rounded-[2.5rem] p-4 border-2 border-white shadow-lg hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 hover:border-orange-500 transition-all duration-500 group overflow-hidden">
 
                         <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-orange-600 via-amber-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30"></div>
                         
-                        <!-- WADAH GAMBAR: DIBUAT OVERFLOW HIDDEN + NO BACKGROUND BG SUPAYA GAMBAR MELEBAR PENUH TANPA SISA RONGGA -->
-                        <div class="w-full aspect-[16/10] relative rounded-[2rem] overflow-hidden flex items-center justify-center flex-shrink-0 bg-white">
+                        <!-- WADAH GAMBAR: PERBAIKAN PADDING DAN RASI0 AGAR ALAT DILIHAT UTUH DENGAN BACKGROUND MENYATU -->
+                        <div class="w-full aspect-[4/3] relative rounded-[2rem] overflow-hidden flex items-center justify-center p-6 bg-[#FFFFFF] border border-slate-100/60 shadow-inner">
                             <div class="absolute top-4 left-4 z-20">
                                 <span class="px-3 py-1 bg-gradient-to-r from-orange-600 to-orange-500 text-white text-[8px] font-black uppercase tracking-widest rounded-lg shadow-md shadow-orange-500/30">Premium</span>
                             </div>
 
-                            <!-- GAMBAR FULL 100% MEMENUHI CONTAINER KARTU -->
-                            <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
+                            <!-- OBJECT-CONTAIN MEMBUAT FISIK INSTRUMEN TAMPIL PROPORSI UTUH TANPA TERPOTONG -->
+                            <img src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-full h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-500 ease-out">
                         </div>
                         
                         <!-- KONTEN DESKRIPSI -->
