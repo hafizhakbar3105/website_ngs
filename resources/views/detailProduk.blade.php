@@ -67,11 +67,11 @@
             
             <!-- KOLOM KIRI: FOTO UTAMA & GALERI THUMBNAIL -->
             <div class="lg:col-span-7 space-y-8">
-                <!-- GAMBAR UTAMA: KETIKA DIKLIK MEMBUKA GAMBAR YANG SEDANG AKTIF TERSEBUT -->
-                <div onclick="openShopeeModal()" class="img-main-container aspect-[1.2/1] rounded-[3.5rem] bg-white/95 backdrop-blur-md flex items-center justify-center p-12 md:p-16 border-2 border-orange-100 shadow-[0_20px_60px_-15px_rgba(201,73,15,0.1)] relative overflow-hidden group cursor-zoom-in">
-                    <img id="mainProductImage" src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-4/5 h-4/5 object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                <!-- GAMBAR UTAMA FULL CONTAINER DAN BEBAS RONGGA KOSONG -->
+                <div onclick="openShopeeModal()" class="img-main-container aspect-[1.2/1] rounded-[3.5rem] bg-white/95 backdrop-blur-md flex items-center justify-center border-2 border-orange-100 shadow-[0_20px_60px_-15px_rgba(201,73,15,0.1)] relative overflow-hidden group cursor-zoom-in">
+                    <img id="mainProductImage" src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-full h-full object-cover drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
                     
-                    <div class="absolute bottom-8 right-8 flex gap-3">
+                    <div class="absolute bottom-8 right-8 flex gap-3 z-10">
                         <button type="button" class="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur shadow-md border border-orange-100 flex items-center justify-center text-slate-500 group-hover:text-orange-600 group-hover:scale-105 transition-all">
                             <i class="fa-solid fa-expand"></i>
                         </button>
@@ -89,12 +89,10 @@
                 @if(count($allImages) > 1)
                 <div class="flex flex-wrap gap-5 mt-6">
                     @foreach($allImages as $idx => $img)
-                    <!-- onmouseenter: mengganti gambar saat kursor hover di atas thumbnail -->
-                    <!-- onclick: membuka popup layar penuh pada gambar terkait -->
                     <div onmouseenter="changeMainImage('{{ asset('storage/' . $img) }}', {{ $idx }}, this)" 
                          onclick="openShopeeModal({{ $idx }})" 
-                         class="thumbnail-btn aspect-square w-20 md:w-28 rounded-3xl {{ $idx == 0 ? 'border-2 border-[#C9490F] opacity-100 bg-white shadow-md' : 'border border-slate-200 opacity-60 bg-slate-50 hover:bg-white' }} p-2 cursor-pointer overflow-hidden shrink-0 transition-all duration-300">
-                        <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-contain">
+                         class="thumbnail-btn aspect-square w-20 md:w-28 rounded-3xl {{ $idx == 0 ? 'border-2 border-[#C9490F] opacity-100 bg-white shadow-md' : 'border border-slate-200 opacity-60 bg-slate-50 hover:bg-white' }} p-1 cursor-pointer overflow-hidden shrink-0 transition-all duration-300">
+                        <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover rounded-2xl">
                     </div>
                     @endforeach
                 </div>
@@ -173,18 +171,18 @@
     @include('footer')
 
     <!-- MODAL POPUP LIGHTBOX (STYLE SHOPEE) -->
-    <div id="shopeeModal" class="hidden fixed inset-0 z-[10000] bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 md:p-8 opacity-0 transition-opacity duration-300">
+    <div id="shopeeModal" class="hidden fixed inset-0 z-[10000] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 md:p-8 opacity-0 transition-opacity duration-300">
         <button onclick="closeShopeeModal()" class="absolute top-6 right-6 text-white/70 hover:text-white text-3xl transition-colors z-20">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
         <div class="bg-white rounded-3xl p-6 md:p-10 max-w-5xl w-full max-h-[90vh] overflow-y-auto flex flex-col md:flex-row gap-8 relative shadow-2xl scale-95 transition-transform duration-300" id="shopeeModalBox">
-            <div class="flex-1 relative flex items-center justify-center bg-slate-50 rounded-2xl p-6 min-h-[350px] md:min-h-[480px]">
+            <div class="flex-1 relative flex items-center justify-center bg-slate-50 rounded-2xl p-2 min-h-[350px] md:min-h-[480px] overflow-hidden">
                 <button onclick="prevShopeeImg()" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 bg-black/40 hover:bg-[#C9490F] text-white rounded-full flex items-center justify-center backdrop-blur transition-all shadow-lg z-10">
                     <i class="fa-solid fa-chevron-left text-base"></i>
                 </button>
 
-                <img id="shopeeActiveImg" src="" class="max-h-[420px] w-auto object-contain drop-shadow-xl transition-all duration-300">
+                <img id="shopeeActiveImg" src="" class="w-full h-full max-h-[460px] object-cover rounded-xl drop-shadow-xl transition-all duration-300">
 
                 <button onclick="nextShopeeImg()" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 bg-black/40 hover:bg-[#C9490F] text-white rounded-full flex items-center justify-center backdrop-blur transition-all shadow-lg z-10">
                     <i class="fa-solid fa-chevron-right text-base"></i>
@@ -200,7 +198,7 @@
                     <div class="grid grid-cols-3 gap-3 pt-2" id="shopeeModalThumbnails">
                         @foreach($allImages as $i => $img)
                         <div onclick="selectShopeeImg({{ $i }})" class="shopee-thumb-btn aspect-square rounded-xl border p-1 bg-slate-50 cursor-pointer overflow-hidden transition-all duration-200 hover:border-[#C9490F]">
-                            <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-contain">
+                            <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover rounded-lg">
                         </div>
                         @endforeach
                     </div>
@@ -219,7 +217,6 @@
         const galleryList = @json(array_map(function($path) { return asset('storage/' . $path); }, $allImages));
         let currentImgIndex = 0;
 
-        // FUNGSI GANTI GAMBAR UTAMA SAAT KURUSOR DI-HOVER
         function changeMainImage(imageSrc, index, element) {
             currentImgIndex = index;
             const mainImage = document.getElementById('mainProductImage');
@@ -232,13 +229,12 @@
 
             const allThumbnails = document.querySelectorAll('.thumbnail-btn');
             allThumbnails.forEach(thumb => {
-                thumb.className = 'thumbnail-btn aspect-square w-20 md:w-28 rounded-3xl border border-slate-200 p-2 bg-slate-50 hover:bg-white cursor-pointer overflow-hidden opacity-60 hover:opacity-100 shrink-0 transition-all duration-300';
+                thumb.className = 'thumbnail-btn aspect-square w-20 md:w-28 rounded-3xl border border-slate-200 p-1 bg-slate-50 hover:bg-white cursor-pointer overflow-hidden opacity-60 hover:opacity-100 shrink-0 transition-all duration-300';
             });
 
-            element.className = 'thumbnail-btn aspect-square w-20 md:w-28 rounded-3xl border-2 border-[#C9490F] p-2 bg-white shadow-md cursor-pointer overflow-hidden shrink-0 opacity-100 transition-all duration-300';
+            element.className = 'thumbnail-btn aspect-square w-20 md:w-28 rounded-3xl border-2 border-[#C9490F] p-1 bg-white shadow-md cursor-pointer overflow-hidden shrink-0 opacity-100 transition-all duration-300';
         }
 
-        // FUNGSI BUKA MODAL POPUP PADA GAMBAR YANG SEDANG AKTIF
         function openShopeeModal(startIndex) {
             if (startIndex !== undefined) {
                 currentImgIndex = startIndex;
