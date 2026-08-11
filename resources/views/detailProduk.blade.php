@@ -15,9 +15,6 @@
             background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
             box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
         }
-        .img-main-container {
-            background: radial-gradient(circle at center, #FFFFFF 0%, #FFF7ED 100%);
-        }
         .bg-laser-matrix {
             background-size: 36px 36px;
             background-image: 
@@ -67,9 +64,9 @@
             
             <!-- KOLOM KIRI: FOTO UTAMA & GALERI THUMBNAIL -->
             <div class="lg:col-span-7 space-y-8">
-                <!-- GAMBAR UTAMA FULL CONTAINER DAN BEBAS RONGGA KOSONG -->
-                <div onclick="openShopeeModal()" class="img-main-container aspect-[1.2/1] rounded-[3.5rem] bg-white/95 backdrop-blur-md flex items-center justify-center border-2 border-orange-100 shadow-[0_20px_60px_-15px_rgba(201,73,15,0.1)] relative overflow-hidden group cursor-zoom-in">
-                    <img id="mainProductImage" src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-full h-full object-cover drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                <!-- GAMBAR UTAMA: SINKRON BERSIH DENGAN FULL AREA TANPA TERPOTONG -->
+                <div onclick="openShopeeModal()" class="w-full aspect-[1.2/1] rounded-[3.5rem] bg-white flex items-center justify-center p-0 border-2 border-orange-100 shadow-[0_20px_60px_-15px_rgba(201,73,15,0.1)] relative overflow-hidden group cursor-zoom-in">
+                    <img id="mainProductImage" src="{{ asset('storage/' . $produk->image) }}" alt="{{ $produk->name }}" class="w-full h-full object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-500">
                     
                     <div class="absolute bottom-8 right-8 flex gap-3 z-10">
                         <button type="button" class="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur shadow-md border border-orange-100 flex items-center justify-center text-slate-500 group-hover:text-orange-600 group-hover:scale-105 transition-all">
@@ -92,7 +89,7 @@
                     <div onmouseenter="changeMainImage('{{ asset('storage/' . $img) }}', {{ $idx }}, this)" 
                          onclick="openShopeeModal({{ $idx }})" 
                          class="thumbnail-btn aspect-square w-20 md:w-28 rounded-3xl {{ $idx == 0 ? 'border-2 border-[#C9490F] opacity-100 bg-white shadow-md' : 'border border-slate-200 opacity-60 bg-slate-50 hover:bg-white' }} p-1 cursor-pointer overflow-hidden shrink-0 transition-all duration-300">
-                        <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover rounded-2xl">
+                        <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-contain rounded-2xl">
                     </div>
                     @endforeach
                 </div>
@@ -177,12 +174,12 @@
         </button>
 
         <div class="bg-white rounded-3xl p-6 md:p-10 max-w-5xl w-full max-h-[90vh] overflow-y-auto flex flex-col md:flex-row gap-8 relative shadow-2xl scale-95 transition-transform duration-300" id="shopeeModalBox">
-            <div class="flex-1 relative flex items-center justify-center bg-slate-50 rounded-2xl p-2 min-h-[350px] md:min-h-[480px] overflow-hidden">
+            <div class="flex-1 relative flex items-center justify-center bg-white rounded-2xl p-0 min-h-[350px] md:min-h-[480px] overflow-hidden">
                 <button onclick="prevShopeeImg()" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 bg-black/40 hover:bg-[#C9490F] text-white rounded-full flex items-center justify-center backdrop-blur transition-all shadow-lg z-10">
                     <i class="fa-solid fa-chevron-left text-base"></i>
                 </button>
 
-                <img id="shopeeActiveImg" src="" class="w-full h-full max-h-[460px] object-cover rounded-xl drop-shadow-xl transition-all duration-300">
+                <img id="shopeeActiveImg" src="" class="w-full h-full max-h-[460px] object-contain rounded-xl drop-shadow-md transition-all duration-300">
 
                 <button onclick="nextShopeeImg()" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 bg-black/40 hover:bg-[#C9490F] text-white rounded-full flex items-center justify-center backdrop-blur transition-all shadow-lg z-10">
                     <i class="fa-solid fa-chevron-right text-base"></i>
@@ -198,7 +195,7 @@
                     <div class="grid grid-cols-3 gap-3 pt-2" id="shopeeModalThumbnails">
                         @foreach($allImages as $i => $img)
                         <div onclick="selectShopeeImg({{ $i }})" class="shopee-thumb-btn aspect-square rounded-xl border p-1 bg-slate-50 cursor-pointer overflow-hidden transition-all duration-200 hover:border-[#C9490F]">
-                            <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover rounded-lg">
+                            <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-contain rounded-lg">
                         </div>
                         @endforeach
                     </div>
