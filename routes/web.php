@@ -5,9 +5,11 @@ use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\ProductController; 
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\SitemapController;
 
 // --- ROUTES PUBLIK ---
 Route::get('/', [ProductController::class, 'homePublic'])->name('home');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::post('/feedback/store', [FeedbackController::class, 'storePublic'])->name('feedback.submit');
 Route::get('/produk', [ProductController::class, 'produkPublic'])->name('produk.index');
 Route::get('/service', function () { return view('service'); });
